@@ -1,0 +1,7 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="48" y="36" width="124" height="148" rx="10" fill="#7dd3fc"/>
+  <path d="M48 94c32 20 86 20 124 0v42c-37 23-88 23-124 0V94z" fill="#e0f2fe"/>
+  <text x="110" y="72" text-anchor="middle" fill="#0369a1" font-family="Arial" font-size="15" font-weight="800">CISCO</text>
+  <text x="110" y="126" text-anchor="middle" fill="#0369a1" font-family="Arial" font-size="14" font-weight="800">NETWORK</text>
+  <text x="110" y="148" text-anchor="middle" fill="#0369a1" font-family="Arial" font-size="14" font-weight="800">SECURITY</text>
+</svg>

@@ -1,3 +1,4 @@
+import { ChevronDown, ChevronUp, Code2, ExternalLink } from 'lucide-react';
 import type { Project } from '../data/portfolio';
 
 type ProjectCardProps = {
@@ -8,45 +9,60 @@ type ProjectCardProps = {
 
 const ProjectCard = ({ project, isExpanded, onToggle }: ProjectCardProps) => {
   return (
-    <article className="glass-panel flex h-full flex-col rounded-lg p-5 transition hover:-translate-y-1 hover:border-signal-500/45 sm:p-6">
-      {project.featured && (
-        <p className="mb-3 w-fit rounded-full border border-gold-500/40 bg-gold-500/10 px-3 py-1 text-xs font-semibold text-gold-500">
-          Featured project
-        </p>
-      )}
-      <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-      <p className="mt-3 flex-1 text-sm leading-6 text-slate-400">
+    <article className="min-w-0">
+      <div className="soft-card overflow-hidden rounded-lg">
+        <img
+          src={project.image}
+          alt=""
+          className="aspect-[16/9] w-full object-cover"
+          loading="lazy"
+        />
+      </div>
+
+      <div className="mt-3 flex justify-center gap-2" aria-hidden="true">
+        <span className="h-2.5 w-2.5 rounded-full bg-gold-500" />
+        <span className="h-2.5 w-2.5 rounded-full border border-slate-600" />
+        <span className="h-2.5 w-2.5 rounded-full border border-slate-600" />
+      </div>
+
+      <h3 className="mt-4 flex items-center gap-2 text-lg font-extrabold leading-snug text-slate-100 sm:text-xl">
+        <span>{project.title}</span>
+        <Code2 size={24} className="shrink-0 text-slate-200" />
+      </h3>
+
+      <p className="mt-4 text-sm font-medium leading-7 text-slate-400">
         {project.description}
       </p>
 
-      <div className="mt-5 flex flex-wrap gap-3">
+      <div className="mt-4 flex flex-wrap gap-2">
         {project.links.map((link) => (
           <a
             key={`${project.id}-${link.label}`}
             href={link.href}
-            className="rounded-md border border-white/12 px-3 py-2 text-sm text-slate-200 transition hover:border-signal-500/70 hover:text-white"
+            className="inline-flex items-center gap-2 rounded-full border border-white/17 px-3 py-2 text-xs font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
           >
             {link.label}
+            <ExternalLink size={13} />
           </a>
         ))}
       </div>
 
       <button
         type="button"
-        className="mt-5 flex w-full items-center justify-between rounded-md border border-white/10 bg-white/5 px-3 py-2 text-left text-sm text-slate-200 transition hover:bg-white/8"
+        className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/17 px-3 py-1.5 text-xs font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
         aria-expanded={isExpanded}
         onClick={onToggle}
       >
-        <span>View stack</span>
-        <span aria-hidden="true">{isExpanded ? '▲' : '▼'}</span>
+        View stack
+        {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
       </button>
 
       {isExpanded && (
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="mt-3 flex flex-wrap gap-2">
           {project.stack.map((tool) => (
             <span
               key={`${project.id}-${tool}`}
-              className="rounded-md bg-ink-700/70 px-2.5 py-1.5 text-xs text-slate-300 ring-1 ring-white/10"
+              className="rounded-full border border-gold-500/35 bg-gold-500/8 px-3 py-1.5 text-xs font-bold text-slate-300"
             >
               {tool}
             </span>

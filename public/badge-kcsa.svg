@@ -1,0 +1,7 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M110 24l70 40v82l-70 48-70-48V64l70-40z" fill="#3b82f6"/>
+  <path d="M55 92h110v48H55z" fill="#f8fafc"/>
+  <path d="M63 72h94v24H63z" fill="#bfdbfe"/>
+  <text x="110" y="108" text-anchor="middle" fill="#2563eb" font-family="Arial" font-size="13" font-weight="800">CLOUD NATIVE</text>
+  <text x="110" y="128" text-anchor="middle" fill="#2563eb" font-family="Arial" font-size="13" font-weight="800">SECURITY</text>
+</svg>

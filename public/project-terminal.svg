@@ -1,0 +1,10 @@
+<svg width="880" height="440" viewBox="0 0 880 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="880" height="440" rx="10" fill="#242735"/>
+  <text x="40" y="58" fill="#f8fafc" font-family="Consolas, monospace" font-size="18">Windows PowerShell</text>
+  <text x="40" y="94" fill="#cbd5e1" font-family="Consolas, monospace" font-size="17">Copyright (C) Microsoft Corporation. All rights reserved.</text>
+  <text x="40" y="146" fill="#e5e7eb" font-family="Consolas, monospace" font-size="18">PS C:\Lab\hyperv-bootstrap&gt; .\Talos.ps1</text>
+  <rect x="40" y="178" width="430" height="18" fill="#f8fafc"/>
+  <text x="40" y="242" fill="#86efac" font-family="Consolas, monospace" font-size="18">Creating control plane...</text>
+  <text x="40" y="278" fill="#60a5fa" font-family="Consolas, monospace" font-size="18">Generating cluster config...</text>
+  <text x="40" y="314" fill="#fbbf24" font-family="Consolas, monospace" font-size="18">Bootstrap ready.</text>
+</svg>

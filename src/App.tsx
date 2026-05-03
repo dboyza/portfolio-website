@@ -6,6 +6,7 @@ import Projects from './sections/Projects';
 import Skills from './sections/Skills';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import BackToTop from './components/BackToTop';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 }

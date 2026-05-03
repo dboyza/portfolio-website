@@ -1,0 +1,7 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M110 20l76 42v88l-76 50-76-50V62l76-42z" fill="#2563eb"/>
+  <path d="M110 42l54 30v66l-54 36-54-36V72l54-30z" fill="#f8fafc"/>
+  <text x="110" y="92" text-anchor="middle" fill="#2563eb" font-family="Arial" font-size="15" font-weight="800">CERTIFIED</text>
+  <text x="110" y="114" text-anchor="middle" fill="#2563eb" font-family="Arial" font-size="17" font-weight="800">KUBERNETES</text>
+  <text x="110" y="136" text-anchor="middle" fill="#2563eb" font-family="Arial" font-size="15" font-weight="800">SECURITY</text>
+</svg>

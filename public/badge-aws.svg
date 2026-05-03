@@ -1,0 +1,7 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M110 20l70 40v100l-70 40-70-40V60l70-40z" fill="#2563eb"/>
+  <path d="M54 74h112v82H54z" fill="#1d4ed8" stroke="#93c5fd" stroke-width="5"/>
+  <text x="110" y="72" text-anchor="middle" fill="#f59e0b" font-family="Arial" font-size="18" font-weight="800">aws</text>
+  <text x="110" y="110" text-anchor="middle" fill="#f8fafc" font-family="Arial" font-size="15" font-weight="800">SOLUTIONS</text>
+  <text x="110" y="134" text-anchor="middle" fill="#f8fafc" font-family="Arial" font-size="15" font-weight="800">ARCHITECT</text>
+</svg>

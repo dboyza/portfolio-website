@@ -1,0 +1,16 @@
+<svg width="880" height="440" viewBox="0 0 880 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="880" height="440" fill="#050608"/>
+  <rect x="300" y="28" width="510" height="360" rx="8" fill="#11141b" stroke="#394150"/>
+  <rect x="330" y="58" width="450" height="300" fill="#06070a" stroke="#303746"/>
+  <rect x="72" y="88" width="108" height="72" rx="8" fill="#dde9f8"/>
+  <rect x="72" y="230" width="108" height="72" rx="8" fill="#dde9f8"/>
+  <rect x="220" y="118" width="74" height="46" rx="6" fill="#7c5cff"/>
+  <rect x="220" y="246" width="74" height="46" rx="6" fill="#24a6f2"/>
+  <rect x="380" y="100" width="130" height="76" rx="8" fill="#151b28" stroke="#f59e0b"/>
+  <rect x="580" y="100" width="130" height="76" rx="8" fill="#151b28" stroke="#7c5cff"/>
+  <rect x="380" y="235" width="130" height="76" rx="8" fill="#151b28" stroke="#43a047"/>
+  <rect x="580" y="235" width="130" height="76" rx="8" fill="#151b28" stroke="#24a6f2"/>
+  <path d="M180 124h40M294 141h86M510 138h70M445 176v59M645 176v59M510 273h70M294 269h86" stroke="#4d79ff" stroke-width="3"/>
+  <text x="62" y="366" fill="#d6dbe5" font-family="Arial" font-size="26" font-weight="700">Cloud-native DevOps platform</text>
+  <text x="62" y="398" fill="#7f8795" font-family="Arial" font-size="18">GitOps delivery, modules, autoscaling, and observability</text>
+</svg>

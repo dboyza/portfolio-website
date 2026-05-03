@@ -1,0 +1,21 @@
+<svg width="880" height="440" viewBox="0 0 880 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="880" height="440" fill="#eaf3ff"/>
+  <rect x="280" y="44" width="320" height="330" rx="18" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="344" y="102" fill="#111827" font-family="Arial" font-size="25" font-weight="700">Microservices</text>
+  <text x="344" y="132" fill="#68707c" font-family="Arial" font-size="16">deployed and working</text>
+  <rect x="320" y="178" width="240" height="30" rx="8" fill="#f3f6fb"/>
+  <rect x="320" y="220" width="240" height="30" rx="8" fill="#f3f6fb"/>
+  <rect x="320" y="262" width="240" height="30" rx="8" fill="#f3f6fb"/>
+  <rect x="320" y="304" width="240" height="30" rx="8" fill="#f3f6fb"/>
+  <circle cx="528" cy="193" r="7" fill="#55c982"/>
+  <circle cx="528" cy="235" r="7" fill="#55c982"/>
+  <circle cx="528" cy="277" r="7" fill="#55c982"/>
+  <circle cx="528" cy="319" r="7" fill="#55c982"/>
+  <text x="80" y="120" fill="#cbd8ea" font-family="Arial" font-size="112" font-weight="700">API</text>
+  <text x="650" y="320" fill="#cbd8ea" font-family="Arial" font-size="80" font-weight="700">Docker</text>
+  <defs>
+    <filter id="shadow" x="260" y="24" width="360" height="370" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#9fb4d1" flood-opacity=".35"/>
+    </filter>
+  </defs>
+</svg>

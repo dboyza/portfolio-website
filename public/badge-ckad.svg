@@ -1,0 +1,7 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="110" cy="110" r="72" fill="#3b82f6"/>
+  <path d="M110 26v42M110 152v42M26 110h42M152 110h42M50 50l30 30M140 140l30 30M170 50l-30 30M80 140l-30 30" stroke="#60a5fa" stroke-width="9" stroke-linecap="round"/>
+  <rect x="62" y="78" width="96" height="64" rx="8" fill="#f8fafc"/>
+  <text x="110" y="102" text-anchor="middle" fill="#2563eb" font-family="Arial" font-size="12" font-weight="800">CERTIFIED</text>
+  <text x="110" y="121" text-anchor="middle" fill="#2563eb" font-family="Arial" font-size="12" font-weight="800">APP DEV</text>
+</svg>

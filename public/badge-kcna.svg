@@ -1,0 +1,6 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M110 24l76 44v84l-76 44-76-44V68l76-44z" fill="#1d4ed8"/>
+  <path d="M68 83h84v54H68z" fill="#0f172a" stroke="#93c5fd" stroke-width="5"/>
+  <text x="110" y="106" text-anchor="middle" fill="#93c5fd" font-family="Arial" font-size="15" font-weight="800">KUBERNETES</text>
+  <text x="110" y="128" text-anchor="middle" fill="#93c5fd" font-family="Arial" font-size="12" font-weight="800">CLOUD NATIVE</text>
+</svg>
