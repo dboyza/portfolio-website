@@ -16,7 +16,7 @@ const Hero = () => {
       <div className="w-full">
         <img
           src={profile.avatar}
-          alt="Profile placeholder"
+          alt={`${profile.name} profile portrait`}
           className="mx-auto h-32 w-32 rounded-full border-4 border-gold-500 bg-ink-900 object-cover"
         />
 

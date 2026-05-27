@@ -36,7 +36,7 @@ export const profile = {
   focus: 'Loves Infrastructure as Code',
   email: 'hello@example.com',
   resumeHref: '#contact',
-  avatar: '/avatar-hero.svg',
+  avatar: '/profile-portrait.png',
   aboutAvatar: '/avatar-about.svg',
   views: '4751',
 };
