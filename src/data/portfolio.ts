@@ -365,55 +365,6 @@ export const skillGroups: SkillGroup[] = [
 
 export const certifications: Certification[] = [
   {
-    name: 'Kubestronaut',
-    issuer: 'The Linux Foundation',
-    href: '#',
-    badge: '/badge-kube.svg',
-    icon: 'award',
-  },
-  {
-    name: 'Certified Kubernetes Security Specialist (CKS)',
-    issuer: 'The Linux Foundation',
-    href: '#',
-    badge: '/badge-cks.svg',
-    icon: 'kube',
-  },
-  {
-    name: 'Certified Kubernetes Administrator (CKA)',
-    issuer: 'The Linux Foundation',
-    href: '#',
-    badge: '/badge-cka.svg',
-    icon: 'kube',
-  },
-  {
-    name: 'Certified Kubernetes Application Developer (CKAD)',
-    issuer: 'The Linux Foundation',
-    href: '#',
-    badge: '/badge-ckad.svg',
-    icon: 'kube',
-  },
-  {
-    name: 'Kubernetes and Cloud Native Security Associate (KCSA)',
-    issuer: 'The Linux Foundation',
-    href: '#',
-    badge: '/badge-kcsa.svg',
-    icon: 'kube',
-  },
-  {
-    name: 'Kubernetes and Cloud Native Associate (KCNA)',
-    issuer: 'The Linux Foundation',
-    href: '#',
-    badge: '/badge-kcna.svg',
-    icon: 'kube',
-  },
-  {
-    name: 'Red Hat Certified System Administrator (RHCSA)',
-    issuer: 'Red Hat',
-    href: '#',
-    badge: '/badge-redhat.svg',
-    icon: 'hat',
-  },
-  {
     name: 'AWS Certified Solutions Architect - Associate',
     issuer: 'Amazon Web Services',
     href: '#',
@@ -428,25 +379,11 @@ export const certifications: Certification[] = [
     icon: 'aws',
   },
   {
-    name: 'HashiCorp Terraform Associate (003)',
-    issuer: 'HashiCorp',
+    name: 'Security+',
+    issuer: 'CompTIA',
     href: '#',
-    badge: '/badge-terraform.svg',
-    icon: 'terraform',
-  },
-  {
-    name: 'Microsoft Azure Fundamentals (AZ-900)',
-    issuer: 'Microsoft',
-    href: '#',
-    badge: '/badge-azure.svg',
-    icon: 'microsoft',
-  },
-  {
-    name: 'Cisco Network Security',
-    issuer: 'Cisco',
-    href: '#',
-    badge: '/badge-cisco.svg',
-    icon: 'cisco',
+    badge: '/badge-security-plus.svg',
+    icon: 'security',
   },
 ];
 

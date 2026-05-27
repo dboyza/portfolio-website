@@ -13,7 +13,7 @@ const Certifications = () => {
             const SmallIcon =
               certification.icon === 'aws'
                 ? Cloud
-                : certification.icon === 'kube'
+                : certification.icon === 'kube' || certification.icon === 'security'
                   ? Shield
                   : Award;
 
