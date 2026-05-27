@@ -8,12 +8,14 @@ type ProjectCardProps = {
 };
 
 const ProjectCard = ({ project, isExpanded, onToggle }: ProjectCardProps) => {
+  const stackId = `${project.id}-stack`;
+
   return (
     <article className="min-w-0">
       <div className="soft-card overflow-hidden rounded-lg">
         <img
           src={project.image}
-          alt=""
+          alt={project.imageAlt}
           className="aspect-[16/9] w-full object-cover"
           loading="lazy"
         />
@@ -25,14 +27,19 @@ const ProjectCard = ({ project, isExpanded, onToggle }: ProjectCardProps) => {
         <span className="h-2.5 w-2.5 rounded-full border border-slate-600" />
       </div>
 
-      <h3 className="mt-4 flex items-center gap-2 text-lg font-extrabold leading-snug text-slate-100 sm:text-xl">
+      <h3 className="mt-4 flex items-start gap-2 text-lg font-extrabold leading-snug text-slate-100 sm:text-xl">
         <span>{project.title}</span>
-        <Code2 size={24} className="shrink-0 text-slate-200" />
+        <Code2 size={24} className="mt-0.5 shrink-0 text-slate-200" />
       </h3>
 
       <p className="mt-4 text-sm font-medium leading-7 text-slate-400">
         {project.description}
       </p>
+      {project.details?.map((detail) => (
+        <p key={detail} className="mt-3 text-sm font-medium leading-7 text-slate-400">
+          {detail}
+        </p>
+      ))}
 
       <div className="mt-4 flex flex-wrap gap-2">
         {project.links.map((link) => (
@@ -49,7 +56,8 @@ const ProjectCard = ({ project, isExpanded, onToggle }: ProjectCardProps) => {
 
       <button
         type="button"
-        className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/17 px-3 py-1.5 text-xs font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
+        className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/17 px-3 py-1.5 text-xs font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-500"
+        aria-controls={stackId}
         aria-expanded={isExpanded}
         onClick={onToggle}
       >
@@ -58,7 +66,7 @@ const ProjectCard = ({ project, isExpanded, onToggle }: ProjectCardProps) => {
       </button>
 
       {isExpanded && (
-        <div className="mt-3 flex flex-wrap gap-2">
+        <div id={stackId} className="mt-3 flex flex-wrap gap-2">
           {project.stack.map((tool) => (
             <span
               key={`${project.id}-${tool}`}

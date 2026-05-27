@@ -3,6 +3,11 @@ import TerminalWindow from '../components/TerminalWindow';
 import { profile } from '../data/portfolio';
 
 const Hero = () => {
+  const titleParts =
+    profile.title === 'Cloud & DevOps Engineer'
+      ? ['Cloud &', 'DevOps', 'Engineer']
+      : [profile.title];
+
   return (
     <section
       id="home"
@@ -18,22 +23,27 @@ const Hero = () => {
         <p className="mt-8 text-xl font-extrabold text-slate-500">
           {profile.greeting}
         </p>
-        <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-slate-100 sm:text-5xl">
-          {profile.title}
+        <h1 className="mx-auto mt-4 max-w-4xl text-[2.25rem] font-extrabold leading-[1.08] tracking-tight text-slate-100 min-[420px]:text-[2.6rem] sm:text-5xl">
+          {titleParts.map((part, index) => (
+            <span key={part} className="block sm:inline">
+              {index > 0 && <span className="hidden sm:inline"> </span>}
+              {part}
+            </span>
+          ))}
         </h1>
 
-        <div className="mx-auto mt-6 flex max-w-4xl flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-bold text-slate-500">
-          <span className="inline-flex items-center gap-1.5">
-            <MapPin size={17} fill="currentColor" />
-            {profile.location}
+        <div className="mx-auto mt-6 flex max-w-4xl flex-col items-center justify-center gap-3 text-sm font-bold text-slate-500 sm:flex-row sm:flex-wrap sm:gap-x-5 sm:gap-y-2">
+          <span className="flex w-full max-w-80 items-center justify-center gap-1.5 text-center sm:w-auto sm:max-w-none">
+            <MapPin size={17} className="shrink-0" fill="currentColor" />
+            <span className="min-w-0 break-words">{profile.location}</span>
           </span>
-          <span className="inline-flex items-center gap-1.5">
-            <BadgeCheck size={17} fill="currentColor" />
-            {profile.credentialLine}
+          <span className="flex w-full max-w-80 items-start justify-center gap-1.5 text-center sm:w-auto sm:max-w-none">
+            <BadgeCheck size={17} className="mt-0.5 shrink-0" fill="currentColor" />
+            <span className="min-w-0 break-words">{profile.credentialLine}</span>
           </span>
-          <span className="inline-flex items-center gap-1.5">
-            <Terminal size={18} />
-            {profile.focus}
+          <span className="flex w-full max-w-80 items-center justify-center gap-1.5 text-center sm:w-auto sm:max-w-none">
+            <Terminal size={18} className="shrink-0" />
+            <span className="min-w-0 break-words">{profile.focus}</span>
           </span>
         </div>
 

@@ -1,0 +1,14 @@
+<svg width="880" height="440" viewBox="0 0 880 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="880" height="440" fill="#101216"/>
+  <rect x="82" y="72" width="716" height="296" rx="18" fill="#171a20" stroke="#3b3f4a"/>
+  <rect x="134" y="122" width="164" height="96" rx="12" fill="#222631" stroke="#22c55e"/>
+  <rect x="358" y="122" width="164" height="96" rx="12" fill="#222631" stroke="#f59e0b"/>
+  <rect x="582" y="122" width="164" height="96" rx="12" fill="#222631" stroke="#3b82f6"/>
+  <rect x="246" y="260" width="164" height="72" rx="12" fill="#222631" stroke="#ec4899"/>
+  <rect x="470" y="260" width="164" height="72" rx="12" fill="#222631" stroke="#8b5cf6"/>
+  <path d="M298 170h60M522 170h60M216 218l112 42M664 218l-112 42M410 296h60" stroke="#6b7280" stroke-width="5"/>
+  <text x="216" y="176" text-anchor="middle" fill="#f8fafc" font-family="Arial" font-size="20" font-weight="800">API</text>
+  <text x="440" y="176" text-anchor="middle" fill="#f8fafc" font-family="Arial" font-size="20" font-weight="800">Queue</text>
+  <text x="664" y="176" text-anchor="middle" fill="#f8fafc" font-family="Arial" font-size="20" font-weight="800">Worker</text>
+  <text x="440" y="396" text-anchor="middle" fill="#94a3b8" font-family="Arial" font-size="18">Messaging, delivery workflows, autoscaling, and service health checks</text>
+</svg>
