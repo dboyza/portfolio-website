@@ -38,7 +38,7 @@ const simpleIconUrl = (slug: string, color?: string) =>
   `https://cdn.simpleicons.org/${slug}${color ? `/${color}` : ''}`;
 
 const skillLogos: Record<string, string> = {
-  AWS: deviconUrl('amazonwebservices', 'original-wordmark'),
+  AWS: simpleIconUrl('amazonaws', 'FF9900'),
   'Microsoft Azure': deviconUrl('azure'),
   Jenkins: deviconUrl('jenkins'),
   'GitLab CI': deviconUrl('gitlab'),
@@ -54,17 +54,17 @@ const skillLogos: Record<string, string> = {
   'Oracle SQL': deviconUrl('oracle'),
   DynamoDB: deviconUrl('dynamodb'),
   Git: deviconUrl('git'),
-  GitHub: deviconUrl('github'),
+  GitHub: simpleIconUrl('github', 'FFFFFF'),
   GitLab: deviconUrl('gitlab'),
   Jira: deviconUrl('jira'),
   Ubuntu: deviconUrl('ubuntu'),
   CentOS: deviconUrl('centos'),
   RHEL: deviconUrl('redhat'),
-  'Amazon Linux': deviconUrl('amazonwebservices', 'original-wordmark'),
+  'Amazon Linux': simpleIconUrl('amazonaws', 'FF9900'),
   Traefik: simpleIconUrl('traefikproxy', '24A1C1'),
   'HashiCorp Vault': simpleIconUrl('vault', 'FFEC6E'),
   Python: deviconUrl('python'),
-  Bash: deviconUrl('bash'),
+  Bash: simpleIconUrl('gnubash', '4EAA25'),
   PowerShell: deviconUrl('powershell'),
   Groovy: deviconUrl('groovy'),
   SQL: simpleIconUrl('sqlite', '003B57'),
@@ -99,18 +99,18 @@ const Skills = () => {
                         key={`${group.title}-${skill}`}
                         className="flex min-h-9 items-center gap-3 rounded-lg border border-white/17 px-3 text-sm font-bold text-slate-300"
                       >
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-white/95 p-1 shadow-sm shadow-black/25">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center">
                           {logo ? (
                             <img
                               src={logo}
                               alt={`${skill} logo`}
-                              className="h-full w-full object-contain"
+                              className="h-5 w-5 object-contain"
                               loading="lazy"
                             />
                           ) : (
                             <Icon
                               size={16}
-                              className="text-ink-950"
+                              className="text-gold-500"
                               aria-hidden="true"
                             />
                           )}
