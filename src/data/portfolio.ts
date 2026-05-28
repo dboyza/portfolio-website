@@ -56,12 +56,6 @@ export const navItems = [
   { label: 'Contact', href: '#contact' },
 ];
 
-export const terminalLines = [
-  'Welcome to my interactive portfolio!',
-  "Type 'help' to list available commands.",
-  'cloud-resume:~$',
-];
-
 export const aboutParagraphs = [
   'Hey! I am a Cloud & DevOps Engineer who enjoys automating infrastructure, designing CI/CD pipelines, and making cloud environments easier to operate.',
   'This version uses original placeholder content while closely matching the structure, spacing, and dark visual rhythm of the reference portfolio.',

@@ -1,5 +1,3 @@
-import { terminalLines } from '../data/portfolio';
-
 const TerminalWindow = () => {
   return (
     <div className="mx-auto min-w-0 w-full max-w-[790px] overflow-hidden rounded-lg border border-white/10 bg-[#151617] text-left shadow-[0_18px_50px_rgba(0,0,0,0.26)]">
@@ -24,7 +22,6 @@ const TerminalWindow = () => {
 |____/ \\___/ \\__, /___\\__,_|\\___/|____/
              |___/`}
         </pre>
-        <p className="mt-3 font-bold text-mint-500">{terminalLines[0]}</p>
         <p className="mt-3 text-slate-500">
           Type <span className="font-bold text-[#ff6d6d]">'help'</span> to list available commands.
         </p>
