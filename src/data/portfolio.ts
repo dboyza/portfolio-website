@@ -27,8 +27,8 @@ export type Certification = {
 };
 
 export const profile = {
-  name: 'Your Name',
-  greeting: "Hi! I'm Your Name",
+  name: 'Dylan Boyza',
+  greeting: "Hi! I'm Dylan Boyza",
   title: 'Cloud & DevOps Engineer',
   location: 'Your City',
   credentialLine:
