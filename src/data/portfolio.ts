@@ -30,7 +30,7 @@ export const profile = {
   name: 'Dylan Boyza',
   greeting: "Hi! I'm Dylan Boyza",
   title: 'Cloud & DevOps Engineer',
-  location: 'Your City',
+  location: 'Pennsylvania',
   credentialLine: 'AWS, Ansible, Terraform, Python, Linux',
   focus: 'Loves Infrastructure as Code',
   email: 'hello@example.com',
