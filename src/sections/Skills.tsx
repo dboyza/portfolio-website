@@ -48,7 +48,7 @@ const skillLogos: Record<string, string> = {
   Terraform: deviconUrl('terraform'),
   Ansible: deviconUrl('ansible'),
   'ELK Stack': deviconUrl('elasticsearch'),
-  CloudWatch: simpleIconUrl('amazoncloudwatch', 'FF4F8B'),
+  CloudWatch: '/skill-cloudwatch.svg',
   PostgreSQL: deviconUrl('postgresql'),
   MySQL: deviconUrl('mysql'),
   'Oracle SQL': deviconUrl('oracle'),
