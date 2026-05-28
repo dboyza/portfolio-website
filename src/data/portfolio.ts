@@ -187,7 +187,7 @@ export const degrees: Degree[] = [
   {
     title: "Computer Science (Bachelor's)",
     school: 'Penn State',
-    timeframe: 'Year - Year',
+    timeframe: '2019-2023',
     description:
       'A future degree entry will live here with the school name, program, dates, and a short academic summary.',
     focusAreas: ['Cloud foundations', 'Systems administration', 'Automation'],
