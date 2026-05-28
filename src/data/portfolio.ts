@@ -32,7 +32,7 @@ export const profile = {
   title: 'Cloud & DevOps Engineer',
   location: 'Pennsylvania',
   credentialLine: 'AWS, Ansible, Terraform, Python, Linux',
-  focus: 'Loves Infrastructure as Code',
+  focus: 'Loves technology',
   email: 'hello@example.com',
   resumeHref: '#contact',
   avatar: '/profile-portrait.png',
