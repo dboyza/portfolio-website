@@ -153,7 +153,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Security',
     icon: 'shield',
-    items: ['HashiCorp Vault', 'Trivy'],
+    items: ['HashiCorp Vault'],
   },
   {
     title: 'Languages & Scripting',
