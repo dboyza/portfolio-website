@@ -118,7 +118,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Containers & Orchestration',
     icon: 'boxes',
-    items: ['Docker', 'Kubernetes', 'Helm', 'KEDA', 'cert-manager', 'Karpenter'],
+    items: ['Docker', 'Kubernetes', 'Helm', 'cert-manager', 'Karpenter'],
   },
   {
     title: 'Infrastructure as Code & Configuration Management',
