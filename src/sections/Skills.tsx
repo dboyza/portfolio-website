@@ -61,7 +61,7 @@ const skillLogos: Record<string, string> = {
   Ubuntu: deviconUrl('ubuntu'),
   CentOS: deviconUrl('centos'),
   RHEL: deviconUrl('redhat'),
-  'Amazon Linux': simpleIconUrl('amazonaws', 'FF9900'),
+  'Amazon Linux': '/skill-amazon-linux.svg',
   Traefik: simpleIconUrl('traefikproxy', '24A1C1'),
   'HashiCorp Vault': simpleIconUrl('vault', 'FFEC6E'),
   Python: deviconUrl('python'),
