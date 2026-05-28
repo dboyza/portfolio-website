@@ -33,7 +33,7 @@ export const profile = {
   location: 'Pennsylvania',
   credentialLine: 'AWS, Ansible, Terraform, Python, Linux',
   focus: 'Loves technology',
-  email: 'hello@example.com',
+  email: 'dboyza19@gmail.com',
   resumeHref: '#contact',
   avatar: '/profile-portrait.png',
   aboutAvatar: '/avatar-about.svg',
