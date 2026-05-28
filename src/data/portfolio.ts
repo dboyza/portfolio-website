@@ -185,7 +185,7 @@ export const certifications: Certification[] = [
 
 export const degrees: Degree[] = [
   {
-    title: 'Degree Placeholder',
+    title: "Computer Science (Bachelor's)",
     school: 'Institution Name',
     timeframe: 'Year - Year',
     description:
