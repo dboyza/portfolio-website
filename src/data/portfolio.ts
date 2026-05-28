@@ -158,7 +158,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Languages & Scripting',
     icon: 'braces',
-    items: ['Python', 'Bash', 'PowerShell', 'Groovy', 'JavaScript', 'SQL', 'YAML'],
+    items: ['Python', 'Bash', 'PowerShell', 'Groovy', 'SQL', 'YAML'],
   },
   {
     title: 'Virtualization & Platforms',
