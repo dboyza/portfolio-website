@@ -113,7 +113,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'CI/CD & DevOps',
     icon: 'settings',
-    items: ['Jenkins', 'GitLab CI', 'CircleCI', 'Argo CD', 'SonarQube', 'Nexus'],
+    items: ['Jenkins', 'GitLab CI', 'Argo CD', 'SonarQube', 'Nexus'],
   },
   {
     title: 'Containers & Orchestration',
