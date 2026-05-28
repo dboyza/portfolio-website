@@ -85,9 +85,9 @@ const Skills = () => {
 
             return (
               <section key={group.title} className="min-w-0">
-                <h3 className="mb-4 flex min-h-12 items-start justify-center gap-3 text-center text-lg font-bold leading-6 text-slate-200">
-                  <Icon size={22} className="mt-0.5 shrink-0 text-gold-500" />
-                  <span>{group.title}</span>
+                <h3 className="mb-4 flex min-h-20 flex-col items-center justify-start gap-2 text-center text-lg font-bold leading-6 text-slate-200">
+                  <Icon size={22} className="shrink-0 text-gold-500" />
+                  <span className="max-w-64">{group.title}</span>
                 </h3>
 
                 <div className="grid gap-2">
