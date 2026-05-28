@@ -143,7 +143,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Linux Distributions',
     icon: 'server',
-    items: ['Ubuntu', 'CentOS', 'RHEL', 'Amazon Linux', 'Talos Linux'],
+    items: ['Ubuntu', 'CentOS', 'RHEL', 'Amazon Linux'],
   },
   {
     title: 'Networking & Service Mesh',
