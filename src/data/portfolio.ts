@@ -163,7 +163,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Virtualization & Platforms',
     icon: 'monitor',
-    items: ['VMware', 'VirtualBox', 'Proxmox'],
+    items: ['VMware', 'VirtualBox'],
   },
 ];
 
