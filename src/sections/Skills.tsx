@@ -31,6 +31,48 @@ const iconMap: Record<string, LucideIcon> = {
   monitor: Monitor,
 };
 
+const deviconUrl = (name: string, variant = 'original') =>
+  `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${name}/${name}-${variant}.svg`;
+
+const simpleIconUrl = (slug: string, color?: string) =>
+  `https://cdn.simpleicons.org/${slug}${color ? `/${color}` : ''}`;
+
+const skillLogos: Record<string, string> = {
+  AWS: deviconUrl('amazonwebservices', 'original-wordmark'),
+  'Microsoft Azure': deviconUrl('azure'),
+  Jenkins: deviconUrl('jenkins'),
+  'GitLab CI': deviconUrl('gitlab'),
+  Docker: deviconUrl('docker'),
+  Kubernetes: deviconUrl('kubernetes'),
+  Helm: deviconUrl('helm'),
+  Terraform: deviconUrl('terraform'),
+  Ansible: deviconUrl('ansible'),
+  'ELK Stack': deviconUrl('elasticsearch'),
+  CloudWatch: simpleIconUrl('amazoncloudwatch', 'FF4F8B'),
+  PostgreSQL: deviconUrl('postgresql'),
+  MySQL: deviconUrl('mysql'),
+  'Oracle SQL': deviconUrl('oracle'),
+  DynamoDB: deviconUrl('dynamodb'),
+  Git: deviconUrl('git'),
+  GitHub: deviconUrl('github'),
+  GitLab: deviconUrl('gitlab'),
+  Jira: deviconUrl('jira'),
+  Ubuntu: deviconUrl('ubuntu'),
+  CentOS: deviconUrl('centos'),
+  RHEL: deviconUrl('redhat'),
+  'Amazon Linux': deviconUrl('amazonwebservices', 'original-wordmark'),
+  Traefik: simpleIconUrl('traefikproxy', '24A1C1'),
+  'HashiCorp Vault': simpleIconUrl('vault', 'FFEC6E'),
+  Python: deviconUrl('python'),
+  Bash: deviconUrl('bash'),
+  PowerShell: deviconUrl('powershell'),
+  Groovy: deviconUrl('groovy'),
+  SQL: simpleIconUrl('sqlite', '003B57'),
+  YAML: simpleIconUrl('yaml', 'CB171E'),
+  VMware: simpleIconUrl('vmware', '607078'),
+  VirtualBox: simpleIconUrl('virtualbox', '183A61'),
+};
+
 const Skills = () => {
   return (
     <section id="skills" className="section-rule py-10 sm:py-16">
@@ -49,17 +91,34 @@ const Skills = () => {
                 </h3>
 
                 <div className="grid gap-2">
-                  {group.items.map((skill) => (
-                    <div
-                      key={`${group.title}-${skill}`}
-                      className="flex min-h-9 items-center gap-3 rounded-lg border border-white/17 px-3 text-sm font-bold text-slate-300"
-                    >
-                      <span className="flex h-5 min-w-5 items-center justify-center rounded bg-ink-800 text-[10px] font-black text-gold-500">
-                        {skill.slice(0, 2).toUpperCase()}
-                      </span>
-                      <span className="min-w-0 break-words">{skill}</span>
-                    </div>
-                  ))}
+                  {group.items.map((skill) => {
+                    const logo = skillLogos[skill];
+
+                    return (
+                      <div
+                        key={`${group.title}-${skill}`}
+                        className="flex min-h-9 items-center gap-3 rounded-lg border border-white/17 px-3 text-sm font-bold text-slate-300"
+                      >
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-white/95 p-1 shadow-sm shadow-black/25">
+                          {logo ? (
+                            <img
+                              src={logo}
+                              alt={`${skill} logo`}
+                              className="h-full w-full object-contain"
+                              loading="lazy"
+                            />
+                          ) : (
+                            <Icon
+                              size={16}
+                              className="text-ink-950"
+                              aria-hidden="true"
+                            />
+                          )}
+                        </span>
+                        <span className="min-w-0 break-words">{skill}</span>
+                      </div>
+                    );
+                  })}
                 </div>
               </section>
             );
