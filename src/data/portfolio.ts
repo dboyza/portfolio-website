@@ -193,7 +193,7 @@ export const degrees: Degree[] = [
     focusAreas: ['Coding', 'Data Structures & Algorithms', 'Computer Architecture'],
   },
   {
-    title: 'Additional Education Placeholder',
+    title: 'Cybersecurity (Minor)',
     school: 'Institution Name',
     timeframe: 'Year - Year',
     description:
