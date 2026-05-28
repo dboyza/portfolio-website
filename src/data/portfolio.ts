@@ -120,7 +120,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Monitoring & Logging',
     icon: 'activity',
-    items: ['ELK Stack', 'CloudWatch'],
+    items: ['ELK Stack', 'CloudWatch', 'CloudTrail'],
   },
   {
     title: 'Databases & Servers',

@@ -49,6 +49,7 @@ const skillLogos: Record<string, string> = {
   Ansible: deviconUrl('ansible'),
   'ELK Stack': deviconUrl('elasticsearch'),
   CloudWatch: '/skill-cloudwatch.svg',
+  CloudTrail: '/skill-cloudtrail.svg',
   PostgreSQL: deviconUrl('postgresql'),
   MySQL: deviconUrl('mysql'),
   'Oracle SQL': deviconUrl('oracle'),
