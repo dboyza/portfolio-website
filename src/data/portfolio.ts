@@ -31,8 +31,7 @@ export const profile = {
   greeting: "Hi! I'm Dylan Boyza",
   title: 'Cloud & DevOps Engineer',
   location: 'Your City',
-  credentialLine:
-    'Cloud builder | AWS, Azure, Kubernetes, Terraform & Linux focused',
+  credentialLine: 'AWS, Ansible, Terraform, Python, Linux',
   focus: 'Loves Infrastructure as Code',
   email: 'hello@example.com',
   resumeHref: '#contact',
