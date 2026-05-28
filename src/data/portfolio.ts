@@ -26,6 +26,14 @@ export type Certification = {
   icon: string;
 };
 
+export type Degree = {
+  title: string;
+  school: string;
+  timeframe: string;
+  description: string;
+  focusAreas: string[];
+};
+
 export const profile = {
   name: 'Dylan Boyza',
   greeting: "Hi! I'm Dylan Boyza",
@@ -46,6 +54,7 @@ export const navItems = [
   { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
   { label: 'Certifications', href: '#certifications' },
+  { label: 'Degrees', href: '#degrees' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -179,6 +188,25 @@ export const certifications: Certification[] = [
     href: '#',
     badge: '/badge-comptia-security-plus.png',
     icon: 'security',
+  },
+];
+
+export const degrees: Degree[] = [
+  {
+    title: 'Degree Placeholder',
+    school: 'Institution Name',
+    timeframe: 'Year - Year',
+    description:
+      'A future degree entry will live here with the school name, program, dates, and a short academic summary.',
+    focusAreas: ['Cloud foundations', 'Systems administration', 'Automation'],
+  },
+  {
+    title: 'Additional Education Placeholder',
+    school: 'Institution Name',
+    timeframe: 'Year - Year',
+    description:
+      'Use this block for another completed program, in-progress degree, certificate program, or relevant coursework.',
+    focusAreas: ['Networking', 'Security fundamentals', 'Linux'],
   },
 ];
 

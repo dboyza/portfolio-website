@@ -1,6 +1,7 @@
 import About from './sections/About';
 import Certifications from './sections/Certifications';
 import Contact from './sections/Contact';
+import Degrees from './sections/Degrees';
 import Hero from './sections/Hero';
 import Projects from './sections/Projects';
 import Skills from './sections/Skills';
@@ -18,6 +19,7 @@ function App() {
         <Projects />
         <Skills />
         <Certifications />
+        <Degrees />
         <Contact />
       </main>
       <Footer />
