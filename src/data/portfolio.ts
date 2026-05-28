@@ -198,7 +198,7 @@ export const degrees: Degree[] = [
     timeframe: '2019-2023',
     description:
       'Use this block for another completed program, in-progress degree, certificate program, or relevant coursework.',
-    focusAreas: ['Networking', 'Security fundamentals', 'Linux'],
+    focusAreas: ['Networking', 'Cryptography', 'Linux'],
   },
 ];
 
