@@ -8,7 +8,7 @@ const TerminalWindow = () => {
           <span className="h-3 w-3 rounded-full bg-[#27c93f]" />
         </div>
         <p className="min-w-0 truncate px-3 font-mono text-xs font-semibold text-slate-500">
-          portfolio@cloud-resume - zsh
+          visitor@dylan-portfolio - zsh
         </p>
         <span />
       </div>
@@ -27,8 +27,8 @@ const TerminalWindow = () => {
         </p>
         <div className="mt-4 border-t border-white/8 pt-4">
           <p className="terminal-cursor break-all font-bold text-slate-100">
-            <span className="text-mint-500">portfolio</span>
-            <span className="text-signal-400">@cloud-resume</span>:~$
+            <span className="text-mint-500">visitor</span>
+            <span className="text-signal-400">@dylan-portfolio</span>:~$
           </p>
         </div>
       </div>
