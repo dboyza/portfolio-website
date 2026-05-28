@@ -108,7 +108,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Cloud & Infrastructure',
     icon: 'cloud',
-    items: ['AWS', 'Microsoft Azure', 'OpenStack'],
+    items: ['AWS', 'Microsoft Azure', 'VMware'],
   },
   {
     title: 'CI/CD & DevOps',
