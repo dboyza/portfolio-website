@@ -146,7 +146,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Networking & Service Mesh',
     icon: 'network',
-    items: ['Cilium', 'Traefik', 'Ingress', 'DNS', 'Load Balancing'],
+    items: ['Traefik', 'Ingress', 'DNS', 'Load Balancing'],
   },
   {
     title: 'Security',
