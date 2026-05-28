@@ -103,12 +103,11 @@ button:focus-visible {
 .terminal-ascii {
   color: #d34c4c;
   font-family: "Courier New", Consolas, monospace;
-  font-size: clamp(1.4rem, 3.8vw, 3.1rem);
+  font-size: clamp(0.5rem, 1.35vw, 1.05rem);
   font-weight: 800;
-  letter-spacing: -0.08em;
-  line-height: 0.88;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
+  letter-spacing: 0;
+  line-height: 1.08;
+  white-space: pre;
   text-shadow: 0 0 10px rgba(211, 76, 76, 0.2);
 }
 
