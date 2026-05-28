@@ -194,7 +194,7 @@ export const degrees: Degree[] = [
   },
   {
     title: 'Cybersecurity (Minor)',
-    school: 'Institution Name',
+    school: 'Penn State',
     timeframe: 'Year - Year',
     description:
       'Use this block for another completed program, in-progress degree, certificate program, or relevant coursework.',
