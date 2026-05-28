@@ -190,7 +190,7 @@ export const degrees: Degree[] = [
     timeframe: '2019-2023',
     description:
       'A future degree entry will live here with the school name, program, dates, and a short academic summary.',
-    focusAreas: ['Cloud foundations', 'Systems administration', 'Automation'],
+    focusAreas: ['Coding', 'Systems administration', 'Automation'],
   },
   {
     title: 'Additional Education Placeholder',
