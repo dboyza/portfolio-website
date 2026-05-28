@@ -133,7 +133,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Databases & Servers',
     icon: 'database',
-    items: ['PostgreSQL', 'MySQL', 'Oracle SQL', 'MongoDB', 'WildFly', 'WebSphere'],
+    items: ['PostgreSQL', 'MySQL', 'Oracle SQL', 'MongoDB', 'WebSphere'],
   },
   {
     title: 'Version Control & Collaboration',
