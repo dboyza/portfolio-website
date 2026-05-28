@@ -1,6 +1,6 @@
-import { Eye, Globe, Menu, Moon, Sun, X } from 'lucide-react';
+import { Globe, Menu, Moon, Sun, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { navItems, profile } from '../data/portfolio';
+import { navItems } from '../data/portfolio';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +25,7 @@ const Header = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink-950/95 backdrop-blur">
-      <div className="page-shell grid h-[3.25rem] grid-cols-[1fr_auto_1fr] items-center">
+      <div className="page-shell grid h-[3.25rem] grid-cols-[1fr_auto] items-center">
         <button
           type="button"
           className="flex h-11 w-11 items-center justify-start text-slate-400 transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500"
@@ -36,11 +36,6 @@ const Header = () => {
         >
           {isOpen ? <X size={30} strokeWidth={2.1} /> : <Menu size={32} strokeWidth={2.1} />}
         </button>
-
-        <div className="flex items-center gap-2 text-xs font-medium text-slate-400">
-          <Eye size={14} aria-hidden="true" />
-          <span>Views: {profile.views}</span>
-        </div>
 
         <div className="relative hidden justify-end gap-5 text-slate-400 sm:flex">
           <button

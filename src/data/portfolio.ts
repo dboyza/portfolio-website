@@ -44,7 +44,6 @@ export const profile = {
   email: 'dboyza19@gmail.com',
   resumeHref: '#contact',
   avatar: '/profile-portrait.png',
-  views: '4751',
 };
 
 export const navItems = [
