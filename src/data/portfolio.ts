@@ -44,7 +44,6 @@ export const profile = {
   email: 'dboyza19@gmail.com',
   resumeHref: '#contact',
   avatar: '/profile-portrait.png',
-  aboutAvatar: '/avatar-about.svg',
   views: '4751',
 };
 
