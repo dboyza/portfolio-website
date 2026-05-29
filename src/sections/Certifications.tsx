@@ -27,10 +27,8 @@ const Certifications = () => {
                 />
 
                 <h3 className="mx-auto mt-7 max-w-72 text-center text-lg font-semibold leading-7 text-slate-200">
-                  <span className="inline-flex items-start justify-center gap-2">
-                    <SmallIcon size={18} className="mt-1 shrink-0 text-gold-500" />
-                    <span>{certification.name}</span>
-                  </span>
+                  <SmallIcon size={18} className="mr-2 inline-block align-[-2px] text-gold-500" />
+                  {certification.name}
                 </h3>
 
                 <p className="mt-3 text-sm font-bold text-slate-500">
