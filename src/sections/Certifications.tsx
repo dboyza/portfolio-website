@@ -26,9 +26,11 @@ const Certifications = () => {
                   loading="lazy"
                 />
 
-                <h3 className="mx-auto mt-7 flex max-w-72 items-start justify-center gap-2 text-lg font-semibold leading-7 text-slate-200">
-                  <SmallIcon size={18} className="mt-1 shrink-0 text-gold-500" />
-                  <span>{certification.name}</span>
+                <h3 className="mx-auto mt-7 max-w-72 text-center text-lg font-semibold leading-7 text-slate-200">
+                  <span className="inline-flex items-start justify-center gap-2">
+                    <SmallIcon size={18} className="mt-1 shrink-0 text-gold-500" />
+                    <span>{certification.name}</span>
+                  </span>
                 </h3>
 
                 <p className="mt-3 text-sm font-bold text-slate-500">
