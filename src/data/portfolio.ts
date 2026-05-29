@@ -42,6 +42,7 @@ export const profile = {
   credentialLine: 'AWS, Ansible, Terraform, Python, Linux',
   focus: 'Loves technology',
   email: 'dboyza19@gmail.com',
+  linkedinHref: 'https://www.linkedin.com/in/dboyza/',
   resumeHref: '/DYLAN_BOYZA_RESUME.pdf',
   avatar: '/profile-portrait.png',
 };
@@ -204,7 +205,7 @@ export const degrees: Degree[] = [
 
 export const socialLinks = [
   { label: 'GitHub', href: 'https://github.com/dboyza' },
-  { label: 'LinkedIn', href: '#' },
+  { label: 'LinkedIn', href: profile.linkedinHref },
   { label: 'Resume', href: profile.resumeHref },
   { label: 'Email', href: `mailto:${profile.email}` },
 ];

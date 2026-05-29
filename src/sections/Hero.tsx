@@ -67,7 +67,7 @@ const Hero = () => {
             <Send size={16} fill="currentColor" />
           </a>
           <a
-            href="#contact"
+            href={profile.linkedinHref}
             className="inline-flex h-11 min-w-40 items-center justify-center gap-2 rounded-md border border-white/18 px-5 text-sm font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
           >
             Connect with Me!
