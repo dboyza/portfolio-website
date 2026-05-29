@@ -34,6 +34,15 @@ const scrollToSection = (hash: string) => {
   window.location.hash = hash;
 };
 
+const downloadFile = (href: string) => {
+  const link = document.createElement('a');
+  link.href = href;
+  link.download = href.split('/').pop() ?? 'resume.pdf';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+};
+
 const TerminalWindow = () => {
   const [entries, setEntries] = useState<TerminalEntry[]>([]);
   const [command, setCommand] = useState('');
@@ -98,8 +107,8 @@ const TerminalWindow = () => {
     }
 
     if (normalized === 'resume') {
-      scrollToSection(profile.resumeHref.replace('#', ''));
-      return ['Resume link selected.'];
+      downloadFile(profile.resumeHref);
+      return ['Downloading resume...'];
     }
 
     if (normalized === 'whoami') {

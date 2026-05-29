@@ -42,7 +42,7 @@ export const profile = {
   credentialLine: 'AWS, Ansible, Terraform, Python, Linux',
   focus: 'Loves technology',
   email: 'dboyza19@gmail.com',
-  resumeHref: '#contact',
+  resumeHref: '/DYLAN_BOYZA_RESUME.pdf',
   avatar: '/profile-portrait.png',
 };
 

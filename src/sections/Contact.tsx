@@ -14,6 +14,7 @@ const Contact = () => {
             <a
               key={link.label}
               href={link.href}
+              download={link.label === 'Resume' ? 'DYLAN_BOYZA_RESUME.pdf' : undefined}
               className="inline-flex h-9 items-center justify-center gap-2 rounded-md border border-white/14 px-3 text-xs font-extrabold text-slate-300 transition hover:border-gold-500/60 hover:text-white"
             >
               {link.label === 'Email' ? <Mail size={15} /> : <FileText size={15} />}
