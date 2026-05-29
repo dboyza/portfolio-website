@@ -59,7 +59,7 @@ const Hero = () => {
             href={profile.resumeHref}
             className="inline-flex h-11 min-w-36 items-center justify-center gap-2 rounded-md border border-white/18 px-5 text-sm font-extrabold text-slate-200 transition hover:border-white/35 hover:text-white"
           >
-            Download CV
+            Download Resume
             <Download size={16} />
           </a>
         </div>
