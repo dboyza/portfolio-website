@@ -7,6 +7,7 @@ import {
   profile,
   projects,
   skillGroups,
+  socialLinks,
 } from '../data/portfolio';
 
 type TerminalEntry = {
@@ -32,10 +33,6 @@ const commandNames = [
   'clear',
   'help',
 ];
-
-const scrollToSection = (hash: string) => {
-  window.location.hash = hash;
-};
 
 const downloadFile = (href: string) => {
   const link = document.createElement('a');
@@ -79,7 +76,7 @@ const TerminalWindow = () => {
     if (normalized === 'help') {
       return [
         `Commands: ${commandNames.join(', ')}`,
-        'Use projects, skills, certs, degrees, or contact to jump around.',
+        'Commands print section details here in the terminal.',
         'Try `career` for role direction or `current` for active focus areas.',
       ];
     }
@@ -93,7 +90,6 @@ const TerminalWindow = () => {
     }
 
     if (normalized === 'career' || normalized === 'looking') {
-      scrollToSection('career-direction');
       return [
         'Career direction:',
         careerDirection.lookingFor,
@@ -102,7 +98,6 @@ const TerminalWindow = () => {
     }
 
     if (normalized === 'current' || normalized === 'focus' || normalized === 'learning') {
-      scrollToSection('career-direction');
       return careerDirection.currentlyBuilding.map((item) => `- ${item}`);
     }
 
@@ -111,26 +106,36 @@ const TerminalWindow = () => {
     }
 
     if (normalized === 'projects') {
-      scrollToSection('projects');
-      return projects.map((project) => `${project.title}: ${project.stack.join(', ')}`);
+      return projects.flatMap((project) => [
+        project.title,
+        `  ${project.description}`,
+        `  Stack: ${project.stack.join(', ')}`,
+        ...(project.details ?? []).map((detail) => `  Note: ${detail}`),
+        `  Links: ${project.links.map((link) => `${link.label} (${link.href})`).join(', ')}`,
+      ]);
     }
 
     if (normalized === 'certs' || normalized === 'certifications') {
-      scrollToSection('certifications');
-      return certifications.map((certification) => certification.name);
+      return certifications.map(
+        (certification) =>
+          `${certification.name} - ${certification.issuer} | Verify: ${certification.href}`,
+      );
     }
 
     if (normalized === 'degrees' || normalized === 'education') {
-      scrollToSection('degrees');
-      return degrees.map((degree) => `${degree.title} - ${degree.school}, ${degree.timeframe}`);
+      return degrees.flatMap((degree) => [
+        `${degree.title} - ${degree.school}, ${degree.timeframe}`,
+        `  ${degree.description}`,
+        `  Focus: ${degree.focusAreas.join(', ')}`,
+      ]);
     }
 
     if (normalized === 'contact' || normalized === 'connect') {
-      scrollToSection('contact');
       return [
         `Email: ${profile.email}`,
-        `LinkedIn: ${profile.linkedinHref}`,
-        'Contact links are at the bottom of the page.',
+        ...socialLinks
+          .filter((link) => link.label !== 'Email')
+          .map((link) => `${link.label}: ${link.href}`),
       ];
     }
 
