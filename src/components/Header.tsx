@@ -1,17 +1,15 @@
-import { Globe, Menu, Moon, Sun, X } from 'lucide-react';
+import { Menu, Moon, Sun, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { navItems } from '../data/portfolio';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isDimmed, setIsDimmed] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setIsOpen(false);
-        setIsLanguageOpen(false);
       }
     };
 
@@ -50,44 +48,12 @@ const Header = () => {
           <button
             type="button"
             className="transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-500"
-            aria-expanded={isLanguageOpen}
-            aria-controls="language-menu"
-            aria-label="Language options"
-            onClick={() => setIsLanguageOpen((current) => !current)}
-          >
-            <Globe size={23} />
-          </button>
-          <button
-            type="button"
-            className="transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-500"
             aria-pressed={isDimmed}
             aria-label="Toggle comfort contrast"
             onClick={() => setIsDimmed((current) => !current)}
           >
             {isDimmed ? <Moon size={24} /> : <Sun size={25} />}
           </button>
-
-          {isLanguageOpen && (
-            <div
-              id="language-menu"
-              className="absolute right-9 top-9 w-36 rounded-lg border border-white/12 bg-ink-900/98 p-1 text-sm font-bold shadow-2xl shadow-black/50"
-            >
-              <button
-                type="button"
-                className="block w-full rounded-md px-3 py-2 text-left text-slate-200 hover:bg-white/6"
-                onClick={() => setIsLanguageOpen(false)}
-              >
-                English
-              </button>
-              <button
-                type="button"
-                className="block w-full rounded-md px-3 py-2 text-left text-slate-400 hover:bg-white/6 hover:text-slate-200"
-                onClick={() => setIsLanguageOpen(false)}
-              >
-                Francais
-              </button>
-            </div>
-          )}
         </div>
       </div>
 
