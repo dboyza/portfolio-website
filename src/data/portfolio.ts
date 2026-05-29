@@ -34,6 +34,11 @@ export type Degree = {
   focusAreas: string[];
 };
 
+export type CareerDirection = {
+  lookingFor: string;
+  currentlyBuilding: string[];
+};
+
 export const profile = {
   name: 'Dylan Boyza',
   greeting: "Hi! I'm Dylan Boyza",
@@ -58,9 +63,22 @@ export const navItems = [
 ];
 
 export const aboutParagraphs = [
-  'Hey! I am a Cloud & DevOps Engineer who enjoys automating infrastructure, designing CI/CD pipelines, and making cloud environments easier to operate.',
-  'This version uses original placeholder content while closely matching the structure, spacing, and dark visual rhythm of the reference portfolio.',
+  'I am a Penn State Computer Science major with a Cybersecurity minor focused on cloud infrastructure, DevOps automation, and practical security-minded engineering.',
+  'I enjoy building with AWS, Terraform, Ansible, Python, and Linux, especially when the work turns repeatable operational problems into clean, documented automation.',
 ];
+
+export const careerDirection: CareerDirection = {
+  lookingFor:
+    'I am looking for cloud, DevOps, infrastructure, automation, or security-adjacent roles where I can help teams build reliable systems with AWS, Terraform, Linux, and Python.',
+  currentlyBuilding: [
+    'AWS architecture',
+    'Terraform modules',
+    'Python automation',
+    'Linux operations',
+    'Cloud security',
+    'Portfolio projects',
+  ],
+};
 
 export const projects: Project[] = [
   {

@@ -1,4 +1,5 @@
 import About from './sections/About';
+import CareerDirection from './sections/CareerDirection';
 import Certifications from './sections/Certifications';
 import Contact from './sections/Contact';
 import Degrees from './sections/Degrees';
@@ -16,6 +17,7 @@ function App() {
       <main>
         <Hero />
         <About />
+        <CareerDirection />
         <Projects />
         <Skills />
         <Certifications />

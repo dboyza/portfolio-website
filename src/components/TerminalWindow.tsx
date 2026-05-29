@@ -1,6 +1,7 @@
 import { useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
 import {
   aboutParagraphs,
+  careerDirection,
   certifications,
   degrees,
   profile,
@@ -19,6 +20,8 @@ const promptHost = '@dylan-portfolio';
 
 const commandNames = [
   'about',
+  'career',
+  'current',
   'skills',
   'projects',
   'certs',
@@ -64,8 +67,9 @@ const TerminalWindow = () => {
 
     if (normalized === 'help') {
       return [
-        `Available commands: ${commandNames.join(', ')}`,
-        'Try `projects`, `skills`, `contact`, or `email`.',
+        `Commands: ${commandNames.join(', ')}`,
+        'Use projects, skills, certs, degrees, or contact to jump around.',
+        'Try `career` for role direction or `current` for active focus areas.',
       ];
     }
 
@@ -75,6 +79,20 @@ const TerminalWindow = () => {
         `${profile.location} | ${profile.credentialLine}`,
         ...aboutParagraphs,
       ];
+    }
+
+    if (normalized === 'career' || normalized === 'looking') {
+      scrollToSection('career-direction');
+      return [
+        'Career direction:',
+        careerDirection.lookingFor,
+        `Currently sharpening: ${careerDirection.currentlyBuilding.join(', ')}`,
+      ];
+    }
+
+    if (normalized === 'current' || normalized === 'focus' || normalized === 'learning') {
+      scrollToSection('career-direction');
+      return careerDirection.currentlyBuilding.map((item) => `- ${item}`);
     }
 
     if (normalized === 'skills') {
@@ -98,7 +116,11 @@ const TerminalWindow = () => {
 
     if (normalized === 'contact' || normalized === 'connect') {
       scrollToSection('contact');
-      return [`Email: ${profile.email}`, 'Contact links are at the bottom of the page.'];
+      return [
+        `Email: ${profile.email}`,
+        `LinkedIn: ${profile.linkedinHref}`,
+        'Contact links are at the bottom of the page.',
+      ];
     }
 
     if (normalized === 'email') {
@@ -116,7 +138,7 @@ const TerminalWindow = () => {
     }
 
     if (normalized === 'ls') {
-      return ['about  projects  skills  certifications  degrees  contact'];
+      return ['about  career  current  projects  skills  certifications  degrees  contact'];
     }
 
     return [`command not found: ${rawCommand}`, "Type 'help' to list available commands."];
