@@ -38,7 +38,7 @@ const simpleIconUrl = (slug: string, color?: string) =>
   `https://cdn.simpleicons.org/${slug}${color ? `/${color}` : ''}`;
 
 const skillLogos: Record<string, string> = {
-  AWS: simpleIconUrl('amazonaws', 'FF9900'),
+  AWS: simpleIconUrl('amazonwebservices', 'FF9900'),
   'Microsoft Azure': deviconUrl('azure'),
   Jenkins: deviconUrl('jenkins'),
   'GitLab CI': deviconUrl('gitlab'),
