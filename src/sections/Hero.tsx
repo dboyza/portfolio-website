@@ -1,4 +1,4 @@
-import { BadgeCheck, Download, MapPin, Send, Terminal } from 'lucide-react';
+import { BadgeCheck, Download, MapPin, MessageCircle, Send, Terminal } from 'lucide-react';
 import TerminalWindow from '../components/TerminalWindow';
 import { profile } from '../data/portfolio';
 
@@ -54,6 +54,13 @@ const Hero = () => {
           >
             Email me!
             <Send size={16} fill="currentColor" />
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex h-11 min-w-40 items-center justify-center gap-2 rounded-md border border-white/18 px-5 text-sm font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
+          >
+            Connect with Me!
+            <MessageCircle size={16} />
           </a>
           <a
             href={profile.resumeHref}
