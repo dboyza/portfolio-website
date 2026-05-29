@@ -1,4 +1,4 @@
-import { useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
 import {
   aboutParagraphs,
   careerDirection,
@@ -51,7 +51,18 @@ const TerminalWindow = () => {
   const [command, setCommand] = useState('');
   const [history, setHistory] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const historyIndexRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const terminalOutput = scrollRef.current;
+
+    if (!terminalOutput) {
+      return;
+    }
+
+    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+  }, [entries]);
 
   const runCommand = (rawCommand: string) => {
     const normalized = rawCommand.trim().toLowerCase();
@@ -223,7 +234,7 @@ const TerminalWindow = () => {
         <p className="mt-3 text-slate-500">
           Type <span className="font-bold text-[#ff6d6d]">'help'</span> to list available commands.
         </p>
-        <div className="mt-4 max-h-64 overflow-y-auto border-t border-white/8 pt-4">
+        <div ref={scrollRef} className="mt-4 max-h-64 overflow-y-auto border-t border-white/8 pt-4">
           {entries.map((entry) => (
             <div key={entry.id} className="mb-4">
               <p className="break-all font-bold text-slate-100">
