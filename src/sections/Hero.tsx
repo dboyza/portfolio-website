@@ -1,6 +1,17 @@
-import { BadgeCheck, Download, MapPin, MessageCircle, Send, Terminal } from 'lucide-react';
+import { BadgeCheck, Download, MapPin, Send, Terminal } from 'lucide-react';
 import TerminalWindow from '../components/TerminalWindow';
 import { profile } from '../data/portfolio';
+
+const LinkedInIcon = () => (
+  <svg
+    aria-hidden="true"
+    className="h-4 w-4"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+  >
+    <path d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.68H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.41a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.04H3.54V8.98H7.1v11.47Z" />
+  </svg>
+);
 
 const Hero = () => {
   const titleParts =
@@ -60,7 +71,7 @@ const Hero = () => {
             className="inline-flex h-11 min-w-40 items-center justify-center gap-2 rounded-md border border-white/18 px-5 text-sm font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
           >
             Connect with Me!
-            <MessageCircle size={16} />
+            <LinkedInIcon />
           </a>
           <a
             href={profile.resumeHref}
