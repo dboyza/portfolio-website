@@ -20,6 +20,8 @@
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
+  --back-to-top-surface: #111318;
+  --back-to-top-track: rgba(255, 255, 255, 0.16);
 }
 
 body {
@@ -92,12 +94,83 @@ button:focus-visible {
   background: #17181c;
 }
 
-.comfort-mode body {
-  background: #141519;
+html.light-mode {
+  color-scheme: light;
+  --back-to-top-surface: #ffffff;
+  --back-to-top-track: rgba(15, 23, 42, 0.16);
 }
 
-.comfort-mode .bg-ink-950 {
-  background-color: #141519;
+html.light-mode body {
+  background: #f6f8fc;
+  color: #0f172a;
+}
+
+html.light-mode ::selection {
+  background: rgba(63, 126, 238, 0.22);
+  color: #0f172a;
+}
+
+html.light-mode .bg-ink-950,
+html.light-mode .bg-ink-950\/95 {
+  background-color: rgba(246, 248, 252, 0.96);
+}
+
+html.light-mode .bg-ink-900,
+html.light-mode .bg-ink-900\/98 {
+  background-color: rgba(255, 255, 255, 0.98);
+}
+
+html.light-mode .border-white\/8,
+html.light-mode .border-white\/10,
+html.light-mode .border-white\/12,
+html.light-mode .border-white\/14,
+html.light-mode .border-white\/16,
+html.light-mode .border-white\/17,
+html.light-mode .border-white\/18,
+html.light-mode .border-white\/35 {
+  border-color: rgba(15, 23, 42, 0.14);
+}
+
+html.light-mode .text-slate-100 {
+  color: #0f172a;
+}
+
+html.light-mode .text-slate-200 {
+  color: #1f2937;
+}
+
+html.light-mode .text-slate-300 {
+  color: #334155;
+}
+
+html.light-mode .text-slate-400 {
+  color: #475569;
+}
+
+html.light-mode .text-slate-500,
+html.light-mode .text-slate-600 {
+  color: #64748b;
+}
+
+html.light-mode .hover\:text-white:hover {
+  color: #0f172a;
+}
+
+html.light-mode .hover\:bg-white\/6:hover {
+  background-color: rgba(15, 23, 42, 0.06);
+}
+
+html.light-mode .bg-white\/\[0\.025\] {
+  background-color: rgba(255, 255, 255, 0.72);
+}
+
+html.light-mode .section-rule {
+  border-top-color: rgba(15, 23, 42, 0.14);
+}
+
+html.light-mode .soft-card {
+  border-color: rgba(15, 23, 42, 0.14);
+  background: #ffffff;
 }
 
 .terminal-ascii {

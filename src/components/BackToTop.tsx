@@ -31,10 +31,10 @@ const BackToTop = () => {
         isVisible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
       }`}
       style={{
-        background: `linear-gradient(#111318, #111318) padding-box, conic-gradient(#3b82f6 ${Math.min(
+        background: `linear-gradient(var(--back-to-top-surface), var(--back-to-top-surface)) padding-box, conic-gradient(#3b82f6 ${Math.min(
           Math.max(progress, 0),
           1,
-        ) * 360}deg, rgba(255, 255, 255, 0.16) 0deg) border-box`,
+        ) * 360}deg, var(--back-to-top-track) 0deg) border-box`,
       }}
       aria-label="Back to top"
     >

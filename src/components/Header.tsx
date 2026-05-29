@@ -4,7 +4,7 @@ import { navItems } from '../data/portfolio';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDimmed, setIsDimmed] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -18,8 +18,8 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    document.documentElement.classList.toggle('comfort-mode', isDimmed);
-  }, [isDimmed]);
+    document.documentElement.classList.toggle('light-mode', isLightMode);
+  }, [isLightMode]);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink-950/95 backdrop-blur">
@@ -48,11 +48,11 @@ const Header = () => {
           <button
             type="button"
             className="transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-500"
-            aria-pressed={isDimmed}
-            aria-label="Toggle comfort contrast"
-            onClick={() => setIsDimmed((current) => !current)}
+            aria-pressed={isLightMode}
+            aria-label={isLightMode ? 'Switch to dark theme' : 'Switch to light theme'}
+            onClick={() => setIsLightMode((current) => !current)}
           >
-            {isDimmed ? <Moon size={24} /> : <Sun size={25} />}
+            {isLightMode ? <Moon size={24} /> : <Sun size={25} />}
           </button>
         </div>
       </div>
