@@ -203,7 +203,7 @@ export const degrees: Degree[] = [
 ];
 
 export const socialLinks = [
-  { label: 'GitHub', href: '#' },
+  { label: 'GitHub', href: 'https://github.com/dboyza' },
   { label: 'LinkedIn', href: '#' },
   { label: 'Resume', href: profile.resumeHref },
   { label: 'Email', href: `mailto:${profile.email}` },
