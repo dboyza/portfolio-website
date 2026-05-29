@@ -5,7 +5,7 @@ import { profile } from '../data/portfolio';
 const LinkedInIcon = () => (
   <svg
     aria-hidden="true"
-    className="h-4 w-4"
+    className="h-5 w-5 rounded-sm bg-[#0a66c2] p-0.5 text-white"
     viewBox="0 0 24 24"
     fill="currentColor"
   >
