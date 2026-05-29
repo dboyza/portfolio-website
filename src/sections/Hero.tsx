@@ -60,18 +60,18 @@ const Hero = () => {
 
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
-            href="#contact"
-            className="inline-flex h-11 min-w-28 items-center justify-center gap-2 rounded-md bg-signal-500 px-5 text-sm font-extrabold text-white shadow-lg shadow-signal-500/20 transition hover:bg-signal-400"
-          >
-            Email Me!
-            <Send size={16} fill="currentColor" />
-          </a>
-          <a
             href={profile.linkedinHref}
             className="inline-flex h-11 min-w-40 items-center justify-center gap-2 rounded-md border border-white/18 px-5 text-sm font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
           >
             Connect with Me!
             <LinkedInIcon />
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex h-11 min-w-28 items-center justify-center gap-2 rounded-md bg-signal-500 px-5 text-sm font-extrabold text-white shadow-lg shadow-signal-500/20 transition hover:bg-signal-400"
+          >
+            Email Me!
+            <Send size={16} fill="currentColor" />
           </a>
           <a
             href={profile.resumeHref}
