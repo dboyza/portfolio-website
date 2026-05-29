@@ -67,7 +67,7 @@ const Hero = () => {
             <LinkedInIcon />
           </a>
           <a
-            href="#contact"
+            href={`mailto:${profile.email}`}
             className="inline-flex h-11 min-w-28 items-center justify-center gap-2 rounded-md bg-signal-500 px-5 text-sm font-extrabold text-white shadow-lg shadow-signal-500/20 transition hover:bg-signal-400"
           >
             Email Me!
