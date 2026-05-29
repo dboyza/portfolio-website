@@ -185,7 +185,7 @@ export const certifications: Certification[] = [
 
 export const degrees: Degree[] = [
   {
-    title: "Computer Science (Bachelor's)",
+    title: 'Computer Science - Major',
     school: 'Penn State',
     timeframe: '2019-2023',
     description:
