@@ -193,7 +193,7 @@ export const degrees: Degree[] = [
     focusAreas: ['Coding', 'Data Structures & Algorithms', 'Computer Architecture'],
   },
   {
-    title: 'Cybersecurity (Minor)',
+    title: 'Cybersecurity - Minor',
     school: 'Penn State',
     timeframe: '2019-2023',
     description:
