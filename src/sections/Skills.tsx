@@ -3,6 +3,8 @@ import {
   Cloud,
   Code2,
   Database,
+  ListChecks,
+  Network,
   Server,
   Settings,
   Shield,
@@ -29,8 +31,6 @@ const simpleIconUrl = (slug: string, color?: string) =>
 const skillLogos: Record<string, string> = {
   AWS: '/skill-aws.svg',
   'Microsoft Azure': deviconUrl('azure'),
-  'Active Directory': simpleIconUrl('microsoft', '5E5E5E'),
-  'Group Policy': simpleIconUrl('windows', '0078D4'),
   Jenkins: deviconUrl('jenkins'),
   'GitLab CI': deviconUrl('gitlab'),
   Docker: deviconUrl('docker'),
@@ -64,6 +64,11 @@ const skillLogos: Record<string, string> = {
   YAML: simpleIconUrl('yaml', 'CB171E'),
   VMware: simpleIconUrl('vmware', '607078'),
   VirtualBox: simpleIconUrl('virtualbox', '183A61'),
+};
+
+const skillFallbackIcons: Record<string, LucideIcon> = {
+  'Active Directory': Network,
+  'Group Policy': ListChecks,
 };
 
 const Skills = () => {
@@ -118,6 +123,7 @@ const Skills = () => {
                 <div className="flex flex-wrap gap-2">
                   {group.items.map((skill) => {
                     const logo = skillLogos[skill];
+                    const SkillIcon = skillFallbackIcons[skill] ?? Icon;
 
                     return (
                       <span
@@ -134,7 +140,7 @@ const Skills = () => {
                               aria-hidden="true"
                             />
                           ) : (
-                            <Icon
+                            <SkillIcon
                               size={16}
                               className="text-gold-500"
                               aria-hidden="true"
