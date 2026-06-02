@@ -28,7 +28,7 @@ const Hero = () => {
         <img
           src={profile.avatar}
           alt={`${profile.name} profile portrait`}
-          className="mx-auto h-36 w-36 rounded-full border-4 border-gold-500 bg-ink-900 object-cover"
+          className="mx-auto h-44 w-44 rounded-full border-4 border-gold-500 bg-ink-900 object-cover"
         />
 
         <p className="mt-8 text-xl font-extrabold text-slate-500">
