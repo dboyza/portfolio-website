@@ -50,6 +50,12 @@ const downloadFile = (href: string) => {
   link.remove();
 };
 
+const hasActiveTextSelection = () => {
+  const selection = window.getSelection();
+
+  return Boolean(selection && selection.toString().trim());
+};
+
 const TerminalWindow = () => {
   const [entries, setEntries] = useState<TerminalEntry[]>([]);
   const [command, setCommand] = useState('');
@@ -232,6 +238,10 @@ const TerminalWindow = () => {
   };
 
   const handleContextMenu = async (event: MouseEvent<HTMLDivElement>) => {
+    if (hasActiveTextSelection()) {
+      return;
+    }
+
     event.preventDefault();
     inputRef.current?.focus();
 
@@ -261,7 +271,13 @@ const TerminalWindow = () => {
   return (
     <div
       className="mx-auto min-w-0 w-full max-w-[790px] overflow-hidden rounded-lg border border-white/10 bg-[#151617] text-left shadow-[0_18px_50px_rgba(0,0,0,0.26)]"
-      onClick={() => inputRef.current?.focus()}
+      onClick={() => {
+        if (hasActiveTextSelection()) {
+          return;
+        }
+
+        inputRef.current?.focus();
+      }}
       onContextMenu={handleContextMenu}
     >
       <div className="terminal-screen overflow-hidden px-5 py-6 font-mono text-sm sm:px-7">
