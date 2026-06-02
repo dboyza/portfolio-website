@@ -119,7 +119,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Cloud & Infrastructure',
     icon: 'cloud',
-    items: ['AWS', 'Microsoft Azure', 'Terraform', 'Ansible', 'DNS', 'Load Balancing'],
+    items: ['AWS', 'Terraform', 'Ansible', 'DNS', 'Load Balancing', 'Active Directory', 'Group Policy'],
   },
   {
     title: 'DevOps & Automation',

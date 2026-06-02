@@ -29,6 +29,8 @@ const simpleIconUrl = (slug: string, color?: string) =>
 const skillLogos: Record<string, string> = {
   AWS: '/skill-aws.svg',
   'Microsoft Azure': deviconUrl('azure'),
+  'Active Directory': simpleIconUrl('microsoft', '5E5E5E'),
+  'Group Policy': simpleIconUrl('windows', '0078D4'),
   Jenkins: deviconUrl('jenkins'),
   'GitLab CI': deviconUrl('gitlab'),
   Docker: deviconUrl('docker'),
