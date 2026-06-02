@@ -1,4 +1,11 @@
-import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+  type KeyboardEvent,
+  type MouseEvent,
+} from 'react';
 import {
   aboutParagraphs,
   careerDirection,
@@ -222,10 +229,38 @@ const TerminalWindow = () => {
     }
   };
 
+  const handleContextMenu = async (event: MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    inputRef.current?.focus();
+
+    try {
+      const pastedText = await navigator.clipboard.readText();
+
+      if (!pastedText) {
+        return;
+      }
+
+      const input = inputRef.current;
+      const start = input?.selectionStart ?? command.length;
+      const end = input?.selectionEnd ?? command.length;
+      const normalizedPaste = pastedText.replace(/\r?\n/g, ' ');
+      const nextCommand = `${command.slice(0, start)}${normalizedPaste}${command.slice(end)}`;
+      const nextCursorPosition = start + normalizedPaste.length;
+
+      setCommand(nextCommand);
+      requestAnimationFrame(() => {
+        inputRef.current?.setSelectionRange(nextCursorPosition, nextCursorPosition);
+      });
+    } catch {
+      inputRef.current?.focus();
+    }
+  };
+
   return (
     <div
       className="mx-auto min-w-0 w-full max-w-[790px] overflow-hidden rounded-lg border border-white/10 bg-[#151617] text-left shadow-[0_18px_50px_rgba(0,0,0,0.26)]"
       onClick={() => inputRef.current?.focus()}
+      onContextMenu={handleContextMenu}
     >
       <div className="terminal-screen overflow-hidden px-5 py-6 font-mono text-sm sm:px-7">
         <pre className="terminal-ascii" aria-label="Terminal heading">
