@@ -146,10 +146,7 @@ export const skillGroups: SkillGroup[] = [
     icon: 'server',
     items: [
       'Linux',
-      'Ubuntu',
-      'CentOS',
       'RHEL',
-      'Amazon Linux',
       'Python',
       'Bash',
       'PowerShell',
