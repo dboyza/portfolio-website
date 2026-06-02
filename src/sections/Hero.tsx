@@ -15,8 +15,8 @@ const LinkedInIcon = () => (
 
 const Hero = () => {
   const titleParts =
-    profile.title === 'Cloud & DevOps Engineer'
-      ? ['Cloud &', 'DevOps', 'Engineer']
+    profile.title === 'Cloud & DevSecOps Engineer'
+      ? ['Cloud &', 'DevSecOps', 'Engineer']
       : [profile.title];
 
   return (

@@ -42,7 +42,7 @@ export type CareerDirection = {
 export const profile = {
   name: 'Dylan Boyza',
   greeting: "Hi! I'm Dylan Boyza",
-  title: 'Cloud & DevOps Engineer',
+  title: 'Cloud & DevSecOps Engineer',
   location: 'Pennsylvania',
   credentialLine: 'AWS, Ansible, Terraform, Python, Linux',
   focus: 'Loves technology',
