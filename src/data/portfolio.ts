@@ -119,64 +119,47 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Cloud & Infrastructure',
     icon: 'cloud',
-    items: ['AWS', 'Microsoft Azure'],
+    items: ['AWS', 'Microsoft Azure', 'Terraform', 'Ansible', 'DNS', 'Load Balancing'],
   },
   {
-    title: 'CI/CD & DevOps',
+    title: 'DevOps & Automation',
     icon: 'settings',
-    items: ['Jenkins', 'GitLab CI'],
+    items: ['Jenkins', 'GitLab CI', 'Git', 'GitHub', 'GitLab', 'Jira'],
   },
   {
-    title: 'Containers & Orchestration',
+    title: 'Containers & Platform Engineering',
     icon: 'boxes',
-    items: ['Docker', 'Kubernetes', 'Helm'],
+    items: ['Docker', 'Kubernetes', 'Helm', 'Ingress', 'Traefik', 'VMware', 'VirtualBox'],
   },
   {
-    title: 'Infrastructure as Code & Configuration Management',
-    icon: 'code',
-    items: ['Terraform', 'Ansible'],
-  },
-  {
-    title: 'Monitoring & Logging',
-    icon: 'activity',
-    items: ['ELK Stack', 'CloudWatch', 'CloudTrail'],
-  },
-  {
-    title: 'Databases & Servers',
-    icon: 'database',
-    items: ['PostgreSQL', 'MySQL', 'Oracle SQL', 'DynamoDB'],
-  },
-  {
-    title: 'Version Control & Collaboration',
-    icon: 'git',
-    items: ['Git', 'GitHub', 'GitLab', 'Jira'],
-  },
-  {
-    title: 'Linux Distributions',
-    icon: 'server',
-    items: ['Ubuntu', 'CentOS', 'RHEL', 'Amazon Linux'],
-  },
-  {
-    title: 'Networking & Service Mesh',
-    icon: 'network',
-    items: ['Traefik', 'Ingress', 'DNS', 'Load Balancing'],
-  },
-  {
-    title: 'Security',
+    title: 'Monitoring, Logging & Security',
     icon: 'shield',
-    items: ['HashiCorp Vault'],
+    items: ['ELK Stack', 'CloudWatch', 'CloudTrail', 'HashiCorp Vault'],
   },
   {
-    title: 'Languages & Scripting',
-    icon: 'braces',
-    items: ['Python', 'Bash', 'PowerShell', 'Groovy', 'SQL', 'YAML'],
+    title: 'Databases & Data',
+    icon: 'database',
+    items: ['PostgreSQL', 'MySQL', 'Oracle SQL', 'DynamoDB', 'SQL'],
   },
   {
-    title: 'Virtualization & Platforms',
-    icon: 'monitor',
-    items: ['VMware', 'VirtualBox'],
+    title: 'Systems & Scripting',
+    icon: 'server',
+    items: [
+      'Linux',
+      'Ubuntu',
+      'CentOS',
+      'RHEL',
+      'Amazon Linux',
+      'Python',
+      'Bash',
+      'PowerShell',
+      'Groovy',
+      'YAML',
+    ],
   },
 ];
+
+export const coreStack = ['AWS', 'Kubernetes', 'Docker', 'Terraform', 'Jenkins', 'Linux', 'Python'];
 
 export const certifications: Certification[] = [
   {

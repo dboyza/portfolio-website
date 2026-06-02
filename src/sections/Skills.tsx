@@ -1,34 +1,23 @@
 import {
-  Activity,
   Boxes,
-  Braces,
   Cloud,
   Code2,
   Database,
-  GitBranch,
-  Monitor,
-  Network,
   Server,
   Settings,
   Shield,
   type LucideIcon,
 } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
-import { skillGroups } from '../data/portfolio';
+import { coreStack, skillGroups } from '../data/portfolio';
 
 const iconMap: Record<string, LucideIcon> = {
   cloud: Cloud,
   settings: Settings,
   boxes: Boxes,
-  code: Code2,
-  activity: Activity,
   database: Database,
-  git: GitBranch,
   server: Server,
-  network: Network,
   shield: Shield,
-  braces: Braces,
-  monitor: Monitor,
 };
 
 const deviconUrl = (name: string, variant = 'original') =>
@@ -62,6 +51,7 @@ const skillLogos: Record<string, string> = {
   CentOS: deviconUrl('centos'),
   RHEL: deviconUrl('redhat'),
   'Amazon Linux': '/skill-amazon-linux.svg',
+  Linux: simpleIconUrl('linux', 'FCC624'),
   Traefik: simpleIconUrl('traefikproxy', '24A1C1'),
   'HashiCorp Vault': simpleIconUrl('vault', 'FFEC6E'),
   Python: deviconUrl('python'),
@@ -80,33 +70,66 @@ const Skills = () => {
       <div className="wide-shell">
         <SectionHeading title="Skills" />
 
-        <div className="mt-8 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto mt-7 flex max-w-4xl flex-wrap items-center justify-center gap-2 rounded-lg border border-white/12 bg-white/[0.025] px-4 py-4">
+          <span className="mr-1 text-xs font-black uppercase tracking-[0.18em] text-gold-500">
+            Core Stack
+          </span>
+          {coreStack.map((skill) => {
+            const logo = skillLogos[skill];
+
+            return (
+              <span
+                key={`core-${skill}`}
+                className="inline-flex min-h-8 items-center gap-2 rounded-full border border-white/16 px-3 text-sm font-bold text-slate-200"
+              >
+                {logo ? (
+                  <img
+                    src={logo}
+                    alt=""
+                    className="h-4 w-4 object-contain"
+                    loading="lazy"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <Code2 size={15} className="text-gold-500" aria-hidden="true" />
+                )}
+                <span className="whitespace-nowrap">{skill}</span>
+              </span>
+            );
+          })}
+        </div>
+
+        <div className="mt-8 grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
           {skillGroups.map((group) => {
             const Icon = iconMap[group.icon] ?? Code2;
 
             return (
-              <section key={group.title} className="min-w-0">
-                <h3 className="mb-4 flex min-h-20 flex-col items-center justify-start gap-2 text-center text-lg font-bold leading-6 text-slate-200">
-                  <Icon size={22} className="shrink-0 text-gold-500" />
-                  <span className="max-w-64">{group.title}</span>
+              <section
+                key={group.title}
+                className="min-w-0 rounded-lg border border-white/12 bg-white/[0.025] p-4"
+              >
+                <h3 className="mb-4 flex items-center gap-2 text-base font-black leading-tight text-slate-100">
+                  <Icon size={20} className="shrink-0 text-gold-500" />
+                  <span className="min-w-0 text-balance">{group.title}</span>
                 </h3>
 
-                <div className="grid gap-2">
+                <div className="flex flex-wrap gap-2">
                   {group.items.map((skill) => {
                     const logo = skillLogos[skill];
 
                     return (
-                      <div
+                      <span
                         key={`${group.title}-${skill}`}
-                        className="flex min-h-9 items-center gap-3 rounded-lg border border-white/17 px-3 text-sm font-bold text-slate-300"
+                        className="inline-flex min-h-8 max-w-full items-center gap-2 rounded-full border border-white/14 px-3 text-sm font-bold text-slate-300"
                       >
                         <span className="flex h-6 w-6 shrink-0 items-center justify-center">
                           {logo ? (
                             <img
                               src={logo}
-                              alt={`${skill} logo`}
+                              alt=""
                               className="h-5 w-5 object-contain"
                               loading="lazy"
+                              aria-hidden="true"
                             />
                           ) : (
                             <Icon
@@ -116,8 +139,8 @@ const Skills = () => {
                             />
                           )}
                         </span>
-                        <span className="min-w-0 break-words">{skill}</span>
-                      </div>
+                        <span className="min-w-0 truncate">{skill}</span>
+                      </span>
                     );
                   })}
                 </div>
