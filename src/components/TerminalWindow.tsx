@@ -227,7 +227,7 @@ const TerminalWindow = () => {
       className="mx-auto min-w-0 w-full max-w-[790px] overflow-hidden rounded-lg border border-white/10 bg-[#151617] text-left shadow-[0_18px_50px_rgba(0,0,0,0.26)]"
       onClick={() => inputRef.current?.focus()}
     >
-      <div className="overflow-hidden px-5 py-6 font-mono text-sm sm:px-7">
+      <div className="terminal-screen overflow-hidden px-5 py-6 font-mono text-sm sm:px-7">
         <pre className="terminal-ascii" aria-label="Terminal heading">
 {` ____                          ___  ____
 | __ )  ___  _   _ _____ __ _ / _ \\/ ___|
