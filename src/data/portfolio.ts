@@ -27,8 +27,8 @@ export type Certification = {
 };
 
 export type Degree = {
-  title: string;
   school: string;
+  programs: string[];
   timeframe: string;
   description: string;
   focusAreas: string[];
@@ -58,7 +58,7 @@ export const navItems = [
   { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
   { label: 'Certifications', href: '#certifications' },
-  { label: 'Degrees', href: '#degrees' },
+  { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -184,20 +184,18 @@ export const certifications: Certification[] = [
 
 export const degrees: Degree[] = [
   {
-    title: 'Computer Science - Major',
     school: 'Penn State',
+    programs: ['B.S. Computer Science, Major', 'Cybersecurity, Minor'],
     timeframe: '2019-2023',
-    description:
-      'A future degree entry will live here with the school name, program, dates, and a short academic summary.',
-    focusAreas: ['Coding', 'Data Structures & Algorithms', 'Computer Architecture'],
-  },
-  {
-    title: 'Cybersecurity - Minor',
-    school: 'Penn State',
-    timeframe: '2019-2023',
-    description:
-      'Use this block for another completed program, in-progress degree, certificate program, or relevant coursework.',
-    focusAreas: ['Networking', 'Cryptography', 'Computer security'],
+    description: 'Academic foundation in software engineering, systems, networking, and security.',
+    focusAreas: [
+      'Software Development',
+      'Data Structures & Algorithms',
+      'Computer Architecture',
+      'Networking',
+      'Cryptography',
+      'Computer Security',
+    ],
   },
 ];
 

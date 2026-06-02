@@ -33,7 +33,7 @@ const commandNames = [
   'skills',
   'projects',
   'certs',
-  'degrees',
+  'education',
   'contact',
   'email',
   'resume',
@@ -131,9 +131,11 @@ const TerminalWindow = () => {
 
     if (normalized === 'degrees' || normalized === 'education') {
       return degrees.flatMap((degree) => [
-        `${degree.title} - ${degree.school}, ${degree.timeframe}`,
+        degree.school,
+        ...degree.programs.map((program) => `  ${program}`),
+        `  ${degree.timeframe}`,
         `  ${degree.description}`,
-        `  Focus: ${degree.focusAreas.join(', ')}`,
+        `  Academic Focus: ${degree.focusAreas.join(', ')}`,
       ]);
     }
 
@@ -161,7 +163,7 @@ const TerminalWindow = () => {
     }
 
     if (normalized === 'ls') {
-      return ['about  career  current  projects  skills  certifications  degrees  contact'];
+      return ['about  career  current  projects  skills  certifications  education  contact'];
     }
 
     return [`command not found: ${rawCommand}`, "Type 'help' to list available commands."];
