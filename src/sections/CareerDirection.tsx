@@ -9,7 +9,10 @@ const CareerDirection = () => {
         <SectionHeading title="Career Direction" />
 
         <div className="mx-auto mt-8 grid max-w-3xl gap-5 sm:grid-cols-[1.2fr_1fr]">
-          <article className="rounded-md border border-white/12 bg-white/[0.025] p-6">
+          <article
+            className="premium-surface motion-lift reveal-on-scroll rounded-md border border-white/12 bg-white/[0.025] p-6"
+            data-reveal
+          >
             <div className="flex items-center gap-3 text-gold-500">
               <Compass size={22} />
               <h3 className="text-lg font-extrabold text-slate-100">
@@ -21,7 +24,11 @@ const CareerDirection = () => {
             </p>
           </article>
 
-          <article className="rounded-md border border-white/12 bg-white/[0.025] p-6">
+          <article
+            className="premium-surface motion-lift reveal-on-scroll rounded-md border border-white/12 bg-white/[0.025] p-6"
+            data-reveal
+            style={{ transitionDelay: '80ms' }}
+          >
             <div className="flex items-center gap-3 text-gold-500">
               <Wrench size={22} />
               <h3 className="text-lg font-extrabold text-slate-100">
@@ -32,7 +39,7 @@ const CareerDirection = () => {
               {careerDirection.currentlyBuilding.map((item) => (
                 <span
                   key={item}
-                  className="rounded-md border border-white/12 px-3 py-1 text-xs font-extrabold text-slate-400"
+                  className="motion-pill rounded-md border border-white/12 px-3 py-1 text-xs font-extrabold text-slate-400"
                 >
                   {item}
                 </span>

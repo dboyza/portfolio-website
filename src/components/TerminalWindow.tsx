@@ -270,7 +270,7 @@ const TerminalWindow = () => {
 
   return (
     <div
-      className="terminal-shell mx-auto min-w-0 w-full max-w-[790px] overflow-hidden rounded-lg border text-left"
+      className="terminal-shell premium-surface motion-lift mx-auto min-w-0 w-full max-w-[790px] overflow-hidden rounded-lg border text-left"
       onClick={() => {
         if (hasActiveTextSelection()) {
           return;

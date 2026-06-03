@@ -14,7 +14,10 @@ const Degrees = () => {
       <div className="content-shell">
         <SectionHeading title="Education" />
 
-        <article className="mx-auto mt-10 max-w-4xl rounded-md border border-white/12 bg-white/[0.025] p-6 text-left shadow-soft sm:p-7">
+        <article
+          className="premium-surface motion-lift reveal-on-scroll mx-auto mt-10 max-w-4xl rounded-md border border-white/12 bg-white/[0.025] p-6 text-left shadow-soft sm:p-7"
+          data-reveal
+        >
           <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
             <div className="flex items-start gap-4">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md border border-gold-500/45 bg-gold-500/10 text-gold-500">
@@ -58,7 +61,7 @@ const Degrees = () => {
               {education.focusAreas.map((area) => (
                 <span
                   key={area}
-                  className="rounded-md border border-white/12 px-3 py-1.5 text-xs font-extrabold text-slate-400"
+                  className="motion-pill rounded-md border border-white/12 px-3 py-1.5 text-xs font-extrabold text-slate-400"
                 >
                   {area}
                 </span>

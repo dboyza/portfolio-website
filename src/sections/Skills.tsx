@@ -77,7 +77,10 @@ const Skills = () => {
       <div className="wide-shell">
         <SectionHeading title="Skills" />
 
-        <div className="mx-auto mt-7 flex max-w-4xl flex-wrap items-center justify-center gap-2 rounded-lg border border-white/12 bg-white/[0.025] px-4 py-4">
+        <div
+          className="premium-surface reveal-on-scroll mx-auto mt-7 flex max-w-4xl flex-wrap items-center justify-center gap-2 rounded-lg border border-white/12 bg-white/[0.025] px-4 py-4"
+          data-reveal
+        >
           <span className="mr-1 text-xs font-black uppercase tracking-[0.18em] text-gold-500">
             Core Stack
           </span>
@@ -87,7 +90,7 @@ const Skills = () => {
             return (
               <span
                 key={`core-${skill}`}
-                className="inline-flex min-h-8 items-center gap-2 rounded-full border border-white/16 px-3 text-sm font-bold text-slate-200"
+                className="motion-pill inline-flex min-h-8 items-center gap-2 rounded-full border border-white/16 px-3 text-sm font-bold text-slate-200"
               >
                 {logo ? (
                   <img
@@ -107,13 +110,15 @@ const Skills = () => {
         </div>
 
         <div className="mt-8 grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
-          {skillGroups.map((group) => {
+          {skillGroups.map((group, index) => {
             const Icon = iconMap[group.icon] ?? Code2;
 
             return (
               <section
                 key={group.title}
-                className="min-w-0 rounded-lg border border-white/12 bg-white/[0.025] p-4"
+                className="premium-surface motion-lift reveal-on-scroll min-w-0 rounded-lg border border-white/12 bg-white/[0.025] p-4"
+                data-reveal
+                style={{ transitionDelay: `${index * 70}ms` }}
               >
                 <h3 className="mb-4 flex items-center gap-2 text-base font-black leading-tight text-slate-100">
                   <Icon size={20} className="shrink-0 text-gold-500" />
@@ -128,7 +133,7 @@ const Skills = () => {
                     return (
                       <span
                         key={`${group.title}-${skill}`}
-                        className="inline-flex min-h-8 max-w-full items-center gap-2 rounded-full border border-white/14 px-3 text-sm font-bold text-slate-300"
+                        className="motion-pill inline-flex min-h-8 max-w-full items-center gap-2 rounded-full border border-white/14 px-3 text-sm font-bold text-slate-300"
                       >
                         <span className="flex h-6 w-6 shrink-0 items-center justify-center">
                           {logo ? (

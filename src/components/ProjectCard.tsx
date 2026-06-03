@@ -5,14 +5,24 @@ type ProjectCardProps = {
   project: Project;
   isExpanded: boolean;
   onToggle: () => void;
+  revealDelay?: number;
 };
 
-const ProjectCard = ({ project, isExpanded, onToggle }: ProjectCardProps) => {
+const ProjectCard = ({
+  project,
+  isExpanded,
+  onToggle,
+  revealDelay = 0,
+}: ProjectCardProps) => {
   const stackId = `${project.id}-stack`;
 
   return (
-    <article className="min-w-0">
-      <div className="soft-card overflow-hidden rounded-lg">
+    <article
+      className="reveal-on-scroll min-w-0"
+      data-reveal
+      style={{ transitionDelay: `${revealDelay}ms` }}
+    >
+      <div className="soft-card premium-surface motion-lift overflow-hidden rounded-lg">
         <img
           src={project.image}
           alt={project.imageAlt}
@@ -46,7 +56,7 @@ const ProjectCard = ({ project, isExpanded, onToggle }: ProjectCardProps) => {
           <a
             key={`${project.id}-${link.label}`}
             href={link.href}
-            className="inline-flex items-center gap-2 rounded-full border border-white/17 px-3 py-2 text-xs font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
+            className="motion-pill inline-flex items-center gap-2 rounded-full border border-white/17 px-3 py-2 text-xs font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
           >
             {link.label}
             <ExternalLink size={13} />
@@ -56,7 +66,7 @@ const ProjectCard = ({ project, isExpanded, onToggle }: ProjectCardProps) => {
 
       <button
         type="button"
-        className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/17 px-3 py-1.5 text-xs font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-500"
+        className="motion-pill mt-3 inline-flex items-center gap-2 rounded-full border border-white/17 px-3 py-1.5 text-xs font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-500"
         aria-controls={stackId}
         aria-expanded={isExpanded}
         onClick={onToggle}
@@ -70,7 +80,7 @@ const ProjectCard = ({ project, isExpanded, onToggle }: ProjectCardProps) => {
           {project.stack.map((tool) => (
             <span
               key={`${project.id}-${tool}`}
-              className="rounded-full border border-gold-500/35 bg-gold-500/8 px-3 py-1.5 text-xs font-bold text-slate-300"
+              className="motion-pill rounded-full border border-gold-500/35 bg-gold-500/8 px-3 py-1.5 text-xs font-bold text-slate-300"
             >
               {tool}
             </span>

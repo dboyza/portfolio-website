@@ -9,7 +9,7 @@ const Certifications = () => {
         <SectionHeading title="Certifications" />
 
         <div className="mt-12 grid gap-x-12 gap-y-20 sm:grid-cols-2 lg:grid-cols-3">
-          {certifications.map((certification) => {
+          {certifications.map((certification, index) => {
             const SmallIcon =
               certification.icon === 'aws'
                 ? Cloud
@@ -18,7 +18,12 @@ const Certifications = () => {
                   : Award;
 
             return (
-              <article key={certification.name} className="text-center">
+              <article
+                key={certification.name}
+                className="premium-surface motion-lift reveal-on-scroll rounded-lg p-5 text-center"
+                data-reveal
+                style={{ transitionDelay: `${index * 80}ms` }}
+              >
                 <img
                   src={certification.badge}
                   alt=""

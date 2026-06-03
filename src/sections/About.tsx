@@ -7,7 +7,10 @@ const About = () => {
       <div className="content-shell text-center">
         <SectionHeading title="About Me" />
 
-        <div className="mx-auto mt-7 max-w-2xl space-y-4 text-base font-semibold leading-8 text-slate-500">
+        <div
+          className="reveal-on-scroll mx-auto mt-7 max-w-2xl space-y-4 text-base font-semibold leading-8 text-slate-500"
+          data-reveal
+        >
           {aboutParagraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}

@@ -28,7 +28,7 @@ const Hero = () => {
         <img
           src={profile.avatar}
           alt={`${profile.name} profile portrait`}
-          className="mx-auto h-44 w-44 rounded-full border-4 border-gold-500 bg-ink-900 object-cover"
+          className="motion-lift mx-auto h-44 w-44 rounded-full border-4 border-gold-500 bg-ink-900 object-cover"
         />
 
         <p className="mt-8 text-xl font-extrabold text-slate-500">
@@ -61,14 +61,14 @@ const Hero = () => {
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
             href={profile.linkedinHref}
-            className="inline-flex h-11 min-w-40 items-center justify-center gap-2 rounded-md border border-white/18 px-5 text-sm font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
+            className="motion-pill inline-flex h-11 min-w-40 items-center justify-center gap-2 rounded-md border border-white/18 px-5 text-sm font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
           >
             Connect with Me!
             <LinkedInIcon />
           </a>
           <a
             href={`mailto:${profile.email}`}
-            className="inline-flex h-11 min-w-28 items-center justify-center gap-2 rounded-md bg-signal-500 px-5 text-sm font-extrabold text-white shadow-lg shadow-signal-500/20 transition hover:bg-signal-400"
+            className="motion-pill inline-flex h-11 min-w-28 items-center justify-center gap-2 rounded-md bg-signal-500 px-5 text-sm font-extrabold text-white shadow-lg shadow-signal-500/20 transition hover:bg-signal-400"
           >
             Email Me!
             <Mail size={16} />
@@ -76,7 +76,7 @@ const Hero = () => {
           <a
             href={profile.resumeHref}
             download="DYLAN_BOYZA_RESUME.pdf"
-            className="inline-flex h-11 min-w-36 items-center justify-center gap-2 rounded-md border border-white/18 px-5 text-sm font-extrabold text-slate-200 transition hover:border-white/35 hover:text-white"
+            className="motion-pill inline-flex h-11 min-w-36 items-center justify-center gap-2 rounded-md border border-white/18 px-5 text-sm font-extrabold text-slate-200 transition hover:border-white/35 hover:text-white"
           >
             Download Resume
             <Download size={16} />
