@@ -28,7 +28,6 @@ const Hero = () => {
     >
       <div className="w-full">
         <div className="hero-identity mx-auto">
-          <div className="hero-orbit" aria-hidden="true" />
           <img
             src={profile.avatar}
             alt={`${profile.name} profile portrait`}
