@@ -2,6 +2,8 @@ import { BadgeCheck, Download, Mail, MapPin, Terminal } from 'lucide-react';
 import TerminalWindow from '../components/TerminalWindow';
 import { profile } from '../data/portfolio';
 
+const heroSignals = ['Cloud Security', 'Infrastructure Automation', 'Secure Platforms'];
+
 const LinkedInIcon = () => (
   <svg
     aria-hidden="true"
@@ -25,11 +27,14 @@ const Hero = () => {
       className="grid min-h-screen place-items-center px-4 pt-24 pb-20 text-center"
     >
       <div className="w-full">
-        <img
-          src={profile.avatar}
-          alt={`${profile.name} profile portrait`}
-          className="motion-lift mx-auto h-44 w-44 rounded-full border-4 border-gold-500 bg-ink-900 object-cover"
-        />
+        <div className="hero-identity mx-auto">
+          <div className="hero-orbit" aria-hidden="true" />
+          <img
+            src={profile.avatar}
+            alt={`${profile.name} profile portrait`}
+            className="motion-lift relative z-10 mx-auto h-44 w-44 rounded-full border-4 border-gold-500 bg-ink-900 object-cover shadow-2xl shadow-signal-500/10"
+          />
+        </div>
 
         <p className="mt-8 text-xl font-extrabold text-slate-500">
           {profile.greeting}
@@ -56,6 +61,18 @@ const Hero = () => {
             <Terminal size={18} className="shrink-0" />
             <span className="min-w-0 break-words">{profile.focus}</span>
           </span>
+        </div>
+
+        <div className="mx-auto mt-5 flex max-w-3xl flex-wrap items-center justify-center gap-2">
+          {heroSignals.map((signal) => (
+            <span
+              key={signal}
+              className="hero-signal motion-pill inline-flex items-center gap-2 rounded-full border border-white/14 px-3 py-1.5 text-xs font-black uppercase tracking-[0.12em] text-slate-300"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-gold-500 shadow-[0_0_16px_rgba(245,197,66,0.7)]" />
+              {signal}
+            </span>
+          ))}
         </div>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

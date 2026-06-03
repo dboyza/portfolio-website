@@ -42,7 +42,7 @@ const Certifications = () => {
 
                 <a
                   href={certification.href}
-                  className="mt-5 inline-flex items-center gap-3 rounded-md border border-white/16 px-4 py-2 text-xs font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
+                  className="motion-pill icon-nudge mt-5 inline-flex items-center gap-3 rounded-md border border-white/16 px-4 py-2 text-xs font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
                 >
                   <ExternalLink size={15} className="text-gold-500" />
                   View Credential

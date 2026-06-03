@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronUp, Code2, ExternalLink } from 'lucide-react';
+import { ChevronDown, ChevronUp, Code2, ExternalLink, FlaskConical } from 'lucide-react';
 import type { Project } from '../data/portfolio';
 
 type ProjectCardProps = {
@@ -18,7 +18,7 @@ const ProjectCard = ({
 
   return (
     <article
-      className="reveal-on-scroll min-w-0"
+      className="lab-card reveal-on-scroll min-w-0"
       data-reveal
       style={{ transitionDelay: `${revealDelay}ms` }}
     >
@@ -37,9 +37,26 @@ const ProjectCard = ({
         <span className="h-2.5 w-2.5 rounded-full border border-slate-600" />
       </div>
 
+      {(project.labType || project.status) && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {project.labType && (
+            <span className="lab-badge motion-pill inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-signal-500/8 px-3 py-1.5 text-xs font-black uppercase tracking-[0.12em] text-slate-300">
+              <FlaskConical size={13} className="text-gold-500" />
+              {project.labType}
+            </span>
+          )}
+          {project.status && (
+            <span className="lab-badge motion-pill inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/8 px-3 py-1.5 text-xs font-black uppercase tracking-[0.12em] text-slate-300">
+              <span className="h-1.5 w-1.5 rounded-full bg-gold-500 shadow-[0_0_12px_rgba(245,197,66,0.75)]" />
+              {project.status}
+            </span>
+          )}
+        </div>
+      )}
+
       <h3 className="mt-4 flex items-start gap-2 text-lg font-extrabold leading-snug text-slate-100 sm:text-xl">
         <span>{project.title}</span>
-        <Code2 size={24} className="mt-0.5 shrink-0 text-slate-200" />
+        <Code2 size={24} className="lab-title-icon mt-0.5 shrink-0 text-slate-200" />
       </h3>
 
       <p className="mt-4 text-sm font-medium leading-7 text-slate-400">
@@ -56,7 +73,7 @@ const ProjectCard = ({
           <a
             key={`${project.id}-${link.label}`}
             href={link.href}
-            className="motion-pill inline-flex items-center gap-2 rounded-full border border-white/17 px-3 py-2 text-xs font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
+            className="motion-pill icon-nudge inline-flex items-center gap-2 rounded-full border border-white/17 px-3 py-2 text-xs font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
           >
             {link.label}
             <ExternalLink size={13} />
@@ -66,7 +83,7 @@ const ProjectCard = ({
 
       <button
         type="button"
-        className="motion-pill mt-3 inline-flex items-center gap-2 rounded-full border border-white/17 px-3 py-1.5 text-xs font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-500"
+        className="motion-pill icon-nudge mt-3 inline-flex items-center gap-2 rounded-full border border-white/17 px-3 py-1.5 text-xs font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-500"
         aria-controls={stackId}
         aria-expanded={isExpanded}
         onClick={onToggle}

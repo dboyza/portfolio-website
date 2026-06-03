@@ -1,6 +1,8 @@
 export type Project = {
   id: string;
   title: string;
+  labType?: string;
+  status?: string;
   description: string;
   details?: string[];
   image: string;
@@ -15,6 +17,7 @@ export type Project = {
 export type SkillGroup = {
   title: string;
   icon: string;
+  summary?: string;
   items: string[];
 };
 
@@ -55,7 +58,7 @@ export const profile = {
 export const navItems = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
+  { label: 'Labs', href: '#projects' },
   { label: 'Skills', href: '#skills' },
   { label: 'Certifications', href: '#certifications' },
   { label: 'Education', href: '#education' },
@@ -83,11 +86,13 @@ export const careerDirection: CareerDirection = {
 export const projects: Project[] = [
   {
     id: 'placeholder-cloud-lab',
-    title: 'Placeholder Cloud Lab',
+    title: 'Cloud Infrastructure Lab',
+    labType: 'Cloud Lab',
+    status: 'Building',
     description:
-      'A future cloud infrastructure project will live here with a short summary, links, and a clean architecture preview.',
+      'A focused AWS infrastructure lab for turning secure cloud architecture ideas into repeatable, documented builds.',
     details: [
-      'Replace this card with a real project once the repository, screenshots, and deployment notes are ready.',
+      'This slot is reserved for an architecture-backed project with Terraform modules, deployment notes, and a clean operational walkthrough.',
     ],
     image: '/project-placeholder-cloud.svg',
     imageAlt: 'Placeholder cloud project diagram',
@@ -99,11 +104,13 @@ export const projects: Project[] = [
   },
   {
     id: 'placeholder-automation-tool',
-    title: 'Placeholder Automation Tool',
+    title: 'Automation Tooling Lab',
+    labType: 'Automation Lab',
+    status: 'Documenting',
     description:
-      'A future automation or scripting project will live here with a practical summary and a focused stack list.',
+      'A practical scripting and automation lab for reducing manual operations with small, reliable tooling.',
     details: [
-      'Use this slot for a polished project card once the code, README, and screenshots are ready to share.',
+      'This slot is reserved for a polished repo with code, examples, README notes, and the problem it automates.',
     ],
     image: '/project-placeholder-automation.svg',
     imageAlt: 'Placeholder automation project diagram',
@@ -119,31 +126,37 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Cloud & Infrastructure',
     icon: 'cloud',
+    summary: 'Designing repeatable cloud and network foundations for secure workloads.',
     items: ['AWS', 'Terraform', 'Ansible', 'DNS', 'Load Balancing', 'Active Directory', 'Group Policy'],
   },
   {
     title: 'DevOps & Automation',
     icon: 'settings',
+    summary: 'Connecting code, pipelines, tickets, and releases into cleaner delivery loops.',
     items: ['Jenkins', 'GitLab CI', 'Git', 'GitHub', 'GitLab', 'Jira'],
   },
   {
     title: 'Containers & Platform Engineering',
     icon: 'boxes',
+    summary: 'Running services on container platforms with practical routing and virtualization support.',
     items: ['Docker', 'Kubernetes', 'Helm', 'Ingress', 'Traefik', 'VMware', 'VirtualBox'],
   },
   {
     title: 'Monitoring, Logging & Security',
     icon: 'shield',
+    summary: 'Improving visibility, auditability, and secret handling across environments.',
     items: ['ELK Stack', 'CloudWatch', 'CloudTrail', 'HashiCorp Vault'],
   },
   {
     title: 'Databases & Data',
     icon: 'database',
+    summary: 'Working with relational and cloud-native data stores that support backend systems.',
     items: ['PostgreSQL', 'MySQL', 'Oracle SQL', 'DynamoDB', 'SQL'],
   },
   {
     title: 'Systems & Scripting',
     icon: 'server',
+    summary: 'Automating Linux and Windows operations with scripts, shells, and practical systems knowledge.',
     items: [
       'Linux',
       'RHEL',
