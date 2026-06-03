@@ -75,7 +75,7 @@ const Skills = () => {
   return (
     <section id="skills" className="section-rule py-10 sm:py-16">
       <div className="wide-shell">
-        <SectionHeading title="Engineering Capabilities" />
+        <SectionHeading title="Skills" />
 
         <div
           className="core-stack premium-surface reveal-on-scroll mx-auto mt-7 flex max-w-4xl flex-wrap items-center justify-center gap-2 rounded-lg border border-white/12 bg-white/[0.025] px-4 py-4"

@@ -15,7 +15,7 @@ const Projects = () => {
   return (
     <section id="projects" className="section-rule py-10 sm:py-16">
       <div className="wide-shell">
-        <SectionHeading title="Engineering Labs" />
+        <SectionHeading title="Projects" />
 
         <div className="mt-7 grid gap-x-8 gap-y-14 md:grid-cols-2">
           {visibleProjects.map((project, index) => (
@@ -40,7 +40,7 @@ const Projects = () => {
               className="motion-pill rounded-full border border-white/17 px-5 py-2.5 text-sm font-extrabold text-slate-200 transition hover:border-gold-500/70 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-500"
               onClick={() => setShowAllProjects(true)}
             >
-              Show more labs
+              Show more projects
             </button>
           </div>
         )}
