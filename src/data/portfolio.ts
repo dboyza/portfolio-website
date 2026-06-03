@@ -75,7 +75,7 @@ export const careerDirection: CareerDirection = {
     'I am looking for cloud, DevOps, infrastructure, automation, or security-adjacent roles where I can help teams build reliable systems with AWS, Terraform, Linux, and Python.',
   currentlyBuilding: [
     'AWS architecture',
-    'Terraform modules',
+    'Terraform',
     'Python automation',
     'Linux operations',
     'Cloud security',
