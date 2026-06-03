@@ -151,35 +151,74 @@ button:focus-visible {
   z-index: -2;
   background:
     conic-gradient(
-      from 145deg,
-      rgba(245, 197, 66, 0.85),
-      rgba(34, 211, 238, 0.24),
-      transparent 34%,
-      rgba(59, 130, 246, 0.32),
-      rgba(245, 197, 66, 0.85)
+      from 45deg,
+      rgba(245, 197, 66, 0.76) 0deg 14deg,
+      rgba(34, 211, 238, 0.18) 42deg 58deg,
+      rgba(59, 130, 246, 0.28) 90deg 104deg,
+      rgba(34, 211, 238, 0.18) 132deg 148deg,
+      rgba(245, 197, 66, 0.76) 180deg 194deg,
+      rgba(34, 211, 238, 0.18) 222deg 238deg,
+      rgba(59, 130, 246, 0.28) 270deg 284deg,
+      rgba(34, 211, 238, 0.18) 312deg 328deg,
+      rgba(245, 197, 66, 0.76) 360deg
     );
-  filter: blur(7px);
-  opacity: 0.62;
-  animation: hero-halo-spin 18s linear infinite;
+  filter: blur(8px);
+  opacity: 0.58;
+  animation: hero-halo-spin 24s linear infinite;
 }
 
 .hero-identity::after {
   z-index: -1;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.24), transparent 68%);
-  opacity: 0.44;
+  background:
+    radial-gradient(circle, rgba(34, 211, 238, 0.2), transparent 58%),
+    radial-gradient(circle, transparent 62%, rgba(245, 197, 66, 0.22) 63% 64%, transparent 65%);
+  opacity: 0.5;
 }
 
 .hero-orbit {
   position: absolute;
-  inset: -1.25rem;
+  inset: -1.18rem;
   z-index: -1;
-  border: 1px solid rgba(34, 211, 238, 0.2);
+  border: 1px solid rgba(34, 211, 238, 0.22);
   border-radius: inherit;
   background:
-    linear-gradient(90deg, transparent 44%, rgba(245, 197, 66, 0.9) 45% 47%, transparent 48%),
-    linear-gradient(0deg, transparent 63%, rgba(34, 211, 238, 0.56) 64% 65%, transparent 66%);
-  mask-image: radial-gradient(circle, transparent 57%, black 58%);
-  animation: hero-orbit 12s linear infinite;
+    conic-gradient(
+      from 0deg,
+      rgba(245, 197, 66, 0.95) 0deg 8deg,
+      transparent 8deg 82deg,
+      rgba(34, 211, 238, 0.72) 82deg 98deg,
+      transparent 98deg 172deg,
+      rgba(245, 197, 66, 0.95) 172deg 188deg,
+      transparent 188deg 262deg,
+      rgba(34, 211, 238, 0.72) 262deg 278deg,
+      transparent 278deg 360deg
+    );
+  box-shadow:
+    0 0 0 1px rgba(245, 197, 66, 0.08),
+    0 0 26px rgba(34, 211, 238, 0.14);
+  mask-image: radial-gradient(circle, transparent 61%, black 62%, black 68%, transparent 69%);
+  -webkit-mask-image: radial-gradient(circle, transparent 61%, black 62%, black 68%, transparent 69%);
+  animation: hero-orbit 16s linear infinite;
+}
+
+.hero-orbit::before,
+.hero-orbit::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.hero-orbit::before {
+  inset: 0.46rem;
+  border: 1px solid rgba(245, 197, 66, 0.24);
+  box-shadow: inset 0 0 18px rgba(245, 197, 66, 0.07);
+}
+
+.hero-orbit::after {
+  inset: -0.48rem;
+  border: 1px dashed rgba(34, 211, 238, 0.18);
+  opacity: 0.72;
 }
 
 .hero-signal {
