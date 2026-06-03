@@ -22,6 +22,27 @@ html {
   color-scheme: dark;
   --back-to-top-surface: #111318;
   --back-to-top-track: rgba(255, 255, 255, 0.16);
+  --terminal-shell-bg: #151617;
+  --terminal-shell-border: rgba(255, 255, 255, 0.1);
+  --terminal-shell-shadow: 0 18px 50px rgba(0, 0, 0, 0.26);
+  --terminal-screen-bg: #121314;
+  --terminal-scanline: rgba(255, 255, 255, 0.025);
+  --terminal-glow: rgba(255, 72, 44, 0.08);
+  --terminal-divider: rgba(255, 255, 255, 0.08);
+  --terminal-text: #f2f2f4;
+  --terminal-muted: #8b8d98;
+  --terminal-output: #9ca3af;
+  --terminal-help: #ff6d6d;
+  --terminal-prompt-user: #57c878;
+  --terminal-prompt-host: #6d9cff;
+  --terminal-input: #f2f2f4;
+  --terminal-caret: #f2f2f4;
+  --terminal-ascii: #ff5d58;
+  --terminal-ascii-shadow:
+    0 0 2px rgba(255, 218, 154, 0.75),
+    0 0 10px rgba(255, 68, 40, 0.65),
+    0 0 22px rgba(255, 55, 38, 0.42),
+    0 0 38px rgba(255, 32, 22, 0.24);
 }
 
 body {
@@ -98,6 +119,26 @@ html.light-mode {
   color-scheme: light;
   --back-to-top-surface: #ffffff;
   --back-to-top-track: rgba(15, 23, 42, 0.16);
+  --terminal-shell-bg: #ffffff;
+  --terminal-shell-border: rgba(15, 23, 42, 0.16);
+  --terminal-shell-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+  --terminal-screen-bg: #f7faff;
+  --terminal-scanline: rgba(15, 23, 42, 0.035);
+  --terminal-glow: rgba(255, 83, 68, 0.09);
+  --terminal-divider: rgba(15, 23, 42, 0.12);
+  --terminal-text: #0f172a;
+  --terminal-muted: #475569;
+  --terminal-output: #334155;
+  --terminal-help: #d73535;
+  --terminal-prompt-user: #047857;
+  --terminal-prompt-host: #2563eb;
+  --terminal-input: #0f172a;
+  --terminal-caret: #0f172a;
+  --terminal-ascii: #e34b4b;
+  --terminal-ascii-shadow:
+    0 0 1px rgba(220, 38, 38, 0.32),
+    0 0 8px rgba(239, 68, 68, 0.22),
+    0 0 16px rgba(239, 68, 68, 0.14);
 }
 
 html.light-mode body {
@@ -173,21 +214,30 @@ html.light-mode .soft-card {
   background: #ffffff;
 }
 
+.terminal-shell {
+  border-color: var(--terminal-shell-border);
+  background: var(--terminal-shell-bg);
+  box-shadow: var(--terminal-shell-shadow);
+  color: var(--terminal-text);
+}
+
 .terminal-screen {
   position: relative;
   background:
     repeating-linear-gradient(
       0deg,
-      rgba(255, 255, 255, 0.025) 0,
-      rgba(255, 255, 255, 0.025) 1px,
+      var(--terminal-scanline) 0,
+      var(--terminal-scanline) 1px,
       transparent 1px,
       transparent 4px
     ),
-    radial-gradient(circle at 50% 8%, rgba(255, 72, 44, 0.08), transparent 36%);
+    radial-gradient(circle at 50% 8%, var(--terminal-glow), transparent 36%),
+    var(--terminal-screen-bg);
+  color: var(--terminal-text);
 }
 
 .terminal-ascii {
-  color: #ff5d58;
+  color: var(--terminal-ascii);
   font-family: "Courier New", Consolas, monospace;
   font-size: clamp(0.62rem, 1.52vw, 1.18rem);
   font-weight: 800;
@@ -198,11 +248,40 @@ html.light-mode .soft-card {
   white-space: pre;
   transform: scaleX(1.06);
   transform-origin: left center;
-  text-shadow:
-    0 0 2px rgba(255, 218, 154, 0.75),
-    0 0 10px rgba(255, 68, 40, 0.65),
-    0 0 22px rgba(255, 55, 38, 0.42),
-    0 0 38px rgba(255, 32, 22, 0.24);
+  text-shadow: var(--terminal-ascii-shadow);
+}
+
+.terminal-muted {
+  color: var(--terminal-muted);
+}
+
+.terminal-output {
+  color: var(--terminal-output);
+}
+
+.terminal-help {
+  color: var(--terminal-help);
+}
+
+.terminal-divider {
+  border-top-color: var(--terminal-divider);
+}
+
+.terminal-prompt {
+  color: var(--terminal-text);
+}
+
+.terminal-prompt-user {
+  color: var(--terminal-prompt-user);
+}
+
+.terminal-prompt-host {
+  color: var(--terminal-prompt-host);
+}
+
+.terminal-input {
+  color: var(--terminal-input);
+  caret-color: var(--terminal-caret);
 }
 
 .terminal-cursor::after {
@@ -212,7 +291,7 @@ html.light-mode .soft-card {
   height: 1rem;
   margin-left: 0.2rem;
   translate: 0 0.15rem;
-  background: #f2f2f4;
+  background: var(--terminal-caret);
   animation: blink 1s steps(1) infinite;
 }
 

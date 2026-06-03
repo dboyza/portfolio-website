@@ -270,7 +270,7 @@ const TerminalWindow = () => {
 
   return (
     <div
-      className="mx-auto min-w-0 w-full max-w-[790px] overflow-hidden rounded-lg border border-white/10 bg-[#151617] text-left shadow-[0_18px_50px_rgba(0,0,0,0.26)]"
+      className="terminal-shell mx-auto min-w-0 w-full max-w-[790px] overflow-hidden rounded-lg border text-left"
       onClick={() => {
         if (hasActiveTextSelection()) {
           return;
@@ -289,17 +289,17 @@ const TerminalWindow = () => {
 |____/ \\___/ \\__, /___\\__,_|  \\___/|____/
              |___/`}
         </pre>
-        <p className="mt-3 text-slate-500">
-          Type <span className="font-bold text-[#ff6d6d]">'help'</span> to list available commands.
+        <p className="terminal-muted mt-3">
+          Type <span className="terminal-help font-bold">'help'</span> to list available commands.
         </p>
-        <div ref={scrollRef} className="mt-4 max-h-64 overflow-y-auto border-t border-white/8 pt-4">
+        <div ref={scrollRef} className="terminal-divider mt-4 max-h-64 overflow-y-auto border-t pt-4">
           {entries.map((entry) => (
             <div key={entry.id} className="mb-4">
-              <p className="break-all font-bold text-slate-100">
-                <span className="text-mint-500">{promptUser}</span>
-                <span className="text-signal-400">{promptHost}</span>:~$ {entry.command}
+              <p className="terminal-prompt break-all font-bold">
+                <span className="terminal-prompt-user">{promptUser}</span>
+                <span className="terminal-prompt-host">{promptHost}</span>:~$ {entry.command}
               </p>
-              <div className="mt-2 space-y-1 text-slate-400">
+              <div className="terminal-output mt-2 space-y-1">
                 {entry.output.map((line, index) => (
                   <p key={`${entry.id}-${index}`} className="break-words">
                     {line}
@@ -310,9 +310,9 @@ const TerminalWindow = () => {
           ))}
 
           <form onSubmit={handleSubmit} className="flex min-w-0 items-center font-bold">
-            <label htmlFor="terminal-command" className="shrink-0 text-slate-100">
-              <span className="text-mint-500">{promptUser}</span>
-              <span className="text-signal-400">{promptHost}</span>:~$
+            <label htmlFor="terminal-command" className="terminal-prompt shrink-0">
+              <span className="terminal-prompt-user">{promptUser}</span>
+              <span className="terminal-prompt-host">{promptHost}</span>:~$
             </label>
             <input
               ref={inputRef}
@@ -320,7 +320,7 @@ const TerminalWindow = () => {
               value={command}
               onChange={(event) => setCommand(event.target.value)}
               onKeyDown={handleKeyDown}
-              className="ml-1 min-w-0 flex-1 bg-transparent text-slate-100 caret-white outline-none"
+              className="terminal-input ml-1 min-w-0 flex-1 bg-transparent outline-none"
               autoComplete="off"
               spellCheck={false}
               aria-label="Terminal command"
