@@ -45,6 +45,7 @@ const TerminalWindow = () => {
   const [entries, setEntries] = useState<TerminalEntry[]>([]);
   const [command, setCommand] = useState('');
   const [history, setHistory] = useState<string[]>([]);
+  const [hasUsedTerminal, setHasUsedTerminal] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const historyIndexRef = useRef<number | null>(null);
@@ -162,7 +163,7 @@ const TerminalWindow = () => {
       return ['about  career  current  projects  skills  certifications  education  contact'];
     }
 
-    return [`command not found: ${rawCommand}`, "Type 'help' to list available commands."];
+    return [`command '${rawCommand}' was not found. Type 'help' to list available commands.`];
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -173,6 +174,8 @@ const TerminalWindow = () => {
     if (!submittedCommand) {
       return;
     }
+
+    setHasUsedTerminal(true);
 
     const output = runCommand(submittedCommand);
 
@@ -203,6 +206,7 @@ const TerminalWindow = () => {
       const current = historyIndexRef.current;
       const nextIndex = current === null ? history.length - 1 : Math.max(0, current - 1);
       historyIndexRef.current = nextIndex;
+      setHasUsedTerminal(true);
       setCommand(history[nextIndex]);
     }
 
@@ -218,11 +222,13 @@ const TerminalWindow = () => {
 
       if (nextIndex >= history.length) {
         historyIndexRef.current = null;
+        setHasUsedTerminal(true);
         setCommand('');
         return;
       }
 
       historyIndexRef.current = nextIndex;
+      setHasUsedTerminal(true);
       setCommand(history[nextIndex]);
     }
   };
@@ -249,6 +255,7 @@ const TerminalWindow = () => {
       const nextCommand = `${command.slice(0, start)}${normalizedPaste}${command.slice(end)}`;
       const nextCursorPosition = start + normalizedPaste.length;
 
+      setHasUsedTerminal(true);
       setCommand(nextCommand);
       requestAnimationFrame(() => {
         inputRef.current?.setSelectionRange(nextCursorPosition, nextCursorPosition);
@@ -308,10 +315,18 @@ const TerminalWindow = () => {
               ref={inputRef}
               id="terminal-command"
               value={command}
-              onChange={(event) => setCommand(event.target.value)}
+              onChange={(event) => {
+                if (event.target.value.length > 0) {
+                  setHasUsedTerminal(true);
+                }
+
+                setCommand(event.target.value);
+              }}
               onKeyDown={handleKeyDown}
               className="terminal-input ml-1 min-w-0 flex-1 bg-transparent outline-none"
-              placeholder="Type 'help' to list available commands."
+              placeholder={
+                hasUsedTerminal ? undefined : "Type 'help' to list available commands."
+              }
               autoComplete="off"
               spellCheck={false}
               aria-label="Terminal command"
