@@ -102,7 +102,12 @@ const TerminalWindow = () => {
     }
 
     if (normalized === 'current' || normalized === 'focus' || normalized === 'learning') {
-      return careerDirection.currentlyBuilding.map((item) => `- ${item}`);
+      return [
+        'Current role: DevSecOps Engineer at Lockheed Martin',
+        '',
+        'Currently sharpening:',
+        ...careerDirection.currentlyBuilding.map((item) => `- ${item}`),
+      ];
     }
 
     if (normalized === 'skills') {
