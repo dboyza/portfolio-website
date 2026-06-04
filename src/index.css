@@ -42,15 +42,15 @@ html {
   --terminal-shell-border: rgba(142, 163, 189, 0.16);
   --terminal-shell-shadow: 0 18px 50px rgba(1, 8, 20, 0.36);
   --terminal-screen-bg: #090d13;
-  --terminal-scanline: rgba(142, 163, 189, 0.026);
-  --terminal-glow: rgba(255, 72, 44, 0.08);
+  --terminal-scanline: rgba(142, 163, 189, 0.016);
+  --terminal-glow: rgba(255, 72, 44, 0.045);
   --terminal-divider: rgba(142, 163, 189, 0.12);
   --terminal-text: #f8fafc;
-  --terminal-muted: #8ea3bd;
-  --terminal-output: #b7c4d4;
-  --terminal-help: #ff6d6d;
-  --terminal-prompt-user: #22c55e;
-  --terminal-prompt-host: #60a5fa;
+  --terminal-muted: #9aaabd;
+  --terminal-output: #d2d9e3;
+  --terminal-help: #ff8b8b;
+  --terminal-prompt-user: #5ee787;
+  --terminal-prompt-host: #79c0ff;
   --terminal-input: #f8fafc;
   --terminal-caret: #f8fafc;
   --terminal-ascii: #ff5a57;
@@ -535,8 +535,8 @@ html.light-mode {
   --terminal-shell-border: rgba(15, 23, 42, 0.16);
   --terminal-shell-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
   --terminal-screen-bg: #f7faff;
-  --terminal-scanline: rgba(15, 23, 42, 0.035);
-  --terminal-glow: rgba(255, 83, 68, 0.09);
+  --terminal-scanline: rgba(15, 23, 42, 0.022);
+  --terminal-glow: rgba(255, 83, 68, 0.05);
   --terminal-divider: rgba(15, 23, 42, 0.12);
   --terminal-text: #0f172a;
   --terminal-muted: #475569;
@@ -694,6 +694,13 @@ html.light-mode .hero-identity::after {
 
 .terminal-screen {
   position: relative;
+  font-family:
+    "Cascadia Mono", "Cascadia Code", Consolas, "SFMono-Regular", "Liberation Mono",
+    Menlo, monospace;
+  font-size: 0.875rem;
+  font-variant-ligatures: none;
+  letter-spacing: 0;
+  line-height: 1.58;
   background:
     repeating-linear-gradient(
       0deg,
@@ -745,10 +752,12 @@ html.light-mode .hero-identity::after {
 
 .terminal-muted {
   color: var(--terminal-muted);
+  line-height: 1.55;
 }
 
 .terminal-output {
   color: var(--terminal-output);
+  font-weight: 500;
 }
 
 .terminal-help {
@@ -761,6 +770,7 @@ html.light-mode .hero-identity::after {
 
 .terminal-prompt {
   color: var(--terminal-text);
+  font-weight: 600;
 }
 
 .terminal-prompt-user {
@@ -771,9 +781,24 @@ html.light-mode .hero-identity::after {
   color: var(--terminal-prompt-host);
 }
 
+.terminal-path {
+  color: var(--terminal-text);
+}
+
+.terminal-command-text {
+  color: var(--terminal-input);
+  font-weight: 700;
+}
+
+.terminal-line {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
 .terminal-input {
   color: var(--terminal-input);
   caret-color: var(--terminal-caret);
+  font-weight: 700;
 }
 
 .terminal-cursor::after {

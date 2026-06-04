@@ -26,21 +26,6 @@ type TerminalEntry = {
 const promptUser = 'visitor';
 const promptHost = '@dylan-portfolio';
 
-const commandNames = [
-  'about',
-  'career',
-  'current',
-  'skills',
-  'projects',
-  'certs',
-  'education',
-  'contact',
-  'email',
-  'resume',
-  'clear',
-  'help',
-];
-
 const downloadFile = (href: string) => {
   const link = document.createElement('a');
   link.href = href;
@@ -88,9 +73,14 @@ const TerminalWindow = () => {
 
     if (normalized === 'help') {
       return [
-        `Commands: ${commandNames.join(', ')}`,
-        'Commands print section details here in the terminal.',
-        'Try `career` for role direction or `current` for active focus areas.',
+        'Available commands:',
+        '  about      career     current    skills',
+        '  projects   certs      education  contact',
+        '  email      resume     clear      help',
+        '',
+        'Run a command to print that section here.',
+        'Try: career',
+        'Try: current',
       ];
     }
 
@@ -295,13 +285,15 @@ const TerminalWindow = () => {
         <div ref={scrollRef} className="terminal-divider mt-4 max-h-64 overflow-y-auto border-t pt-4">
           {entries.map((entry) => (
             <div key={entry.id} className="mb-4">
-              <p className="terminal-prompt break-all font-bold">
+              <p className="terminal-line terminal-prompt">
                 <span className="terminal-prompt-user">{promptUser}</span>
-                <span className="terminal-prompt-host">{promptHost}</span>:~$ {entry.command}
+                <span className="terminal-prompt-host">{promptHost}</span>
+                <span className="terminal-path">:~$</span>{' '}
+                <span className="terminal-command-text">{entry.command}</span>
               </p>
               <div className="terminal-output mt-2 space-y-1">
                 {entry.output.map((line, index) => (
-                  <p key={`${entry.id}-${index}`} className="break-words">
+                  <p key={`${entry.id}-${index}`} className="terminal-line">
                     {line}
                   </p>
                 ))}
@@ -309,10 +301,11 @@ const TerminalWindow = () => {
             </div>
           ))}
 
-          <form onSubmit={handleSubmit} className="flex min-w-0 items-center font-bold">
+          <form onSubmit={handleSubmit} className="terminal-line flex min-w-0 items-center">
             <label htmlFor="terminal-command" className="terminal-prompt shrink-0">
               <span className="terminal-prompt-user">{promptUser}</span>
-              <span className="terminal-prompt-host">{promptHost}</span>:~$
+              <span className="terminal-prompt-host">{promptHost}</span>
+              <span className="terminal-path">:~$</span>
             </label>
             <input
               ref={inputRef}
