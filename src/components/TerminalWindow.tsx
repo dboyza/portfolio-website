@@ -96,6 +96,7 @@ const TerminalWindow = () => {
     if (normalized === 'career' || normalized === 'looking') {
       return [
         'Career direction:',
+        'Current role: DevSecOps Engineer at Lockheed Martin',
         careerDirection.lookingFor,
         `Currently sharpening: ${careerDirection.currentlyBuilding.join(', ')}`,
       ];

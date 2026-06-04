@@ -72,7 +72,7 @@ export const aboutParagraphs = [
 
 export const careerDirection: CareerDirection = {
   lookingFor:
-    'I am looking for cloud, DevOps, infrastructure, automation, or security-adjacent roles where I can help teams build reliable systems with AWS, Terraform, Linux, and Python.',
+    'I’m currently building DevSecOps experience at Lockheed Martin while steering my career toward cloud DevOps, cloud platform engineering, and infrastructure automation with AWS, Terraform, Linux, and Python.',
   currentlyBuilding: [
     'AWS architecture',
     'Terraform',

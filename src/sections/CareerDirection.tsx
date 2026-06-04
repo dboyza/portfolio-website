@@ -16,7 +16,7 @@ const CareerDirection = () => {
             <div className="flex items-center gap-3 text-gold-500">
               <Compass size={22} />
               <h3 className="text-lg font-extrabold text-slate-100">
-                What I am looking for
+                Where I am headed
               </h3>
             </div>
             <p className="mt-4 text-sm font-semibold leading-7 text-slate-400">
