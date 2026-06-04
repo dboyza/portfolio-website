@@ -279,9 +279,6 @@ const TerminalWindow = () => {
 |____/ \\___/ \\__, /___\\__,_|  \\___/|____/
              |___/`}
         </pre>
-        <p className="terminal-muted mt-3">
-          Type <span className="terminal-help font-bold">'help'</span> to list available commands.
-        </p>
         <div ref={scrollRef} className="terminal-divider mt-4 max-h-64 overflow-y-auto border-t pt-4">
           {entries.map((entry) => (
             <div key={entry.id} className="mb-4">
@@ -314,6 +311,7 @@ const TerminalWindow = () => {
               onChange={(event) => setCommand(event.target.value)}
               onKeyDown={handleKeyDown}
               className="terminal-input ml-1 min-w-0 flex-1 bg-transparent outline-none"
+              placeholder="Type 'help' to list available commands."
               autoComplete="off"
               spellCheck={false}
               aria-label="Terminal command"

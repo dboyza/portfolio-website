@@ -801,6 +801,12 @@ html.light-mode .hero-identity::after {
   font-weight: 700;
 }
 
+.terminal-input::placeholder {
+  color: var(--terminal-muted);
+  font-weight: 500;
+  opacity: 0.48;
+}
+
 .terminal-cursor::after {
   content: "";
   display: inline-block;
