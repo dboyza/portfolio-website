@@ -127,7 +127,13 @@ export const skillGroups: SkillGroup[] = [
     title: 'Cloud & Infrastructure',
     icon: 'cloud',
     summary: 'Designing repeatable cloud and network foundations for secure workloads.',
-    items: ['AWS', 'Terraform', 'Ansible', 'DNS', 'Load Balancing', 'Active Directory', 'Group Policy'],
+    items: ['AWS', 'Terraform', 'Ansible', 'Load Balancing'],
+  },
+  {
+    title: 'System Administration',
+    icon: 'network',
+    summary: 'Managing identity, access, naming, and Linux integration for enterprise environments.',
+    items: ['DNS', 'Active Directory', 'Group Policy', 'SSSD', 'BeyondTrust'],
   },
   {
     title: 'DevOps & Automation',

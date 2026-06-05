@@ -18,6 +18,7 @@ const iconMap: Record<string, LucideIcon> = {
   settings: Settings,
   boxes: Boxes,
   database: Database,
+  network: Network,
   server: Server,
   shield: Shield,
 };
