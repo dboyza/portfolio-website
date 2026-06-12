@@ -52,7 +52,7 @@ const skillLogos: Record<string, string> = {
   Jira: deviconUrl('jira'),
   Ubuntu: deviconUrl('ubuntu'),
   CentOS: deviconUrl('centos'),
-  RHEL: '/skill-redhat.svg',
+  RHEL: simpleIconUrl('redhat', 'EE0000'),
   'Amazon Linux': '/skill-amazon-linux.svg',
   Linux: simpleIconUrl('linux', 'FCC624'),
   Traefik: simpleIconUrl('traefikproxy', '24A1C1'),
