@@ -1,8 +1,13 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M12 45.5h41c3.3 0 6-2.7 6-6 0-3.1-2.4-5.7-5.4-5.9C52.1 24.2 44 17 34.1 17c-7.5 0-14.2 4.3-17.2 11C10.3 29 5 34.6 5 41.4c0 2.3 1.8 4.1 4.1 4.1H12z" fill="#1f3359"/>
-  <path d="M12 45.5h41c3.3 0 6-2.7 6-6 0-3.1-2.4-5.7-5.4-5.9C52.1 24.2 44 17 34.1 17c-7.5 0-14.2 4.3-17.2 11C10.3 29 5 34.6 5 41.4c0 2.3 1.8 4.1 4.1 4.1H12z" stroke="#f5c044" stroke-width="3" stroke-linejoin="round"/>
-  <path d="M20 26c10 0 11 16 24 16" stroke="#6d9cff" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 8"/>
-  <path d="M18 26h8M40 42h8" stroke="#57c878" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="20" cy="26" r="3.5" fill="#57c878"/>
-  <circle cx="44" cy="42" r="3.5" fill="#57c878"/>
+  <title>AWS CloudTrail</title>
+  <rect x="6" y="6" width="52" height="52" rx="10" fill="#C925D1"/>
+  <rect x="11" y="11" width="42" height="42" rx="6" fill="#8C1D9B"/>
+  <path d="M18 21h28" stroke="#F8FAFC" stroke-width="3" stroke-linecap="round"/>
+  <path d="M18 32h28" stroke="#F8FAFC" stroke-width="3" stroke-linecap="round"/>
+  <path d="M18 43h28" stroke="#F8FAFC" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="18" cy="21" r="4" fill="#F8FAFC"/>
+  <circle cx="34" cy="32" r="4" fill="#F8FAFC"/>
+  <circle cx="46" cy="43" r="4" fill="#F8FAFC"/>
+  <path d="M18 21C25 21 27 32 34 32C40 32 40 43 46 43" stroke="#F8FAFC" stroke-opacity="0.64" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 7"/>
+  <path d="M24 21H46M18 32H28M18 43H40" stroke="#F8FAFC" stroke-opacity="0.58" stroke-width="2.5" stroke-linecap="round"/>
 </svg>
