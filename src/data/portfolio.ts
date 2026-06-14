@@ -196,7 +196,7 @@ export const certifications: Certification[] = [
     name: 'HashiCorp Certified: Terraform Associate (004)',
     issuer: 'HashiCorp',
     href: 'https://www.credly.com/badges/f740cfc2-7246-4752-9875-07c8fb841e05/public_url',
-    badge: '/badge-terraform.svg',
+    badge: '/badge-terraform-associate-004.png',
     icon: 'terraform',
   },
   {
