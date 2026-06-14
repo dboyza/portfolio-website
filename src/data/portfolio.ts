@@ -193,6 +193,13 @@ export const certifications: Certification[] = [
     icon: 'aws',
   },
   {
+    name: 'HashiCorp Certified: Terraform Associate (004)',
+    issuer: 'HashiCorp',
+    href: 'https://www.credly.com/badges/f740cfc2-7246-4752-9875-07c8fb841e05/public_url',
+    badge: '/badge-terraform.svg',
+    icon: 'terraform',
+  },
+  {
     name: 'Security+',
     issuer: 'CompTIA',
     href: 'https://cp.certmetrics.com/CompTIA/en/public/verify/credential/22FVXVFQ8E1ECZYJ',
