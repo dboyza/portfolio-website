@@ -45,9 +45,9 @@ export type CareerDirection = {
 export const profile = {
   name: 'Dylan Boyza',
   greeting: "Hi! I'm Dylan Boyza",
-  title: 'Cloud & DevSecOps Engineer',
+  title: 'Software Engineer',
   location: 'Pennsylvania',
-  credentialLine: 'AWS, Ansible, Terraform, Python, Linux',
+  credentialLine: 'MLOps, AWS, Kubernetes, Python, Terraform',
   focus: 'Loves technology',
   email: 'dboyza19@gmail.com',
   linkedinHref: 'https://www.linkedin.com/in/dboyza/',
@@ -66,20 +66,20 @@ export const navItems = [
 ];
 
 export const aboutParagraphs = [
-  'I’m a DevSecOps Engineer working at Lockheed Martin, focused on cloud security, infrastructure automation, and secure platform engineering. I work with AWS, Ansible, Terraform, Python, Linux/Windows systems, and CI/CD tools to build reliable, repeatable environments and reduce manual work.',
-  'I enjoy turning messy or manual processes into scalable systems that are easier for teams to operate. I’m especially interested in cloud platform engineering, backend infrastructure, AI/ML platform support, and automation tools that improve both speed and security.',
+  'I’m a Software Engineer at JPMorgan Chase working on MLOps systems and automation. Previously, I worked at Lockheed Martin in DevSecOps.',
+  'I enjoy turning messy or manual processes into scalable systems that are easier for teams to operate. I’m especially interested in ML platform engineering, cloud infrastructure, backend systems, and automation tools that improve speed, reliability, and security.',
 ];
 
 export const careerDirection: CareerDirection = {
   lookingFor:
-    'I’m currently building DevSecOps experience at Lockheed Martin while steering my career toward cloud DevOps, cloud platform engineering, and infrastructure automation with AWS, Terraform, Linux, and Python.',
+    'I’m building MLOps experience at JPMorgan Chase while growing deeper expertise in ML platform engineering, cloud infrastructure, and production automation.',
   currentlyBuilding: [
-    'AWS architecture',
-    'Terraform',
+    'MLOps',
+    'ML platform engineering',
+    'Kubernetes',
     'Python automation',
-    'Linux operations',
-    'Cloud security',
-    'Portfolio projects',
+    'Cloud infrastructure',
+    'Observability',
   ],
 };
 

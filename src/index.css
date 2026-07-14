@@ -228,8 +228,7 @@ button:focus-visible {
   animation: geo-drift 18s ease-in-out infinite alternate;
 }
 
-.geo-line,
-.geo-node {
+.geo-line {
   position: absolute;
   display: block;
 }
@@ -253,34 +252,6 @@ button:focus-visible {
   bottom: 22%;
   rotate: 16deg;
   animation-delay: -6s;
-}
-
-.geo-node {
-  width: 0.45rem;
-  height: 0.45rem;
-  border-radius: 999px;
-  background: var(--site-gold);
-  box-shadow:
-    0 0 16px rgba(245, 197, 66, 0.48),
-    0 0 34px rgba(34, 211, 238, 0.34);
-  animation: geo-node-pulse 3.8s ease-in-out infinite alternate;
-}
-
-.geo-node-one {
-  top: 18%;
-  left: 18%;
-}
-
-.geo-node-two {
-  top: 58%;
-  right: 16%;
-  animation-delay: -1.2s;
-}
-
-.geo-node-three {
-  bottom: 14%;
-  left: 48%;
-  animation-delay: -2.4s;
 }
 
 .premium-surface {
@@ -870,18 +841,6 @@ html.light-mode .projects-wip-badge small {
   }
 }
 
-@keyframes geo-node-pulse {
-  from {
-    opacity: 0.38;
-    transform: scale(0.82);
-  }
-
-  to {
-    opacity: 0.95;
-    transform: scale(1.12);
-  }
-}
-
 @keyframes hero-halo-spin {
   to {
     transform: rotate(1turn);
@@ -916,7 +875,6 @@ html.light-mode .projects-wip-badge small {
   .geometric-bg::before,
   .geometric-bg::after,
   .geo-line,
-  .geo-node,
   .hero-identity::before,
   .terminal-screen::before,
   .terminal-ascii {

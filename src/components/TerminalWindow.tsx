@@ -96,7 +96,7 @@ const TerminalWindow = () => {
     if (normalized === 'career' || normalized === 'looking') {
       return [
         'Career direction:',
-        'Current role: DevSecOps Engineer at Lockheed Martin',
+        'Current role: Software Engineer working on MLOps at JPMorgan Chase',
         careerDirection.lookingFor,
         `Currently sharpening: ${careerDirection.currentlyBuilding.join(', ')}`,
       ];
@@ -104,7 +104,7 @@ const TerminalWindow = () => {
 
     if (normalized === 'current' || normalized === 'focus' || normalized === 'learning') {
       return [
-        'Current role: DevSecOps Engineer at Lockheed Martin',
+        'Current role: Software Engineer working on MLOps at JPMorgan Chase',
         '',
         'Currently sharpening:',
         ...careerDirection.currentlyBuilding.map((item) => `- ${item}`),

@@ -2,7 +2,7 @@ import { BadgeCheck, Download, Mail, MapPin, Terminal } from 'lucide-react';
 import TerminalWindow from '../components/TerminalWindow';
 import { profile } from '../data/portfolio';
 
-const heroSignals = ['Cloud Security', 'Infrastructure Automation', 'Secure Platforms'];
+const heroSignals = ['MLOps', 'ML Platforms', 'Cloud Infrastructure'];
 
 const LinkedInIcon = () => (
   <svg
