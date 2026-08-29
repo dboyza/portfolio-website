@@ -66,16 +66,16 @@ export const navItems = [
 ];
 
 export const aboutParagraphs = [
-  'I’m a Software Engineer at JPMorgan Chase working on MLOps systems and automation. Previously, I worked at Lockheed Martin in DevSecOps.',
-  'I enjoy turning messy or manual processes into scalable systems that are easier for teams to operate. I’m especially interested in ML platform engineering, cloud infrastructure, backend systems, and automation tools that improve speed, reliability, and security.',
+  'I am currently a Software Engineer at JPMorgan Chase working on an internal agentic platform and model serving.',
+  'I’m especially interested in platform engineering, cloud infrastructure, backend systems, and automation tools that improve speed, reliability, and security.',
 ];
 
 export const careerDirection: CareerDirection = {
   lookingFor:
-    'I’m building MLOps experience at JPMorgan Chase while growing deeper expertise in ML platform engineering, cloud infrastructure, and production automation.',
+    'I’m building MLOps experience at JPMorgan Chase while growing deeper expertise in platform engineering, cloud infrastructure, and production automation.',
   currentlyBuilding: [
     'MLOps',
-    'ML platform engineering',
+    'Platform engineering',
     'Kubernetes',
     'Python automation',
     'Cloud infrastructure',

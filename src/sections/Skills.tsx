@@ -117,7 +117,7 @@ const Skills = () => {
             return (
               <section
                 key={group.title}
-                className="capability-card premium-surface motion-lift reveal-on-scroll min-w-0 rounded-lg border border-white/12 bg-white/[0.025] p-4"
+                className="capability-card premium-surface motion-lift reveal-on-scroll min-w-0 rounded-lg border border-white/12 bg-white/[0.025] p-4 xl:last:col-start-2"
                 data-reveal
                 style={{ transitionDelay: `${index * 70}ms` }}
               >

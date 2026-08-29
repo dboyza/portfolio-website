@@ -20,7 +20,7 @@ const Certifications = () => {
             return (
               <article
                 key={certification.name}
-                className="premium-surface motion-lift reveal-on-scroll rounded-lg p-5 text-center"
+                className="premium-surface motion-lift reveal-on-scroll rounded-lg p-5 text-center lg:last:col-start-2"
                 data-reveal
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
