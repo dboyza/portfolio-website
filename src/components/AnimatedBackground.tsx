@@ -19,6 +19,11 @@ interface Star {
   vy: number;
   screenX: number;
   screenY: number;
+  arrivalX: number;
+  arrivalY: number;
+  arrivalDelay: number;
+  arrivalDuration: number;
+  arrivalBend: number;
 }
 
 const COLORS = [
@@ -50,6 +55,7 @@ const MONOGRAM: readonly Stroke[] = monogramStrokes.map(([a, b, c, d]) => [
 
 function makeParticles(count: number) {
   const random = makeRandom(8192);
+  const arrivalRandom = makeRandom(2026);
   const gaussian = () =>
     Math.sqrt(-2 * Math.log(Math.max(random(), 0.00001))) *
     Math.cos(random() * Math.PI * 2);
@@ -102,6 +108,11 @@ function makeParticles(count: number) {
       vy: 0,
       screenX: 0,
       screenY: 0,
+      arrivalX: arrivalRandom() * 1.4 - 0.2,
+      arrivalY: arrivalRandom() * 1.4 - 0.2,
+      arrivalDelay: arrivalRandom() * 0.45,
+      arrivalDuration: 2.2 + arrivalRandom() * 0.8,
+      arrivalBend: (arrivalRandom() - 0.5) * 0.5,
     });
   }
   return groups;
@@ -167,6 +178,9 @@ const AnimatedBackground = ({
     let animationFrame = 0;
     let previousTime = 0;
     let elapsed = 0;
+    // Active animation time keeps the entrance paused with the rest of the scene.
+    // It is never reset on resize, scroll, or when playback resumes.
+    let arrivalElapsed = reducedMotion || pausedRef.current ? 3.45 : 0;
     let viewX = 0;
     let viewY = 0;
     const pointer = {
@@ -254,9 +268,29 @@ const AnimatedBackground = ({
         context.beginPath();
         for (const star of stars) {
           const depth = 1 + star.z * 0.16;
-          const baseX =
+          let baseX =
             centerX + (star.x * cosine + star.z * sine) * radius * depth;
-          const baseY = centerY + (star.y + star.z * pitch) * radius * depth;
+          let baseY = centerY + (star.y + star.z * pitch) * radius * depth;
+          if (arrivalElapsed < 3.45) {
+            const progress = Math.max(
+              0,
+              Math.min(
+                1,
+                (arrivalElapsed - star.arrivalDelay) / star.arrivalDuration,
+              ),
+            );
+            // Staggered, curved flights gather stars from across and beyond the
+            // viewport. Smoothstep brings each one to rest without a final snap.
+            const travel = progress * progress * (3 - 2 * progress);
+            const remaining = 1 - travel;
+            const fromX = star.arrivalX * width;
+            const fromY = star.arrivalY * height;
+            const flightX = baseX - fromX;
+            const flightY = baseY - fromY;
+            const bend = Math.sin(progress * Math.PI) * star.arrivalBend;
+            baseX = fromX + flightX * travel - flightY * bend * remaining;
+            baseY = fromY + flightY * travel + flightX * bend * remaining;
+          }
           let forceX = 0;
           let forceY = 0;
           if (inside && delta > 0) {
@@ -338,6 +372,7 @@ const AnimatedBackground = ({
         : 0;
       previousTime = time;
       elapsed += delta;
+      arrivalElapsed = Math.min(3.45, arrivalElapsed + delta);
       draw(delta);
       animationFrame = window.requestAnimationFrame(animate);
     };
@@ -398,6 +433,7 @@ const AnimatedBackground = ({
     const onMotionChange = () => {
       reducedMotion = motionPreference.matches;
       if (reducedMotion) {
+        arrivalElapsed = 3.45;
         elapsed = 0;
         viewX = 0;
         viewY = 0;
