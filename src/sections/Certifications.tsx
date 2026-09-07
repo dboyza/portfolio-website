@@ -1,59 +1,51 @@
-import { Award, Cloud, ExternalLink, Shield } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
 import { certifications } from '../data/portfolio';
 
-const Certifications = () => {
-  return (
-    <section id="certifications" className="section-rule py-10 sm:py-16">
-      <div className="wide-shell">
-        <SectionHeading title="Certifications" />
-
-        <div className="mt-12 grid gap-x-12 gap-y-20 sm:grid-cols-2 lg:grid-cols-3">
-          {certifications.map((certification, index) => {
-            const SmallIcon =
-              certification.icon === 'aws'
-                ? Cloud
-                : certification.icon === 'kube' || certification.icon === 'security'
-                  ? Shield
-                  : Award;
-
-            return (
-              <article
-                key={certification.name}
-                className="premium-surface motion-lift reveal-on-scroll rounded-lg p-5 text-center lg:last:col-start-2"
-                data-reveal
-                style={{ transitionDelay: `${index * 80}ms` }}
+const Certifications = () => (
+  <section id="certifications" className="section-rule">
+    <div className="wide-shell">
+      <SectionHeading title="Certifications" />
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {certifications.map((certification, index) => (
+          <article
+            key={certification.name}
+            className="premium-surface motion-lift reveal-on-scroll flex flex-col rounded-2xl p-6"
+            data-reveal
+            style={{ transitionDelay: `${index * 60}ms` }}
+          >
+            <div className="mb-8 flex h-24 items-center">
+              <img
+                src={certification.badge}
+                alt=""
+                className="h-24 w-24 object-contain"
+                loading="lazy"
+              />
+            </div>
+            <h3 className="text-base font-medium leading-7 tracking-tight text-slate-100">
+              {certification.name}
+            </h3>
+            <p className="mt-3 text-xs leading-6 text-slate-400">
+              Issued by {certification.issuer}
+            </p>
+            <div className="mt-auto pt-7">
+              <a
+                href={certification.href}
+                className="group inline-flex items-center gap-2 py-1 text-xs text-slate-300 transition hover:text-sky-200"
               >
-                <img
-                  src={certification.badge}
-                  alt=""
-                  className="mx-auto h-32 w-32 object-contain"
-                  loading="lazy"
+                View Credential
+                <ArrowUpRight
+                  size={15}
+                  className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none"
+                  aria-hidden="true"
                 />
-
-                <h3 className="mx-auto mt-7 max-w-72 text-center text-lg font-semibold leading-7 text-slate-200">
-                  <SmallIcon size={18} className="mr-2 inline-block align-[-2px] text-gold-500" />
-                  {certification.name}
-                </h3>
-
-                <p className="mt-3 text-sm font-bold text-slate-500">
-                  Issued by {certification.issuer}
-                </p>
-
-                <a
-                  href={certification.href}
-                  className="motion-pill icon-nudge mt-5 inline-flex items-center gap-3 rounded-md border border-white/16 px-4 py-2 text-xs font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
-                >
-                  <ExternalLink size={15} className="text-gold-500" />
-                  View Credential
-                </a>
-              </article>
-            );
-          })}
-        </div>
+              </a>
+            </div>
+          </article>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Certifications;

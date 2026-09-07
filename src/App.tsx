@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import AnimatedBackground from './components/AnimatedBackground';
 import BackToTop from './components/BackToTop';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -14,7 +13,9 @@ import Skills from './sections/Skills';
 
 function App() {
   useEffect(() => {
-    const revealItems = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+    const revealItems = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-reveal]'),
+    );
     const observedItems = new WeakSet<HTMLElement>();
 
     if (!('IntersectionObserver' in window)) {
@@ -33,7 +34,7 @@ function App() {
           observer.unobserve(entry.target);
         });
       },
-      { rootMargin: '0px 0px -12% 0px', threshold: 0.16 },
+      { rootMargin: '0px 0px -48px 0px', threshold: 0.04 },
     );
 
     const observeRevealItem = (item: HTMLElement) => {
@@ -58,7 +59,9 @@ function App() {
             observeRevealItem(node);
           }
 
-          node.querySelectorAll<HTMLElement>('[data-reveal]').forEach(observeRevealItem);
+          node
+            .querySelectorAll<HTMLElement>('[data-reveal]')
+            .forEach(observeRevealItem);
         });
       });
     });
@@ -72,10 +75,12 @@ function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-ink-950 text-slate-100">
-      <AnimatedBackground />
+    <div className="site-root relative min-h-screen text-slate-100">
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
       <Header />
-      <main className="relative z-10">
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <About />
         <CareerDirection />

@@ -1,12 +1,46 @@
 <svg width="900" height="506" viewBox="0 0 900 506" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="900" height="506" rx="14" fill="#eef4ff"/>
-  <rect x="66" y="72" width="204" height="126" rx="12" fill="#fff7ed" stroke="#f59e0b"/>
-  <rect x="348" y="72" width="204" height="126" rx="12" fill="#eef2ff" stroke="#6366f1"/>
-  <rect x="630" y="72" width="204" height="126" rx="12" fill="#fdf2f8" stroke="#ec4899"/>
-  <path d="M168 254h564M168 198v56M450 198v56M732 198v56" stroke="#475569" stroke-width="5" stroke-linecap="round"/>
-  <rect x="128" y="178" width="80" height="40" rx="8" fill="#22c55e"/>
-  <rect x="410" y="178" width="80" height="40" rx="8" fill="#3b82f6"/>
-  <rect x="692" y="178" width="80" height="40" rx="8" fill="#ec4899"/>
-  <text x="450" y="338" text-anchor="middle" fill="#0f172a" font-family="Arial" font-size="30" font-weight="800">Cloud project placeholder</text>
-  <text x="450" y="378" text-anchor="middle" fill="#334155" font-family="Arial" font-size="18">Replace with a real project screenshot later</text>
+  <defs>
+    <radialGradient id="cloud-light" cx="0" cy="0" r="1" gradientTransform="translate(450 200) rotate(90) scale(300 470)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#122337"/>
+      <stop offset="1" stop-color="#080C13"/>
+    </radialGradient>
+    <linearGradient id="cloud-line" x1="200" y1="130" x2="700" y2="340" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C9E8FF" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#7DAFD7" stop-opacity=".25"/>
+    </linearGradient>
+    <pattern id="cloud-grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0V36" stroke="#B5DAF5" stroke-opacity=".035"/>
+    </pattern>
+    <filter id="cloud-glow" x="-300%" y="-300%" width="700%" height="700%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+  <rect width="900" height="506" fill="#080C13"/>
+  <rect width="900" height="506" fill="url(#cloud-light)"/>
+  <rect width="900" height="506" fill="url(#cloud-grid)"/>
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="11" letter-spacing="2" fill="#7B94AD">
+    <text x="42" y="43">INFRASTRUCTURE / 01</text>
+    <text x="858" y="43" text-anchor="end">DEVELOPMENT PREVIEW</text>
+  </g>
+  <g stroke="url(#cloud-line)" stroke-width="1.5">
+    <ellipse cx="450" cy="232" rx="287" ry="116" stroke-opacity=".17"/>
+    <ellipse cx="450" cy="232" rx="214" ry="86" stroke-opacity=".12"/>
+    <path d="M450 196V236M235 274V253C235 243 242 236 252 236H648C658 236 665 243 665 253V274M450 236V274"/>
+    <rect x="388" y="101" width="124" height="95" rx="15" fill="#0C1622"/>
+    <path d="M429 163H472C482 163 487 157 487 149C487 141 481 135 473 135C470 121 458 117 448 121C443 123 439 127 437 134C425 130 415 138 415 148C415 157 421 163 429 163Z" stroke="#C2E3FC" stroke-opacity=".8"/>
+    <rect x="170" y="274" width="130" height="66" rx="10" fill="#0B141F"/>
+    <rect x="385" y="274" width="130" height="66" rx="10" fill="#0B141F"/>
+    <rect x="600" y="274" width="130" height="66" rx="10" fill="#0B141F"/>
+    <path d="M195 298H244M195 314H266M410 298H459M410 314H481M625 298H674M625 314H696" stroke-opacity=".5"/>
+  </g>
+  <g fill="#B8DFFF">
+    <circle cx="450" cy="236" r="8" opacity=".6" filter="url(#cloud-glow)"/>
+    <circle cx="450" cy="236" r="3"/>
+    <circle cx="271" cy="298" r="2" opacity=".7"/>
+    <circle cx="486" cy="298" r="2" opacity=".7"/>
+    <circle cx="701" cy="298" r="2" opacity=".7"/>
+  </g>
+  <path d="M42 386H858" stroke="#B5DAF5" stroke-opacity=".1"/>
+  <text x="42" y="428" fill="#DCE8F3" font-family="ui-sans-serif, system-ui, sans-serif" font-size="25" font-weight="400" letter-spacing="-.5">Cloud project placeholder</text>
+  <text x="42" y="461" fill="#869AAF" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="16">Replace with a real project screenshot later</text>
 </svg>

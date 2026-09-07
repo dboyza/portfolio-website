@@ -1,106 +1,92 @@
-import { BadgeCheck, Download, Mail, MapPin, Terminal } from 'lucide-react';
-import TerminalWindow from '../components/TerminalWindow';
+import {
+  ArrowDown,
+  ArrowUpRight,
+  Download,
+  Mail,
+  MapPin,
+  Pause,
+  Play,
+} from 'lucide-react';
+import { useState } from 'react';
+import AnimatedBackground from '../components/AnimatedBackground';
 import { profile } from '../data/portfolio';
 
 const heroSignals = ['MLOps', 'ML Platforms', 'Cloud Infrastructure'];
 
-const LinkedInIcon = () => (
-  <svg
-    aria-hidden="true"
-    className="h-5 w-5 rounded-sm bg-[#0a66c2] p-0.5 text-white"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-  >
-    <path d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.68H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.41a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.04H3.54V8.98H7.1v11.47Z" />
-  </svg>
-);
-
 const Hero = () => {
-  const titleParts =
-    profile.title === 'Cloud & DevSecOps Engineer'
-      ? ['Cloud &', 'DevSecOps', 'Engineer']
-      : [profile.title];
+  const [paused, setPaused] = useState(false);
 
   return (
-    <section
-      id="home"
-      className="grid min-h-screen place-items-center px-4 pt-24 pb-20 text-center"
-    >
-      <div className="w-full">
-        <div className="hero-identity mx-auto">
-          <img
-            src={profile.avatar}
-            alt={`${profile.name} profile portrait`}
-            className="motion-lift relative z-10 mx-auto h-44 w-44 rounded-full border-4 border-gold-500 bg-ink-900 object-cover shadow-2xl shadow-signal-500/10"
-          />
-        </div>
-
-        <p className="mt-8 text-xl font-extrabold text-slate-500">
-          {profile.greeting}
-        </p>
-        <h1 className="mx-auto mt-4 max-w-4xl text-[2.25rem] font-extrabold leading-[1.08] tracking-tight text-slate-100 min-[420px]:text-[2.6rem] sm:text-5xl">
-          {titleParts.map((part, index) => (
-            <span key={part} className="block sm:inline">
-              {index > 0 && <span className="hidden sm:inline"> </span>}
-              {part}
-            </span>
-          ))}
-        </h1>
-
-        <div className="mx-auto mt-6 flex max-w-4xl flex-col items-center justify-center gap-3 text-sm font-bold text-slate-500 sm:flex-row sm:flex-wrap sm:gap-x-5 sm:gap-y-2">
-          <span className="flex w-full max-w-80 items-center justify-center gap-1.5 text-center sm:w-auto sm:max-w-none">
-            <MapPin size={17} className="shrink-0" fill="currentColor" />
-            <span className="min-w-0 break-words">{profile.location}</span>
-          </span>
-          <span className="flex w-full max-w-80 items-start justify-center gap-1.5 text-center sm:w-auto sm:max-w-none">
-            <BadgeCheck size={17} className="mt-0.5 shrink-0" fill="currentColor" />
-            <span className="min-w-0 break-words">{profile.credentialLine}</span>
-          </span>
-          <span className="flex w-full max-w-80 items-center justify-center gap-1.5 text-center sm:w-auto sm:max-w-none">
-            <Terminal size={18} className="shrink-0" />
-            <span className="min-w-0 break-words">{profile.focus}</span>
-          </span>
-        </div>
-
-        <div className="mx-auto mt-5 flex max-w-3xl flex-wrap items-center justify-center gap-2">
-          {heroSignals.map((signal) => (
-            <span
-              key={signal}
-              className="hero-signal motion-pill inline-flex items-center gap-2 rounded-full border border-white/14 px-3 py-1.5 text-xs font-black uppercase tracking-[0.12em] text-slate-300"
+    <section id="home" className="hero" tabIndex={-1}>
+      <AnimatedBackground paused={paused} />
+      <div className="hero-shade" aria-hidden="true" />
+      <div className="wide-shell hero-layout">
+        <div className="hero-copy">
+          <p className="hero-greeting">
+            <span className="status-dot" />
+            {profile.greeting}
+          </p>
+          <h1 className="hero-title">
+            {profile.title === 'Software Engineer' ? (
+              <>
+                Software <span>Engineer</span>
+              </>
+            ) : (
+              profile.title
+            )}
+          </h1>
+          <div className="hero-signals" aria-label="Focus areas">
+            {heroSignals.map((signal) => (
+              <span key={signal}>{signal}</span>
+            ))}
+          </div>
+          <div className="hero-actions">
+            <a href={profile.linkedinHref} className="button button-primary">
+              Connect with Me! <ArrowUpRight size={17} />
+            </a>
+            <a
+              href={profile.resumeHref}
+              download="DYLAN_BOYZA_RESUME.pdf"
+              className="button button-secondary"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-gold-500 shadow-[0_0_16px_rgba(245,197,66,0.7)]" />
-              {signal}
+              Download Resume <Download size={16} />
+            </a>
+            <a href={`mailto:${profile.email}`} className="hero-email">
+              Email Me! <Mail size={16} />
+            </a>
+          </div>
+        </div>
+        <div className="galaxy-caption" aria-hidden="true">
+          <span />A little curiosity. An infinite frontier.
+        </div>
+        <div className="hero-bottom">
+          <div className="hero-metadata">
+            <span>
+              <MapPin size={14} />
+              {profile.location}
             </span>
-          ))}
-        </div>
-
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a
-            href={profile.linkedinHref}
-            className="motion-pill inline-flex h-11 min-w-40 items-center justify-center gap-2 rounded-md border border-white/18 px-5 text-sm font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
-          >
-            Connect with Me!
-            <LinkedInIcon />
-          </a>
-          <a
-            href={`mailto:${profile.email}`}
-            className="motion-pill inline-flex h-11 min-w-28 items-center justify-center gap-2 rounded-md bg-signal-500 px-5 text-sm font-extrabold text-white shadow-lg shadow-signal-500/20 transition hover:bg-signal-400"
-          >
-            Email Me!
-            <Mail size={16} />
-          </a>
-          <a
-            href={profile.resumeHref}
-            download="DYLAN_BOYZA_RESUME.pdf"
-            className="motion-pill inline-flex h-11 min-w-36 items-center justify-center gap-2 rounded-md border border-white/18 px-5 text-sm font-extrabold text-slate-200 transition hover:border-white/35 hover:text-white"
-          >
-            Download Resume
-            <Download size={16} />
-          </a>
-        </div>
-
-        <div className="mt-8">
-          <TerminalWindow />
+            <span>{profile.credentialLine}</span>
+            <span>{profile.focus}</span>
+          </div>
+          <div className="hero-bottom-actions">
+            <a href="#about" className="explore-link">
+              Explore <ArrowDown size={15} />
+            </a>
+            <button
+              type="button"
+              className="animation-toggle"
+              onClick={() => setPaused((value) => !value)}
+              aria-pressed={paused}
+              aria-label={
+                paused ? 'Resume galaxy animation' : 'Pause galaxy animation'
+              }
+              title={
+                paused ? 'Resume galaxy animation' : 'Pause galaxy animation'
+              }
+            >
+              {paused ? <Play size={14} /> : <Pause size={14} />}
+            </button>
+          </div>
         </div>
       </div>
     </section>

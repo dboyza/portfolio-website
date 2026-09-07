@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronUp, Code2, ExternalLink, FlaskConical } from 'lucide-react';
+import { ChevronDown, ExternalLink } from 'lucide-react';
 import type { Project } from '../data/portfolio';
 
 type ProjectCardProps = {
@@ -15,14 +15,16 @@ const ProjectCard = ({
   revealDelay = 0,
 }: ProjectCardProps) => {
   const stackId = `${project.id}-stack`;
+  const linkClassName =
+    'motion-pill inline-flex items-center gap-2 rounded-full border border-white/12 px-3.5 py-2 text-xs text-slate-300 transition hover:border-sky-200/50 hover:text-white';
 
   return (
     <article
-      className="lab-card reveal-on-scroll min-w-0"
+      className="premium-surface reveal-on-scroll min-w-0 overflow-hidden rounded-2xl"
       data-reveal
       style={{ transitionDelay: `${revealDelay}ms` }}
     >
-      <div className="soft-card premium-surface motion-lift overflow-hidden rounded-lg">
+      <div className="project-art overflow-hidden border-b border-white/8 bg-[#080c13]">
         <img
           src={project.image}
           alt={project.imageAlt}
@@ -30,80 +32,88 @@ const ProjectCard = ({
           loading="lazy"
         />
       </div>
-
-      <div className="mt-3 flex justify-center gap-2" aria-hidden="true">
-        <span className="h-2.5 w-2.5 rounded-full bg-gold-500" />
-        <span className="h-2.5 w-2.5 rounded-full border border-slate-600" />
-        <span className="h-2.5 w-2.5 rounded-full border border-slate-600" />
-      </div>
-
-      {(project.labType || project.status) && (
-        <div className="mt-4 flex flex-wrap gap-2">
-          {project.labType && (
-            <span className="lab-badge motion-pill inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-signal-500/8 px-3 py-1.5 text-xs font-black uppercase tracking-[0.12em] text-slate-300">
-              <FlaskConical size={13} className="text-gold-500" />
-              {project.labType}
-            </span>
-          )}
-          {project.status && (
-            <span className="lab-badge motion-pill inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/8 px-3 py-1.5 text-xs font-black uppercase tracking-[0.12em] text-slate-300">
-              <span className="h-1.5 w-1.5 rounded-full bg-gold-500 shadow-[0_0_12px_rgba(245,197,66,0.75)]" />
-              {project.status}
-            </span>
-          )}
-        </div>
-      )}
-
-      <h3 className="mt-4 flex items-start gap-2 text-lg font-extrabold leading-snug text-slate-100 sm:text-xl">
-        <span>{project.title}</span>
-        <Code2 size={24} className="lab-title-icon mt-0.5 shrink-0 text-slate-200" />
-      </h3>
-
-      <p className="mt-4 text-sm font-medium leading-7 text-slate-400">
-        {project.description}
-      </p>
-      {project.details?.map((detail) => (
-        <p key={detail} className="mt-3 text-sm font-medium leading-7 text-slate-400">
-          {detail}
+      <div className="p-6 sm:p-8">
+        {(project.labType || project.status) && (
+          <div className="mb-5 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[10px] uppercase tracking-[0.12em]">
+            {project.labType && (
+              <span className="text-slate-400">{project.labType}</span>
+            )}
+            {project.status && (
+              <span className="inline-flex items-center gap-2 text-sky-200">
+                <span
+                  className="h-1.5 w-1.5 rounded-full bg-sky-200"
+                  aria-hidden="true"
+                />
+                {project.status}
+              </span>
+            )}
+          </div>
+        )}
+        <h3 className="text-2xl font-medium leading-snug tracking-tight text-white">
+          {project.title}
+        </h3>
+        <p className="mt-4 text-sm leading-7 text-slate-400">
+          {project.description}
         </p>
-      ))}
-
-      <div className="mt-4 flex flex-wrap gap-2">
-        {project.links.map((link) => (
-          <a
-            key={`${project.id}-${link.label}`}
-            href={link.href}
-            className="motion-pill icon-nudge inline-flex items-center gap-2 rounded-full border border-white/17 px-3 py-2 text-xs font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white"
-          >
-            {link.label}
-            <ExternalLink size={13} />
-          </a>
+        {project.details?.map((detail) => (
+          <p key={detail} className="mt-3 text-sm leading-7 text-slate-400">
+            {detail}
+          </p>
         ))}
-      </div>
-
-      <button
-        type="button"
-        className="motion-pill icon-nudge mt-3 inline-flex items-center gap-2 rounded-full border border-white/17 px-3 py-1.5 text-xs font-extrabold text-slate-200 transition hover:border-gold-500/60 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-500"
-        aria-controls={stackId}
-        aria-expanded={isExpanded}
-        onClick={onToggle}
-      >
-        View stack
-        {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-      </button>
-
-      {isExpanded && (
-        <div id={stackId} className="mt-3 flex flex-wrap gap-2">
-          {project.stack.map((tool) => (
-            <span
-              key={`${project.id}-${tool}`}
-              className="motion-pill rounded-full border border-gold-500/35 bg-gold-500/8 px-3 py-1.5 text-xs font-bold text-slate-300"
-            >
-              {tool}
-            </span>
-          ))}
+        <div className="mt-7 flex flex-wrap items-center justify-between gap-4 border-t border-white/8 pt-6">
+          <div className="flex flex-wrap gap-2">
+            {project.links.map((link) =>
+              link.href === '#' ? (
+                <button
+                  key={`${project.id}-${link.label}`}
+                  type="button"
+                  disabled
+                  title="Coming soon"
+                  className="inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-white/8 px-3.5 py-2 text-xs text-slate-500"
+                >
+                  {link.label}
+                  <ExternalLink size={12} aria-hidden="true" />
+                </button>
+              ) : (
+                <a
+                  key={`${project.id}-${link.label}`}
+                  href={link.href}
+                  className={linkClassName}
+                >
+                  {link.label}
+                  <ExternalLink size={12} aria-hidden="true" />
+                </a>
+              ),
+            )}
+          </div>
+          <button
+            type="button"
+            className="inline-flex items-center gap-2 py-2 text-xs text-slate-300 transition hover:text-sky-200"
+            aria-controls={stackId}
+            aria-expanded={isExpanded}
+            onClick={onToggle}
+          >
+            View stack
+            <ChevronDown
+              size={15}
+              className={`transition-transform motion-reduce:transition-none ${isExpanded ? 'rotate-180' : ''}`}
+              aria-hidden="true"
+            />
+          </button>
         </div>
-      )}
+        <div id={stackId} hidden={!isExpanded}>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {project.stack.map((tool) => (
+              <span
+                key={`${project.id}-${tool}`}
+                className="rounded-full border border-sky-200/15 bg-sky-200/5 px-3 py-1.5 text-xs text-sky-100"
+              >
+                {tool}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
     </article>
   );
 };

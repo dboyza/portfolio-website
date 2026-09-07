@@ -1,13 +1,52 @@
 <svg width="900" height="506" viewBox="0 0 900 506" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="900" height="506" rx="14" fill="#111827"/>
-  <rect x="94" y="82" width="712" height="342" rx="14" fill="#0b1220" stroke="#334155" stroke-width="2"/>
-  <path d="M170 172h560M170 254h560M170 336h560" stroke="#1d4ed8" stroke-width="4"/>
-  <rect x="142" y="146" width="96" height="52" rx="8" fill="#dbeafe"/>
-  <rect x="402" y="228" width="96" height="52" rx="8" fill="#22c55e"/>
-  <rect x="662" y="310" width="96" height="52" rx="8" fill="#f59e0b"/>
-  <circle cx="238" cy="172" r="10" fill="#60a5fa"/>
-  <circle cx="498" cy="254" r="10" fill="#86efac"/>
-  <circle cx="662" cy="336" r="10" fill="#fbbf24"/>
-  <text x="450" y="118" text-anchor="middle" fill="#e5e7eb" font-family="Arial" font-size="26" font-weight="800">Automation placeholder</text>
-  <text x="450" y="394" text-anchor="middle" fill="#94a3b8" font-family="Arial" font-size="18">Future script, workflow, or tooling project</text>
+  <defs>
+    <radialGradient id="automation-light" cx="0" cy="0" r="1" gradientTransform="translate(450 200) rotate(90) scale(300 470)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#122337"/>
+      <stop offset="1" stop-color="#080C13"/>
+    </radialGradient>
+    <linearGradient id="automation-line" x1="200" y1="130" x2="700" y2="340" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C9E8FF" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#7DAFD7" stop-opacity=".25"/>
+    </linearGradient>
+    <pattern id="automation-grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0V36" stroke="#B5DAF5" stroke-opacity=".035"/>
+    </pattern>
+    <filter id="automation-glow" x="-300%" y="-300%" width="700%" height="700%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+  <rect width="900" height="506" fill="#080C13"/>
+  <rect width="900" height="506" fill="url(#automation-light)"/>
+  <rect width="900" height="506" fill="url(#automation-grid)"/>
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="11" letter-spacing="2" fill="#7B94AD">
+    <text x="42" y="43">WORKFLOW / 02</text>
+    <text x="858" y="43" text-anchor="end">DEVELOPMENT PREVIEW</text>
+  </g>
+  <g stroke="url(#automation-line)" stroke-width="1.5">
+    <rect x="138" y="100" width="624" height="241" rx="15" stroke-opacity=".25"/>
+    <path d="M138 137H762" stroke-opacity=".2"/>
+    <path d="M296 222H388M512 222H604"/>
+    <path d="M377 217L383 222L377 227M593 217L599 222L593 227" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M665 266V286C665 297 657 305 646 305H255C244 305 235 297 235 286V266" stroke-opacity=".25" stroke-dasharray="4 6"/>
+    <rect x="172" y="178" width="124" height="88" rx="12" fill="#0C1622"/>
+    <rect x="388" y="178" width="124" height="88" rx="12" fill="#0C1622"/>
+    <rect x="604" y="178" width="124" height="88" rx="12" fill="#0C1622"/>
+    <g stroke="#C2E3FC" stroke-opacity=".8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M213 210L225 222L213 234M237 234H253"/>
+      <path d="M439 210L427 222L439 234M461 210L473 222L461 234M454 204L447 240"/>
+      <path d="M651 222L661 232L683 210"/>
+    </g>
+  </g>
+  <g fill="#B8DFFF">
+    <circle cx="158" cy="119" r="2" opacity=".7"/>
+    <circle cx="169" cy="119" r="2" opacity=".35"/>
+    <circle cx="180" cy="119" r="2" opacity=".2"/>
+    <circle cx="342" cy="222" r="8" opacity=".6" filter="url(#automation-glow)"/>
+    <circle cx="342" cy="222" r="3"/>
+    <circle cx="558" cy="222" r="8" opacity=".6" filter="url(#automation-glow)"/>
+    <circle cx="558" cy="222" r="3"/>
+  </g>
+  <path d="M42 386H858" stroke="#B5DAF5" stroke-opacity=".1"/>
+  <text x="42" y="428" fill="#DCE8F3" font-family="ui-sans-serif, system-ui, sans-serif" font-size="25" font-weight="400" letter-spacing="-.5">Automation placeholder</text>
+  <text x="42" y="461" fill="#869AAF" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="16">Future script, workflow, or tooling project</text>
 </svg>

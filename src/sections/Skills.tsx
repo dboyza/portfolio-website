@@ -3,7 +3,6 @@ import {
   Cloud,
   Code2,
   Database,
-  ListChecks,
   Network,
   Server,
   Settings,
@@ -23,153 +22,89 @@ const iconMap: Record<string, LucideIcon> = {
   shield: Shield,
 };
 
-const deviconUrl = (name: string, variant = 'original') =>
-  `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${name}/${name}-${variant}.svg`;
-
-const simpleIconUrl = (slug: string, color?: string) =>
-  `https://cdn.simpleicons.org/${slug}${color ? `/${color}` : ''}`;
-
-const skillLogos: Record<string, string> = {
-  AWS: '/skill-aws.svg',
-  'Microsoft Azure': deviconUrl('azure'),
-  Jenkins: deviconUrl('jenkins'),
-  'GitLab CI': deviconUrl('gitlab'),
-  Docker: deviconUrl('docker'),
-  Kubernetes: deviconUrl('kubernetes'),
-  Helm: deviconUrl('helm'),
-  Terraform: deviconUrl('terraform'),
-  Ansible: deviconUrl('ansible'),
-  'ELK Stack': deviconUrl('elasticsearch'),
-  CloudWatch: '/skill-cloudwatch.svg',
-  CloudTrail: '/skill-cloudtrail.svg',
-  PostgreSQL: deviconUrl('postgresql'),
-  MySQL: deviconUrl('mysql'),
-  'Oracle SQL': deviconUrl('oracle'),
-  DynamoDB: deviconUrl('dynamodb'),
-  Git: deviconUrl('git'),
-  GitHub: simpleIconUrl('github', 'FFFFFF'),
-  GitLab: deviconUrl('gitlab'),
-  Jira: deviconUrl('jira'),
-  Ubuntu: deviconUrl('ubuntu'),
-  CentOS: deviconUrl('centos'),
-  RHEL: simpleIconUrl('redhat', 'EE0000'),
-  'Amazon Linux': '/skill-amazon-linux.svg',
-  Linux: simpleIconUrl('linux', 'FCC624'),
-  Traefik: simpleIconUrl('traefikproxy', '24A1C1'),
-  'HashiCorp Vault': simpleIconUrl('vault', 'FFEC6E'),
-  Python: deviconUrl('python'),
-  Bash: simpleIconUrl('gnubash', '4EAA25'),
-  PowerShell: deviconUrl('powershell'),
-  Groovy: deviconUrl('groovy'),
-  SQL: simpleIconUrl('sqlite', '003B57'),
-  YAML: simpleIconUrl('yaml', 'CB171E'),
-  VMware: simpleIconUrl('vmware', '607078'),
-  VirtualBox: simpleIconUrl('virtualbox', '183A61'),
+const coreIcons: Record<string, LucideIcon> = {
+  AWS: Cloud,
+  Kubernetes: Boxes,
+  Docker: Boxes,
+  Terraform: Network,
+  Jenkins: Settings,
+  Linux: Server,
+  Python: Code2,
 };
 
-const skillFallbackIcons: Record<string, LucideIcon> = {
-  'Active Directory': Network,
-  'Group Policy': ListChecks,
-};
-
-const Skills = () => {
-  return (
-    <section id="skills" className="section-rule py-10 sm:py-16">
-      <div className="wide-shell">
-        <SectionHeading title="Skills" />
-
-        <div
-          className="core-stack premium-surface reveal-on-scroll mx-auto mt-7 flex max-w-4xl flex-wrap items-center justify-center gap-2 rounded-lg border border-white/12 bg-white/[0.025] px-4 py-4"
-          data-reveal
-        >
-          <span className="mr-1 text-xs font-black uppercase tracking-[0.18em] text-gold-500">
-            Core Stack
-          </span>
+const Skills = () => (
+  <section id="skills" className="section-rule">
+    <div className="wide-shell">
+      <SectionHeading title="Skills" />
+      <div
+        className="reveal-on-scroll mt-12 border-y border-white/10 py-7"
+        data-reveal
+      >
+        <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.18em] text-slate-400">
+          Core Stack
+        </p>
+        <div className="flex flex-wrap gap-x-7 gap-y-5 sm:gap-x-9">
           {coreStack.map((skill) => {
-            const logo = skillLogos[skill];
-
+            const Icon = coreIcons[skill] ?? Code2;
             return (
               <span
-                key={`core-${skill}`}
-                className="capability-pill motion-pill inline-flex min-h-8 items-center gap-2 rounded-full border border-white/16 px-3 text-sm font-bold text-slate-200"
+                key={skill}
+                className="inline-flex items-center gap-2.5 text-base font-medium text-slate-200"
               >
-                {logo ? (
-                  <img
-                    src={logo}
-                    alt=""
-                    className="h-4 w-4 object-contain"
-                    loading="lazy"
-                    aria-hidden="true"
-                  />
-                ) : (
-                  <Code2 size={15} className="text-gold-500" aria-hidden="true" />
-                )}
-                <span className="whitespace-nowrap">{skill}</span>
+                <Icon
+                  size={18}
+                  strokeWidth={1.5}
+                  className="text-sky-200"
+                  aria-hidden="true"
+                />
+                {skill}
               </span>
             );
           })}
         </div>
-
-        <div className="mt-8 grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
-          {skillGroups.map((group, index) => {
-            const Icon = iconMap[group.icon] ?? Code2;
-
-            return (
-              <section
-                key={group.title}
-                className="capability-card premium-surface motion-lift reveal-on-scroll min-w-0 rounded-lg border border-white/12 bg-white/[0.025] p-4 xl:last:col-start-2"
-                data-reveal
-                style={{ transitionDelay: `${index * 70}ms` }}
-              >
-                <h3 className="mb-4 flex items-center gap-2 text-base font-black leading-tight text-slate-100">
-                  <Icon size={20} className="shrink-0 text-gold-500" />
-                  <span className="min-w-0 text-balance">{group.title}</span>
-                </h3>
-                {group.summary && (
-                  <p className="capability-summary mb-4 text-sm font-semibold leading-6 text-slate-500">
-                    {group.summary}
-                  </p>
-                )}
-
-                <div className="flex flex-wrap gap-2">
-                  {group.items.map((skill) => {
-                    const logo = skillLogos[skill];
-                    const SkillIcon = skillFallbackIcons[skill] ?? Icon;
-
-                    return (
-                      <span
-                        key={`${group.title}-${skill}`}
-                        className="capability-pill motion-pill inline-flex min-h-8 max-w-full items-center gap-2 rounded-full border border-white/14 px-3 text-sm font-bold text-slate-300"
-                      >
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center">
-                          {logo ? (
-                            <img
-                              src={logo}
-                              alt=""
-                              className="h-5 w-5 object-contain"
-                              loading="lazy"
-                              aria-hidden="true"
-                            />
-                          ) : (
-                            <SkillIcon
-                              size={16}
-                              className="text-gold-500"
-                              aria-hidden="true"
-                            />
-                          )}
-                        </span>
-                        <span className="min-w-0 truncate">{skill}</span>
-                      </span>
-                    );
-                  })}
-                </div>
-              </section>
-            );
-          })}
-        </div>
       </div>
-    </section>
-  );
-};
+      <div className="mt-7 grid gap-5 md:grid-cols-2">
+        {skillGroups.map((group, index) => {
+          const Icon = iconMap[group.icon] ?? Code2;
+          return (
+            <section
+              key={group.title}
+              className="premium-surface motion-lift reveal-on-scroll min-w-0 rounded-2xl p-7 sm:p-8 md:last:col-span-2"
+              data-reveal
+              style={{ transitionDelay: `${(index % 2) * 70}ms` }}
+            >
+              <div className="mb-5 flex items-start justify-between gap-5">
+                <h3 className="text-lg font-medium leading-7 tracking-tight text-white">
+                  {group.title}
+                </h3>
+                <Icon
+                  size={23}
+                  strokeWidth={1.4}
+                  className="mt-0.5 shrink-0 text-sky-200/70"
+                  aria-hidden="true"
+                />
+              </div>
+              {group.summary && (
+                <p className="mb-6 max-w-2xl text-sm leading-7 text-slate-400">
+                  {group.summary}
+                </p>
+              )}
+              <div className="flex flex-wrap gap-2">
+                {group.items.map((skill) => (
+                  <span
+                    key={`${group.title}-${skill}`}
+                    className="motion-pill max-w-full rounded-full border border-white/10 px-3.5 py-1.5 text-xs leading-5 text-slate-300"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </section>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+);
 
 export default Skills;
