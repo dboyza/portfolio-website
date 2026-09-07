@@ -1,3 +1,4 @@
+import monogramStrokes from '../data/monogram.json';
 import { useEffect, useRef } from 'react';
 
 interface AnimatedBackgroundProps {
@@ -40,38 +41,12 @@ type Point = readonly [number, number];
 type Stroke = readonly [Point, Point, Point, Point];
 
 // The same open, geometric DB letterforms are used in the favicon.
-const MONOGRAM: readonly Stroke[] = [
-  [
-    [-0.69, 0.53],
-    [-0.69, 0.18],
-    [-0.69, -0.18],
-    [-0.69, -0.53],
-  ],
-  [
-    [-0.69, -0.53],
-    [0.1, -0.57],
-    [0.1, 0.57],
-    [-0.69, 0.53],
-  ],
-  [
-    [0.12, 0.53],
-    [0.12, 0.18],
-    [0.12, -0.18],
-    [0.12, -0.53],
-  ],
-  [
-    [0.12, -0.53],
-    [0.84, -0.57],
-    [0.84, 0.02],
-    [0.12, 0],
-  ],
-  [
-    [0.12, 0],
-    [0.9, -0.02],
-    [0.9, 0.57],
-    [0.12, 0.53],
-  ],
-];
+const MONOGRAM: readonly Stroke[] = monogramStrokes.map(([a, b, c, d]) => [
+  [a[0], a[1]],
+  [b[0], b[1]],
+  [c[0], c[1]],
+  [d[0], d[1]],
+]);
 
 function makeParticles(count: number) {
   const random = makeRandom(8192);

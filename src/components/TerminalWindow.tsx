@@ -16,6 +16,7 @@ import {
   skillGroups,
   socialLinks,
 } from '../data/portfolio';
+import './TerminalWindow.css';
 
 type TerminalEntry = {
   id: number;
@@ -25,6 +26,29 @@ type TerminalEntry = {
 
 const promptUser = 'visitor';
 const promptHost = '@dylan-portfolio';
+const quickCommands = ['help', 'career', 'current', 'skills', 'contact'];
+const availableCommands = [
+  'about',
+  'career',
+  'current',
+  'skills',
+  'projects',
+  'certs',
+  'education',
+  'contact',
+  'email',
+  'resume',
+  'clear',
+  'help',
+  'looking',
+  'focus',
+  'learning',
+  'certifications',
+  'degrees',
+  'connect',
+  'whoami',
+  'ls',
+];
 
 const downloadFile = (href: string) => {
   const link = document.createElement('a');
@@ -46,6 +70,7 @@ const TerminalWindow = () => {
   const [command, setCommand] = useState('');
   const [history, setHistory] = useState<string[]>([]);
   const [hasUsedTerminal, setHasUsedTerminal] = useState(false);
+  const [completionMessage, setCompletionMessage] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const historyIndexRef = useRef<number | null>(null);
@@ -102,7 +127,11 @@ const TerminalWindow = () => {
       ];
     }
 
-    if (normalized === 'current' || normalized === 'focus' || normalized === 'learning') {
+    if (
+      normalized === 'current' ||
+      normalized === 'focus' ||
+      normalized === 'learning'
+    ) {
       return [
         'Current role: Software Engineer working on MLOps at JPMorganChase',
         '',
@@ -112,7 +141,9 @@ const TerminalWindow = () => {
     }
 
     if (normalized === 'skills') {
-      return skillGroups.map((group) => `${group.title}: ${group.items.join(', ')}`);
+      return skillGroups.map(
+        (group) => `${group.title}: ${group.items.join(', ')}`,
+      );
     }
 
     if (normalized === 'projects') {
@@ -166,16 +197,18 @@ const TerminalWindow = () => {
     }
 
     if (normalized === 'ls') {
-      return ['about  career  current  projects  skills  certifications  education  contact'];
+      return [
+        'about  career  current  projects  skills  certifications  education  contact',
+      ];
     }
 
-    return [`command '${rawCommand}' was not found. Type 'help' to list available commands.`];
+    return [
+      `command '${rawCommand}' was not found. Type 'help' to list available commands.`,
+    ];
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const submittedCommand = command.trim();
+  const submitCommand = (rawCommand: string) => {
+    const submittedCommand = rawCommand.trim();
 
     if (!submittedCommand) {
       return;
@@ -199,18 +232,68 @@ const TerminalWindow = () => {
     setHistory((current) => [...current, submittedCommand]);
 
     setCommand('');
+    setCompletionMessage('');
     historyIndexRef.current = null;
   };
 
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    submitCommand(command);
+  };
+
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Tab') {
+      if (event.shiftKey || event.ctrlKey || event.altKey || event.metaKey) {
+        return;
+      }
+
+      const prefix = command.trim().toLowerCase();
+      if (!prefix || availableCommands.includes(prefix)) {
+        return;
+      }
+
+      const matches = availableCommands.filter((item) =>
+        item.startsWith(prefix),
+      );
+      if (matches.length === 0) {
+        return;
+      }
+
+      const commonPrefix = matches.reduce((shared, item) => {
+        let length = 0;
+        while (length < shared.length && shared[length] === item[length]) {
+          length += 1;
+        }
+        return shared.slice(0, length);
+      });
+
+      // Only consume Tab when it can advance the command. A second Tab always
+      // leaves the field if completion is finished or needs another letter.
+      if (commonPrefix.length > prefix.length) {
+        event.preventDefault();
+        setHasUsedTerminal(true);
+        setCommand(commonPrefix);
+        historyIndexRef.current = null;
+      }
+
+      setCompletionMessage(
+        matches.length === 1
+          ? `Completed: ${matches[0]}. Press Enter to run.`
+          : `Matches: ${matches.join(', ')}. Type another letter to narrow them down.`,
+      );
+      return;
+    }
+
     if (event.key === 'ArrowUp') {
       event.preventDefault();
+      setCompletionMessage('');
       if (history.length === 0) {
         return;
       }
 
       const current = historyIndexRef.current;
-      const nextIndex = current === null ? history.length - 1 : Math.max(0, current - 1);
+      const nextIndex =
+        current === null ? history.length - 1 : Math.max(0, current - 1);
       historyIndexRef.current = nextIndex;
       setHasUsedTerminal(true);
       setCommand(history[nextIndex]);
@@ -218,6 +301,7 @@ const TerminalWindow = () => {
 
     if (event.key === 'ArrowDown') {
       event.preventDefault();
+      setCompletionMessage('');
       const current = historyIndexRef.current;
 
       if (current === null) {
@@ -263,8 +347,12 @@ const TerminalWindow = () => {
 
       setHasUsedTerminal(true);
       setCommand(nextCommand);
+      setCompletionMessage('');
       requestAnimationFrame(() => {
-        inputRef.current?.setSelectionRange(nextCursorPosition, nextCursorPosition);
+        inputRef.current?.setSelectionRange(
+          nextCursorPosition,
+          nextCursorPosition,
+        );
       });
     } catch {
       inputRef.current?.focus();
@@ -274,8 +362,11 @@ const TerminalWindow = () => {
   return (
     <div
       className="terminal-shell premium-surface motion-lift mx-auto min-w-0 w-full max-w-[790px] overflow-hidden rounded-lg border text-left"
-      onClick={() => {
-        if (hasActiveTextSelection()) {
+      onClick={(event) => {
+        if (
+          hasActiveTextSelection() ||
+          (event.target instanceof Element && event.target.closest('button'))
+        ) {
           return;
         }
 
@@ -285,14 +376,17 @@ const TerminalWindow = () => {
     >
       <div className="terminal-screen overflow-hidden px-5 py-6 font-mono text-sm sm:px-7">
         <pre className="terminal-ascii" aria-label="Terminal heading">
-{` ____                          ___  ____
+          {` ____                          ___  ____
 | __ )  ___  _   _ _____ __ _ / _ \\/ ___|
 |  _ \\ / _ \\| | | |_  / _\` | | | | \\___ \\
 | |_) | (_) | |_| |/ / (_| | | |_| |___) |
 |____/ \\___/ \\__, /___\\__,_|  \\___/|____/
              |___/`}
         </pre>
-        <div ref={scrollRef} className="terminal-divider mt-4 max-h-64 overflow-y-auto border-t pt-4">
+        <div
+          ref={scrollRef}
+          className="terminal-divider mt-4 max-h-64 overflow-y-auto border-t pt-4"
+        >
           {entries.map((entry) => (
             <div key={entry.id} className="mb-4">
               <p className="terminal-line terminal-prompt">
@@ -311,8 +405,14 @@ const TerminalWindow = () => {
             </div>
           ))}
 
-          <form onSubmit={handleSubmit} className="terminal-line flex min-w-0 items-center">
-            <label htmlFor="terminal-command" className="terminal-prompt shrink-0">
+          <form
+            onSubmit={handleSubmit}
+            className="terminal-line flex min-w-0 items-center"
+          >
+            <label
+              htmlFor="terminal-command"
+              className="terminal-prompt shrink-0"
+            >
               <span className="terminal-prompt-user">{promptUser}</span>
               <span className="terminal-prompt-host">{promptHost}</span>
               <span className="terminal-path">:~$</span>
@@ -327,17 +427,51 @@ const TerminalWindow = () => {
                 }
 
                 setCommand(event.target.value);
+                setCompletionMessage('');
+                historyIndexRef.current = null;
               }}
               onKeyDown={handleKeyDown}
               className="terminal-input ml-1 min-w-0 flex-1 bg-transparent outline-none"
               placeholder={
-                hasUsedTerminal ? undefined : "Type 'help' to list available commands."
+                hasUsedTerminal
+                  ? undefined
+                  : "Type 'help' to list available commands."
               }
               autoComplete="off"
               spellCheck={false}
               aria-label="Terminal command"
+              aria-describedby="terminal-keyboard-hint"
             />
           </form>
+        </div>
+        <div className="terminal-controls">
+          <div
+            className="terminal-quick-commands"
+            role="group"
+            aria-label="Quick terminal commands"
+          >
+            <span className="terminal-quick-label">Try</span>
+            {quickCommands.map((item) => (
+              <button
+                key={item}
+                type="button"
+                onClick={() => submitCommand(item)}
+                aria-label={`Run ${item} command`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+          <p id="terminal-keyboard-hint" className="terminal-keyboard-hint">
+            Tab to complete · ↑↓ for history
+          </p>
+          <p
+            className="terminal-completion-message"
+            role="status"
+            aria-atomic="true"
+          >
+            {completionMessage}
+          </p>
         </div>
       </div>
     </div>

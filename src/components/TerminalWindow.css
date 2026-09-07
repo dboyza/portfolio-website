@@ -1,0 +1,62 @@
+.terminal-controls {
+  margin-top: 16px;
+  border-top: 1px solid rgb(151 174 199 / 12%);
+  padding-top: 12px;
+}
+
+.terminal-quick-commands {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.terminal-quick-label,
+.terminal-keyboard-hint {
+  color: #92a0b2;
+  font-size: 11px;
+}
+
+.terminal-quick-label {
+  margin-right: 3px;
+}
+
+.terminal-quick-commands button {
+  min-height: 36px;
+  border: 1px solid rgb(151 174 199 / 20%);
+  border-radius: 6px;
+  padding: 0 10px;
+  background: rgb(151 174 199 / 4%);
+  color: #b8cce2;
+  font-size: 11px;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.terminal-quick-commands button:hover {
+  border-color: rgb(181 211 239 / 48%);
+  background: rgb(151 174 199 / 10%);
+}
+
+.terminal-keyboard-hint {
+  margin-top: 10px;
+}
+
+.terminal-completion-message {
+  color: #b8cce2;
+  font-size: 11px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.terminal-completion-message:not(:empty) {
+  margin-top: 8px;
+}
+
+@media (pointer: coarse) {
+  .terminal-quick-commands button {
+    min-height: 44px;
+  }
+}

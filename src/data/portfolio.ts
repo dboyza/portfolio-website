@@ -52,7 +52,7 @@ export const profile = {
   email: 'dboyza19@gmail.com',
   linkedinHref: 'https://www.linkedin.com/in/dboyza/',
   resumeHref: '/DYLAN_BOYZA_RESUME.pdf',
-  avatar: '/profile-portrait.png',
+  avatar: '/profile-portrait-820.jpg',
 };
 
 export const navItems = [

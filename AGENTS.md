@@ -23,3 +23,9 @@
 - Keep the personal star sculpture isolated in `AnimatedBackground.tsx`; pause it offscreen, in hidden tabs, and for reduced motion.
 - Use a dark theme only, spell the employer `JPMorganChase`, and keep the terminal visible without a disclosure.
 - Keep projects blurred and inert behind the WIP overlay until the user asks to reveal them.
+
+## Visual assets
+
+- Run `npm run assets:generate` to rebuild portrait variants and the social share image.
+- Keep the full-resolution portrait in `assets/`; serve responsive AVIF, WebP, and JPEG variants from `public/`.
+- The hero and share card use the letterforms in `src/data/monogram.json`; edit the generator instead of generated image files.
