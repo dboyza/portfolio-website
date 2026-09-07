@@ -3,5 +3,4 @@
   <rect width="64" height="64" rx="17" fill="#080c14"/>
   <rect x="1" y="1" width="62" height="62" rx="16" stroke="#a9c5e5" stroke-opacity=".22" stroke-width="2"/>
   <path d="M13 45V19C33 18 33 46 13 45ZM35 45V19C53 18 53 32.5 35 32C55 31.5 55 46 35 45Z" stroke="#eef5ff" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="m49 8 1.2 3.8L54 13l-3.8 1.2L49 18l-1.2-3.8L44 13l3.8-1.2L49 8Z" fill="#a7d4ff"/>
 </svg>

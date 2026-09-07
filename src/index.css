@@ -230,21 +230,16 @@ main:focus {
   max-width: 100%;
   pointer-events: auto;
 }
-.hero-greeting {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.hero-greeting,
+.hero-role {
   color: #c1ccd9;
-  font-size: 14px;
-  letter-spacing: 0.015em;
-  animation: arrive 1s both;
+  font-size: clamp(14px, 1.5vw, 20px);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: normal;
 }
-.status-dot {
-  width: 5px;
-  height: 5px;
-  background: #c3ddf2;
-  border-radius: 100%;
-  box-shadow: 0 0 10px #9ebde3;
+.hero-greeting {
+  animation: arrive 1s both;
 }
 .hero-title {
   margin: 26px 0 28px -7px;
@@ -261,9 +256,6 @@ main:focus {
 }
 .hero-role {
   margin: -6px 0 24px;
-  color: #c1ccd9;
-  font-size: clamp(14px, 1.5vw, 20px);
-  line-height: 1.6;
   animation: arrive 1.2s 0.15s both;
 }
 .hero-signals {
@@ -647,6 +639,13 @@ main:focus {
   color: #eff6ff;
   caret-color: #fff;
 }
+.terminal-input:focus-visible {
+  outline: none;
+}
+.terminal-shell:focus-within {
+  border-color: #6f8cab;
+  box-shadow: 0 0 0 1px rgb(181 211 239 / 12%);
+}
 .terminal-input::placeholder {
   color: #8191a7;
   opacity: 1;
@@ -806,9 +805,6 @@ main:focus {
     font-size: clamp(64px, 12.5vw, 96px);
     margin: 22px 0 24px -4px;
     letter-spacing: -0.07em;
-  }
-  .hero-greeting {
-    font-size: 12px;
   }
   .hero-signals {
     font-size: 12px;

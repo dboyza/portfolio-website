@@ -90,7 +90,7 @@ function makeParticles(count: number) {
       const [a, b, c, d] = MONOGRAM[strokeIndex];
       const t = random();
       const u = 1 - t;
-      const scatter = random() < 0.82 ? 0.011 : 0.045;
+      const scatter = random() < 0.82 ? 0.014 : 0.045;
       x =
         u ** 3 * a[0] +
         3 * u * u * t * b[0] +

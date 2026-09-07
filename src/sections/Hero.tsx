@@ -37,10 +37,7 @@ const Hero = () => {
       <div className="hero-shade" aria-hidden="true" />
       <div className="wide-shell hero-layout">
         <div className="hero-copy">
-          <p className="hero-greeting">
-            <span className="status-dot" />
-            {profile.greeting}
-          </p>
+          <p className="hero-greeting">{profile.greeting}</p>
           <h1 className="hero-title">
             {firstName} <span>{lastName.join(' ')}</span>
           </h1>

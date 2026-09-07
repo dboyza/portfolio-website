@@ -57,7 +57,6 @@ const Header = () => {
       <div className="wide-shell header-layout">
         <a href="#home" className="wordmark" aria-label="Dylan Boyza home">
           dylan boyza
-          <img src="/favicon.svg?v=2" alt="" width="28" height="28" />
         </a>
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map((item) => (
