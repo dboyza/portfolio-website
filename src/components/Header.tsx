@@ -1,28 +1,12 @@
-import { Menu, Moon, Sun, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { navItems } from '../data/portfolio';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLightMode, setIsLightMode] = useState(() => {
-    try {
-      return localStorage.getItem('portfolio-theme') === 'light';
-    } catch {
-      return false;
-    }
-  });
   const [activeSection, setActiveSection] = useState('home');
   const menuButton = useRef<HTMLButtonElement>(null);
   const headerRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('light-mode', isLightMode);
-    try {
-      localStorage.setItem('portfolio-theme', isLightMode ? 'light' : 'dark');
-    } catch {
-      /* Storage is optional. */
-    }
-  }, [isLightMode]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -72,7 +56,8 @@ const Header = () => {
     <header className="site-header" ref={headerRef}>
       <div className="wide-shell header-layout">
         <a href="#home" className="wordmark" aria-label="Dylan Boyza home">
-          dylan boyza<span aria-hidden="true">✳</span>
+          dylan boyza
+          <img src="/favicon.svg?v=2" alt="" width="28" height="28" />
         </a>
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map((item) => (
@@ -88,17 +73,6 @@ const Header = () => {
           ))}
         </nav>
         <div className="header-actions">
-          <button
-            type="button"
-            className="icon-button"
-            aria-pressed={isLightMode}
-            aria-label={
-              isLightMode ? 'Switch to dark theme' : 'Switch to light theme'
-            }
-            onClick={() => setIsLightMode((value) => !value)}
-          >
-            {isLightMode ? <Moon size={18} /> : <Sun size={18} />}
-          </button>
           <button
             ref={menuButton}
             type="button"

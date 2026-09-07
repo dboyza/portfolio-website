@@ -1,4 +1,4 @@
-import { ArrowUpRight, ChevronDown, Terminal } from 'lucide-react';
+import { ArrowUpRight, Terminal } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
 import TerminalWindow from '../components/TerminalWindow';
 import { aboutParagraphs, profile } from '../data/portfolio';
@@ -27,18 +27,15 @@ const About = () => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-          <details className="terminal-disclosure">
-            <summary>
-              <span>
-                <Terminal size={18} />
-                Explore in terminal
-              </span>
-              <ChevronDown size={16} />
-            </summary>
+          <div className="about-terminal">
+            <h3 className="terminal-label">
+              <Terminal size={18} aria-hidden="true" />
+              Explore in terminal
+            </h3>
             <div className="terminal-panel">
               <TerminalWindow />
             </div>
-          </details>
+          </div>
         </div>
       </div>
     </div>

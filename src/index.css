@@ -171,7 +171,7 @@ main:focus {
   content: '';
 }
 .header-actions {
-  display: flex;
+  display: none;
   gap: 6px;
 }
 .icon-button {
@@ -196,7 +196,7 @@ main:focus {
   display: none;
 }
 
-/* The galaxy remains a dark canvas in either theme. */
+/* A dark stage for the personal star sculpture. */
 .hero {
   position: relative;
   isolation: isolate;
@@ -212,6 +212,7 @@ main:focus {
     linear-gradient(0deg, #06080c, transparent 20%);
 }
 .hero-layout {
+  pointer-events: none;
   position: relative;
   display: flex;
   align-items: center;
@@ -220,9 +221,14 @@ main:focus {
 .hero-copy {
   position: relative;
   z-index: 1;
-  padding-block: 210px 260px;
+  padding-block: 180px 240px;
   width: 720px;
   max-width: 100%;
+}
+.hero-copy > * {
+  width: fit-content;
+  max-width: 100%;
+  pointer-events: auto;
 }
 .hero-greeting {
   display: flex;
@@ -252,6 +258,13 @@ main:focus {
 .hero-title span {
   display: block;
   color: #c3cdd9;
+}
+.hero-role {
+  margin: -6px 0 24px;
+  color: #c1ccd9;
+  font-size: clamp(14px, 1.5vw, 20px);
+  line-height: 1.6;
+  animation: arrive 1.2s 0.15s both;
 }
 .hero-signals {
   display: flex;
@@ -327,24 +340,8 @@ main:focus {
 .hero-email:hover {
   color: #fff;
 }
-.galaxy-caption {
-  position: absolute;
-  right: 0;
-  bottom: 190px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: #92a3b9;
-  font-size: 10px;
-  letter-spacing: 0.05em;
-}
-.galaxy-caption > span {
-  display: block;
-  height: 1px;
-  width: 36px;
-  background: #67788e;
-}
 .hero-bottom {
+  pointer-events: auto;
   position: absolute;
   inset: auto 0 38px;
   display: flex;
@@ -516,34 +513,18 @@ main:focus {
   line-height: 1.6;
   letter-spacing: -0.015em;
 }
-.terminal-disclosure {
+.about-terminal {
   margin-top: 34px;
-  border-block: 1px solid var(--site-border);
+  border-top: 1px solid var(--site-border);
 }
-.terminal-disclosure summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  min-height: 64px;
-  padding-block: 14px;
-  color: var(--site-text-muted);
-  font-size: 12px;
-  list-style: none;
-}
-.terminal-disclosure summary::-webkit-details-marker {
-  display: none;
-}
-.terminal-disclosure summary > span {
+.terminal-label {
   display: flex;
   align-items: center;
   gap: 12px;
-}
-.terminal-disclosure summary > svg {
-  transition: transform 250ms;
-}
-.terminal-disclosure[open] summary > svg {
-  transform: rotate(180deg);
+  min-height: 64px;
+  color: var(--site-text-muted);
+  font-size: 12px;
+  font-weight: 400;
 }
 .terminal-panel {
   padding-bottom: 24px;
@@ -555,6 +536,42 @@ main:focus {
     opacity 400ms,
     filter 400ms,
     transform 650ms;
+}
+.projects-wip {
+  position: relative;
+}
+.projects-wip-content {
+  max-height: 680px;
+  overflow: hidden;
+  filter: blur(10px);
+  opacity: 0.3;
+  pointer-events: none;
+  user-select: none;
+  mask-image: linear-gradient(#000 75%, transparent);
+}
+.projects-wip-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+}
+.projects-wip-overlay h2 {
+  font-size: clamp(64px, 9vw, 112px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: #eff4fa;
+}
+.projects-wip-overlay p {
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--site-text-muted);
 }
 .project-art:hover img {
   opacity: 1;
@@ -643,47 +660,6 @@ main:focus {
   min-height: 30px;
 }
 
-/* Light theme keeps the galaxy immersive and gives the reading sections a paper surface. */
-html.light-mode {
-  color-scheme: light;
-  --site-bg: #f5f6f8;
-  --site-surface: #fff;
-  --site-border: rgb(26 45 69 / 15%);
-  --site-text: #172331;
-  --site-text-soft: #293d50;
-  --site-text-muted: #536376;
-  --site-text-faint: #5d6c7f;
-  --site-accent: #355f82;
-  --header-bg: rgb(245 246 248 / 88%);
-  --back-to-top-surface: #fff;
-  --back-to-top-track: #c5ced9;
-  --color-sky-100: #294a68;
-  --color-sky-200: #355f82;
-  --color-gold-500: #355f82;
-}
-.light-mode .text-white {
-  color: var(--site-text);
-}
-.light-mode [class*='border-white/'] {
-  border-color: var(--site-border);
-}
-.light-mode .hover\:text-white:hover {
-  color: #172331;
-}
-.light-mode .bg-ink-900 {
-  background-color: #fff;
-}
-.light-mode .hero {
-  color-scheme: dark;
-}
-.light-mode .hero a:focus-visible,
-.light-mode .hero button:focus-visible {
-  outline-color: #b5d3ef;
-}
-.light-mode .project-art {
-  background: #e3e9f0;
-}
-
 @keyframes arrive {
   from {
     opacity: 0;
@@ -721,11 +697,11 @@ html.light-mode {
   .hero-metadata > span + span {
     padding-left: 18px;
   }
-  .galaxy-caption {
-    bottom: 175px;
-  }
 }
 @media (max-width: 1023px) {
+  .header-actions {
+    display: flex;
+  }
   .desktop-nav {
     display: none;
   }
@@ -854,9 +830,6 @@ html.light-mode {
   .hero-email {
     padding-inline: 4px;
     font-size: 11px;
-  }
-  .galaxy-caption {
-    display: none;
   }
   .hero-bottom {
     bottom: 26px;

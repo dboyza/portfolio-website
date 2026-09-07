@@ -19,6 +19,7 @@
 - Portfolio content lives in `src/data/portfolio.ts`; preserve factual accuracy and label unfinished projects honestly.
 - Run `npm run lint` and `npm run build` before committing implementation changes.
 - Respect reduced-motion preferences and maintain keyboard accessibility when adding animation or interaction.
-- Visual redesigns must preserve existing text, including terminal output and text inside SVG assets.
-- Keep the procedural galaxy isolated in `AnimatedBackground.tsx`; pause it offscreen, in hidden tabs, and for reduced motion.
-- The galaxy hero stays dark in both themes; the theme toggle changes navigation and reading sections.
+- Preserve existing text unless the user requests copy changes or removal, including terminal output and text inside SVG assets.
+- Keep the personal star sculpture isolated in `AnimatedBackground.tsx`; pause it offscreen, in hidden tabs, and for reduced motion.
+- Use a dark theme only, spell the employer `JPMorganChase`, and keep the terminal visible without a disclosure.
+- Keep projects blurred and inert behind the WIP overlay until the user asks to reveal them.

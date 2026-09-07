@@ -11,13 +11,28 @@ import { useState } from 'react';
 import AnimatedBackground from '../components/AnimatedBackground';
 import { profile } from '../data/portfolio';
 
-const heroSignals = ['MLOps', 'ML Platforms', 'Cloud Infrastructure'];
+const heroSignals = ['MLOps', 'AI/ML Platforms', 'Cloud Infrastructure'];
 
 const Hero = () => {
   const [paused, setPaused] = useState(false);
+  const [firstName, ...lastName] = profile.name.split(' ');
 
   return (
-    <section id="home" className="hero" tabIndex={-1}>
+    <section
+      id="home"
+      className="hero"
+      tabIndex={-1}
+      onPointerDown={(event) => {
+        // Dragging the stars should not start a selection in nearby copy.
+        // Text and controls retain their native behavior; touch can still scroll.
+        if (
+          event.pointerType === 'mouse' &&
+          event.target === event.currentTarget
+        ) {
+          event.preventDefault();
+        }
+      }}
+    >
       <AnimatedBackground paused={paused} />
       <div className="hero-shade" aria-hidden="true" />
       <div className="wide-shell hero-layout">
@@ -27,14 +42,9 @@ const Hero = () => {
             {profile.greeting}
           </p>
           <h1 className="hero-title">
-            {profile.title === 'Software Engineer' ? (
-              <>
-                Software <span>Engineer</span>
-              </>
-            ) : (
-              profile.title
-            )}
+            {firstName} <span>{lastName.join(' ')}</span>
           </h1>
+          <p className="hero-role">a software engineer at JPMorganChase</p>
           <div className="hero-signals" aria-label="Focus areas">
             {heroSignals.map((signal) => (
               <span key={signal}>{signal}</span>
@@ -56,9 +66,6 @@ const Hero = () => {
             </a>
           </div>
         </div>
-        <div className="galaxy-caption" aria-hidden="true">
-          <span />A little curiosity. An infinite frontier.
-        </div>
         <div className="hero-bottom">
           <div className="hero-metadata">
             <span>
@@ -78,11 +85,9 @@ const Hero = () => {
               onClick={() => setPaused((value) => !value)}
               aria-pressed={paused}
               aria-label={
-                paused ? 'Resume galaxy animation' : 'Pause galaxy animation'
+                paused ? 'Resume star animation' : 'Pause star animation'
               }
-              title={
-                paused ? 'Resume galaxy animation' : 'Pause galaxy animation'
-              }
+              title={paused ? 'Resume star animation' : 'Pause star animation'}
             >
               {paused ? <Play size={14} /> : <Pause size={14} />}
             </button>

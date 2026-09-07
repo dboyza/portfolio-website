@@ -44,7 +44,7 @@ export type CareerDirection = {
 
 export const profile = {
   name: 'Dylan Boyza',
-  greeting: "Hi! I'm Dylan Boyza",
+  greeting: "Hi, I'm",
   title: 'Software Engineer',
   location: 'Pennsylvania',
   credentialLine: 'MLOps, AWS, Kubernetes, Python, Terraform',
@@ -66,13 +66,13 @@ export const navItems = [
 ];
 
 export const aboutParagraphs = [
-  'I am currently a Software Engineer at JPMorgan Chase working on an internal agentic platform and model serving.',
+  'I am currently a Software Engineer at JPMorganChase working on an internal agentic platform and model serving.',
   'I’m especially interested in platform engineering, cloud infrastructure, backend systems, and automation tools that improve speed, reliability, and security.',
 ];
 
 export const careerDirection: CareerDirection = {
   lookingFor:
-    'I’m building MLOps experience at JPMorgan Chase while growing deeper expertise in platform engineering, cloud infrastructure, and production automation.',
+    'I’m building MLOps experience at JPMorganChase while growing deeper expertise in platform engineering, cloud infrastructure, and production automation.',
   currentlyBuilding: [
     'MLOps',
     'Platform engineering',

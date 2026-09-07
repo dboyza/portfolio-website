@@ -5,29 +5,29 @@ interface AnimatedBackgroundProps {
   className?: string;
 }
 
-interface GalaxyParticle {
+interface Star {
   x: number;
   y: number;
   z: number;
   size: number;
-}
-
-interface LuminousStar extends GalaxyParticle {
-  warm: boolean;
   phase: number;
+  luminous: boolean;
+  dx: number;
+  dy: number;
+  vx: number;
+  vy: number;
+  screenX: number;
+  screenY: number;
 }
 
 const COLORS = [
-  'rgba(108, 154, 205, 0.18)',
-  'rgba(133, 180, 222, 0.28)',
-  'rgba(171, 209, 240, 0.38)',
-  'rgba(193, 223, 248, 0.52)',
-  'rgba(225, 239, 255, 0.74)',
-  'rgba(249, 250, 255, 0.95)',
-  'rgba(215, 200, 180, 0.38)',
+  'rgba(114, 155, 206, 0.24)',
+  'rgba(145, 187, 229, 0.38)',
+  'rgba(177, 207, 243, 0.55)',
+  'rgba(208, 229, 252, 0.72)',
+  'rgba(245, 249, 255, 0.96)',
 ];
 
-// A fixed seed keeps the composition stable through resizes and React remounts.
 function makeRandom(seed: number) {
   let state = seed;
   return () => {
@@ -36,64 +36,114 @@ function makeRandom(seed: number) {
   };
 }
 
+type Point = readonly [number, number];
+type Stroke = readonly [Point, Point, Point, Point];
+
+// The same open, geometric DB letterforms are used in the favicon.
+const MONOGRAM: readonly Stroke[] = [
+  [
+    [-0.69, 0.53],
+    [-0.69, 0.18],
+    [-0.69, -0.18],
+    [-0.69, -0.53],
+  ],
+  [
+    [-0.69, -0.53],
+    [0.1, -0.57],
+    [0.1, 0.57],
+    [-0.69, 0.53],
+  ],
+  [
+    [0.12, 0.53],
+    [0.12, 0.18],
+    [0.12, -0.18],
+    [0.12, -0.53],
+  ],
+  [
+    [0.12, -0.53],
+    [0.84, -0.57],
+    [0.84, 0.02],
+    [0.12, 0],
+  ],
+  [
+    [0.12, 0],
+    [0.9, -0.02],
+    [0.9, 0.57],
+    [0.12, 0.53],
+  ],
+];
+
 function makeParticles(count: number) {
   const random = makeRandom(8192);
   const gaussian = () =>
     Math.sqrt(-2 * Math.log(Math.max(random(), 0.00001))) *
     Math.cos(random() * Math.PI * 2);
-  const groups: GalaxyParticle[][] = COLORS.map(() => []);
-  const luminousStars: LuminousStar[] = [];
-
+  const groups: Star[][] = COLORS.map(() => []);
   for (let index = 0; index < count; index += 1) {
-    const distribution = random();
-    const core = distribution < 0.13;
-    const radius = core ? Math.abs(gaussian()) * 0.13 : Math.pow(random(), 0.7);
-    const arm = Math.floor(random() * 3);
-    const angle =
-      distribution > 0.94 || core
-        ? random() * Math.PI * 2
-        : (arm * Math.PI * 2) / 3 +
-          radius * 5.2 +
-          gaussian() * (0.055 + radius * 0.11);
-    const brightness = random();
-    const color =
-      random() > 0.963
-        ? 6
-        : Math.min(5, Math.floor(Math.pow(brightness, 2.1) * 6));
-    const particle = {
-      x: Math.cos(angle) * radius,
-      y: Math.sin(angle) * radius,
-      z: gaussian() * (core ? 0.05 : 0.007 + (1 - radius) * 0.007),
-      size:
-        color > 3 && color < 6 ? 0.75 + random() * 0.85 : 0.55 + random() * 0.8,
-    };
-    groups[color].push(particle);
-    if (!core && distribution <= 0.94 && random() > 0.982) {
-      luminousStars.push({
-        ...particle,
-        size: 1.3 + Math.pow(random(), 3) * 2.3,
-        warm: random() > 0.84,
-        phase: random() * Math.PI * 2,
-      });
+    const lettering = index < count * 0.79;
+    let x: number;
+    let y: number;
+    let z: number;
+    if (lettering) {
+      // Weight the curved strokes by length, giving the lettering even density.
+      const strokeIndex = [0, 1, 1, 2, 3, 4][Math.floor(random() * 6)];
+      const [a, b, c, d] = MONOGRAM[strokeIndex];
+      const t = random();
+      const u = 1 - t;
+      const scatter = random() < 0.82 ? 0.011 : 0.045;
+      x =
+        u ** 3 * a[0] +
+        3 * u * u * t * b[0] +
+        3 * u * t * t * c[0] +
+        t ** 3 * d[0] +
+        gaussian() * scatter;
+      y =
+        u ** 3 * a[1] +
+        3 * u * u * t * b[1] +
+        3 * u * t * t * c[1] +
+        t ** 3 * d[1] +
+        gaussian() * scatter;
+      z = gaussian() * 0.045;
+    } else {
+      // Inclined orbital dust surrounds the initials without obscuring them.
+      const angle = random() * Math.PI * 2;
+      const orbit = 0.84 + random() * 0.35;
+      const spread = gaussian() * 0.016;
+      x = Math.cos(angle) * orbit;
+      y = Math.sin(angle) * orbit * 0.29 - x * 0.35 + spread;
+      z = Math.sin(angle) * 0.22 + gaussian() * 0.025;
     }
+    const color = Math.min(4, Math.floor(Math.pow(random(), 1.65) * 5));
+    groups[lettering ? color : Math.min(color, 2)].push({
+      x,
+      y,
+      z,
+      size: 0.55 + random() * (color === 4 ? 1.0 : 0.65),
+      phase: random() * Math.PI * 2,
+      luminous: lettering && random() > 0.978,
+      dx: 0,
+      dy: 0,
+      vx: 0,
+      vy: 0,
+      screenX: 0,
+      screenY: 0,
+    });
   }
-
-  return { groups, luminousStars };
+  return groups;
 }
 
-function makeBloom(warm: boolean) {
+function makeBloom() {
   const sprite = document.createElement('canvas');
   sprite.width = 64;
   sprite.height = 64;
   const context = sprite.getContext('2d');
   if (context) {
-    const color = warm ? '255, 211, 159' : '168, 212, 255';
     const gradient = context.createRadialGradient(32, 32, 0, 32, 32, 32);
     gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-    gradient.addColorStop(0.08, 'rgba(248, 251, 255, 0.95)');
-    gradient.addColorStop(0.18, `rgba(${color}, 0.5)`);
-    gradient.addColorStop(0.4, `rgba(${color}, 0.12)`);
-    gradient.addColorStop(1, `rgba(${color}, 0)`);
+    gradient.addColorStop(0.07, 'rgba(239, 248, 255, 0.95)');
+    gradient.addColorStop(0.18, 'rgba(170, 212, 255, 0.48)');
+    gradient.addColorStop(0.45, 'rgba(120, 179, 252, 0.1)');
+    gradient.addColorStop(1, 'rgba(120, 179, 252, 0)');
     context.fillStyle = gradient;
     context.fillRect(0, 0, 64, 64);
   }
@@ -122,70 +172,51 @@ const AnimatedBackground = ({
     if (!context) return;
 
     const random = makeRandom(451);
-    const fieldStars = Array.from({ length: 180 }, () => ({
+    const fieldStars = Array.from({ length: 160 }, () => ({
       x: random(),
       y: random(),
       radius: 0.3 + Math.pow(random(), 3) * 1.15,
-      opacity: 0.15 + random() * 0.55,
+      opacity: 0.12 + random() * 0.5,
       phase: random() * Math.PI * 2,
     }));
     const motionPreference = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     );
-    const pointerPreference = window.matchMedia('(pointer: fine)');
     let reducedMotion = motionPreference.matches;
     let visible = true;
     let width = 0;
     let height = 0;
     let radius = 0;
-    let groups: GalaxyParticle[][] = [];
-    let luminousStars: LuminousStar[] = [];
+    let groups: Star[][] = [];
     let mobileComposition: boolean | null = null;
     let animationFrame = 0;
     let previousTime = 0;
     let elapsed = 0;
-    let pointerX = 0;
-    let pointerY = 0;
-    let targetX = 0;
-    let targetY = 0;
-    const coolBloom = makeBloom(false);
-    const warmBloom = makeBloom(true);
+    let viewX = 0;
+    let viewY = 0;
+    const pointer = {
+      active: false,
+      clientX: 0,
+      clientY: 0,
+      lastX: 0,
+      lastY: 0,
+      moved: false,
+    };
+    const bloom = makeBloom();
 
-    const halo = document.createElement('canvas');
-    halo.width = 256;
-    halo.height = 256;
-    const haloContext = halo.getContext('2d');
-    if (haloContext) {
-      const gradient = haloContext.createRadialGradient(
-        128,
-        128,
-        0,
-        128,
-        128,
-        128,
-      );
-      gradient.addColorStop(0, 'rgba(255, 245, 224, 0.90)');
-      gradient.addColorStop(0.08, 'rgba(245, 232, 215, 0.48)');
-      gradient.addColorStop(0.3, 'rgba(144, 184, 231, 0.12)');
-      gradient.addColorStop(0.65, 'rgba(73, 115, 175, 0.025)');
-      gradient.addColorStop(1, 'rgba(73, 115, 175, 0)');
-      haloContext.fillStyle = gradient;
-      haloContext.fillRect(0, 0, 256, 256);
-    }
-
-    const draw = () => {
+    const draw = (delta = 0) => {
       context.clearRect(0, 0, width, height);
-
       for (const star of fieldStars) {
-        const twinkle = reducedMotion
-          ? 1
-          : 0.82 + Math.sin(elapsed * 0.48 + star.phase) * 0.18;
-        context.globalAlpha = star.opacity * twinkle;
+        context.globalAlpha =
+          star.opacity *
+          (reducedMotion
+            ? 1
+            : 0.82 + Math.sin(elapsed * 0.48 + star.phase) * 0.18);
         context.fillStyle = '#dceaff';
         context.beginPath();
         context.arc(
-          star.x * width + pointerX * 4,
-          star.y * height + pointerY * 3,
+          star.x * width + viewX * 3,
+          star.y * height + viewY * 3,
           star.radius,
           0,
           Math.PI * 2,
@@ -194,96 +225,153 @@ const AnimatedBackground = ({
       }
       context.globalAlpha = 1;
 
-      const centerX = width * (mobileComposition ? 0.5 : 0.7) + pointerX * 13;
-      const centerY = height * (mobileComposition ? 0.27 : 0.43) + pointerY * 9;
-      const rotation = elapsed * 0.017 + 0.3;
-      const cosine = Math.cos(rotation);
-      const sine = Math.sin(rotation);
-      const tilt = 0.6 + pointerY * 0.018;
+      // Client coordinates are remapped every frame so scrolling cannot leave a
+      // phantom cursor behind in the hero. A swept segment catches fast gestures.
+      const rect = scene.getBoundingClientRect();
+      const px = pointer.clientX - rect.left;
+      const py = pointer.clientY - rect.top;
+      const inside =
+        pointer.active && px >= 0 && px <= width && py >= 0 && py <= height;
+      const startX = pointer.moved ? pointer.lastX - rect.left : px;
+      const startY = pointer.moved ? pointer.lastY - rect.top : py;
+      const sweepX = px - startX;
+      const sweepY = py - startY;
+      const sweepLength = sweepX * sweepX + sweepY * sweepY;
+      const interactionRadius = mobileComposition ? 83 : 115;
+      const targetViewX = inside ? (px / width - 0.5) * 2 : 0;
+      const targetViewY = inside ? (py / height - 0.5) * 2 : 0;
+      const easing = 1 - Math.exp(-delta * 3);
+      viewX += (targetViewX - viewX) * easing;
+      viewY += (targetViewY - viewY) * easing;
+      const centerX = width * (mobileComposition ? 0.5 : 0.7) + viewX * 7;
+      const centerY = height * (mobileComposition ? 0.27 : 0.43) + viewY * 5;
+      const yaw = reducedMotion
+        ? -0.08
+        : -0.08 + Math.sin(elapsed * 0.12) * 0.06 + viewX * 0.045;
+      const pitch = reducedMotion
+        ? 0.04
+        : 0.04 + Math.sin(elapsed * 0.09) * 0.035 + viewY * 0.025;
+      const cosine = Math.cos(yaw);
+      const sine = Math.sin(yaw);
 
-      context.save();
-      context.translate(centerX, centerY);
-      context.rotate(-0.37 + pointerX * 0.015);
-      context.save();
-      context.scale(1, tilt);
-      context.drawImage(
-        halo,
-        -radius * 0.9,
-        -radius * 0.9,
-        radius * 1.8,
-        radius * 1.8,
+      // A broad, restrained glow gives the sculpture depth without a hot core.
+      const haze = context.createRadialGradient(
+        centerX,
+        centerY,
+        0,
+        centerX,
+        centerY,
+        radius * 1.05,
       );
-      context.restore();
+      haze.addColorStop(0, 'rgba(80, 134, 210, 0.055)');
+      haze.addColorStop(0.55, 'rgba(64, 113, 185, 0.025)');
+      haze.addColorStop(1, 'rgba(64, 113, 185, 0)');
+      context.fillStyle = haze;
+      context.fillRect(
+        centerX - radius * 1.05,
+        centerY - radius * 1.05,
+        radius * 2.1,
+        radius * 2.1,
+      );
 
-      // Batch tiny stars into a handful of paths, keeping the disk genuinely
-      // three-dimensional without thousands of individual draw calls.
-      groups.forEach((particles, color) => {
+      groups.forEach((stars, color) => {
         context.fillStyle = COLORS[color];
         context.beginPath();
-        for (const particle of particles) {
-          const x = particle.x * cosine - particle.y * sine;
-          const y = particle.x * sine + particle.y * cosine;
-          const depth = 1 + y * 0.1;
-          const screenX = x * radius * depth;
-          const screenY = (y * tilt + particle.z) * radius;
-          const size = particle.size * (mobileComposition ? 0.8 : 1) * depth;
-          context.rect(screenX, screenY, size, size);
+        for (const star of stars) {
+          const depth = 1 + star.z * 0.16;
+          const baseX =
+            centerX + (star.x * cosine + star.z * sine) * radius * depth;
+          const baseY = centerY + (star.y + star.z * pitch) * radius * depth;
+          let forceX = 0;
+          let forceY = 0;
+          if (inside && delta > 0) {
+            const sx = baseX + star.dx;
+            const sy = baseY + star.dy;
+            const t =
+              sweepLength > 0
+                ? Math.max(
+                    0,
+                    Math.min(
+                      1,
+                      ((sx - startX) * sweepX + (sy - startY) * sweepY) /
+                        sweepLength,
+                    ),
+                  )
+                : 1;
+            const offsetX = sx - (startX + sweepX * t);
+            const offsetY = sy - (startY + sweepY * t);
+            const distance = Math.hypot(offsetX, offsetY);
+            if (distance < interactionRadius) {
+              const falloff = (1 - distance / interactionRadius) ** 2;
+              const nx =
+                distance > 0.1 ? offsetX / distance : Math.cos(star.phase);
+              const ny =
+                distance > 0.1 ? offsetY / distance : Math.sin(star.phase);
+              forceX = (nx - ny * 0.38) * falloff * 6400;
+              forceY = (ny + nx * 0.38) * falloff * 6400;
+              // Movement transfers momentum, visibly pulling stars along a pass.
+              star.vx += Math.max(-50, Math.min(50, sweepX)) * falloff * 1.9;
+              star.vy += Math.max(-50, Math.min(50, sweepY)) * falloff * 1.9;
+            }
+          }
+          // A damped spring returns every star to its own three-dimensional home.
+          // Small substeps keep the response stable after a slow animation frame.
+          const steps = Math.max(1, Math.ceil(delta / (1 / 120)));
+          const step = delta / steps;
+          for (let i = 0; i < steps; i += 1) {
+            star.vx += (forceX - star.dx * 24 - star.vx * 6.4) * step;
+            star.vy += (forceY - star.dy * 24 - star.vy * 6.4) * step;
+            star.dx += star.vx * step;
+            star.dy += star.vy * step;
+          }
+          star.screenX = baseX + star.dx;
+          star.screenY = baseY + star.dy;
+          const size = star.size * (mobileComposition ? 0.8 : 1) * depth;
+          context.rect(star.screenX, star.screenY, size, size);
         }
         context.fill();
       });
-
-      for (const star of luminousStars) {
-        const x = star.x * cosine - star.y * sine;
-        const y = star.x * sine + star.y * cosine;
-        const depth = 1 + y * 0.1;
-        const screenX = x * radius * depth;
-        const screenY = (y * tilt + star.z) * radius;
-        const size = star.size * 6 * (mobileComposition ? 0.8 : 1) * depth;
-        context.globalAlpha = reducedMotion
-          ? 0.9
-          : 0.8 + Math.sin(elapsed * 0.65 + star.phase) * 0.2;
-        context.drawImage(
-          star.warm ? warmBloom : coolBloom,
-          screenX - size / 2,
-          screenY - size / 2,
-          size,
-          size,
-        );
+      for (const stars of groups) {
+        for (const star of stars) {
+          if (!star.luminous) continue;
+          const size = (10 + star.size * 7) * (mobileComposition ? 0.8 : 1);
+          context.globalAlpha = reducedMotion
+            ? 0.8
+            : 0.72 + Math.sin(elapsed * 0.7 + star.phase) * 0.22;
+          context.drawImage(
+            bloom,
+            star.screenX - size / 2,
+            star.screenY - size / 2,
+            size,
+            size,
+          );
+        }
       }
-
-      context.globalAlpha = 0.8;
-      context.drawImage(
-        halo,
-        -radius * 0.2,
-        -radius * 0.12,
-        radius * 0.4,
-        radius * 0.24,
-      );
-      context.restore();
+      context.globalAlpha = 1;
+      pointer.lastX = pointer.clientX;
+      pointer.lastY = pointer.clientY;
+      pointer.moved = false;
     };
 
     const canAnimate = () =>
       !pausedRef.current && !reducedMotion && visible && !document.hidden;
-
     const animate = (time: number) => {
       animationFrame = 0;
       if (!canAnimate()) return;
       const delta = previousTime
-        ? Math.min((time - previousTime) / 1000, 0.05)
+        ? Math.min((time - previousTime) / 1000, 0.04)
         : 0;
       previousTime = time;
       elapsed += delta;
-      const easing = 1 - Math.exp(-delta * 2.5);
-      pointerX += (targetX - pointerX) * easing;
-      pointerY += (targetY - pointerY) * easing;
-      draw();
+      draw(delta);
       animationFrame = window.requestAnimationFrame(animate);
     };
-
     const updatePlayback = () => {
       if (animationFrame) window.cancelAnimationFrame(animationFrame);
       animationFrame = 0;
       previousTime = 0;
+      pointer.active = false;
+      pointer.moved = false;
       if (canAnimate()) animationFrame = window.requestAnimationFrame(animate);
     };
     updatePlaybackRef.current = updatePlayback;
@@ -306,37 +394,47 @@ const AnimatedBackground = ({
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
       const nextMobileComposition = width <= 760;
       radius = nextMobileComposition
-        ? Math.min(370, Math.max(width * 0.67, 240))
-        : Math.min(width * 0.37, height * 0.6, 650);
+        ? Math.min(width * 0.6, 340)
+        : Math.min(width * 0.33, height * 0.55, 600);
       if (nextMobileComposition !== mobileComposition) {
         mobileComposition = nextMobileComposition;
-        ({ groups, luminousStars } = makeParticles(
-          mobileComposition ? 7000 : 14000,
-        ));
+        groups = makeParticles(mobileComposition ? 4200 : 6200);
       }
       draw();
     };
-
     const onPointerMove = (event: PointerEvent) => {
-      if (
-        reducedMotion ||
-        pausedRef.current ||
-        !visible ||
-        !pointerPreference.matches
-      )
-        return;
-      targetX = (event.clientX / window.innerWidth - 0.5) * 2;
-      targetY = (event.clientY / window.innerHeight - 0.5) * 2;
+      if (!canAnimate()) return;
+      if (!pointer.active) {
+        pointer.lastX = event.clientX;
+        pointer.lastY = event.clientY;
+      }
+      pointer.active = true;
+      pointer.clientX = event.clientX;
+      pointer.clientY = event.clientY;
+      pointer.moved = true;
     };
     const onPointerLeave = () => {
-      targetX = 0;
-      targetY = 0;
+      pointer.active = false;
+      pointer.moved = false;
+    };
+    const onPointerEnd = (event: PointerEvent) => {
+      if (event.pointerType !== 'mouse') onPointerLeave();
     };
     const onMotionChange = () => {
       reducedMotion = motionPreference.matches;
       if (reducedMotion) {
-        pointerX = 0;
-        pointerY = 0;
+        elapsed = 0;
+        viewX = 0;
+        viewY = 0;
+        pointer.active = false;
+        for (const stars of groups) {
+          for (const star of stars) {
+            star.dx = 0;
+            star.dy = 0;
+            star.vx = 0;
+            star.vy = 0;
+          }
+        }
         draw();
       }
       updatePlayback();
@@ -351,6 +449,10 @@ const AnimatedBackground = ({
     intersectionObserver.observe(scene);
     window.addEventListener('resize', resize, { passive: true });
     window.addEventListener('pointermove', onPointerMove, { passive: true });
+    window.addEventListener('pointerdown', onPointerMove, { passive: true });
+    window.addEventListener('pointerup', onPointerEnd, { passive: true });
+    window.addEventListener('pointercancel', onPointerLeave, { passive: true });
+    window.addEventListener('blur', onPointerLeave);
     document.documentElement.addEventListener('pointerleave', onPointerLeave);
     document.addEventListener('visibilitychange', updatePlayback);
     motionPreference.addEventListener('change', onMotionChange);
@@ -363,6 +465,10 @@ const AnimatedBackground = ({
       intersectionObserver.disconnect();
       window.removeEventListener('resize', resize);
       window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerdown', onPointerMove);
+      window.removeEventListener('pointerup', onPointerEnd);
+      window.removeEventListener('pointercancel', onPointerLeave);
+      window.removeEventListener('blur', onPointerLeave);
       document.documentElement.removeEventListener(
         'pointerleave',
         onPointerLeave,
