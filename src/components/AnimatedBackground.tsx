@@ -71,7 +71,8 @@ function makeParticles(count: number) {
       const [a, b, c, d] = MONOGRAM[strokeIndex];
       const t = random();
       const u = 1 - t;
-      const scatter = random() < 0.82 ? 0.014 : 0.045;
+      // A wider core gives the initials bold strokes with a soft dust edge.
+      const scatter = random() < 0.82 ? 0.03 : 0.06;
       x =
         u ** 3 * a[0] +
         3 * u * u * t * b[0] +
@@ -408,7 +409,7 @@ const AnimatedBackground = ({
         : Math.min(width * 0.33, height * 0.55, 600);
       if (nextMobileComposition !== mobileComposition) {
         mobileComposition = nextMobileComposition;
-        groups = makeParticles(mobileComposition ? 4200 : 6200);
+        groups = makeParticles(mobileComposition ? 5600 : 8400);
       }
       draw();
     };
