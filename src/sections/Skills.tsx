@@ -10,6 +10,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
+import SkillLogo from '../components/SkillLogo';
 import { coreStack, skillGroups } from '../data/portfolio';
 
 const iconMap: Record<string, LucideIcon> = {
@@ -20,16 +21,6 @@ const iconMap: Record<string, LucideIcon> = {
   network: Network,
   server: Server,
   shield: Shield,
-};
-
-const coreIcons: Record<string, LucideIcon> = {
-  AWS: Cloud,
-  Kubernetes: Boxes,
-  Docker: Boxes,
-  Terraform: Network,
-  Jenkins: Settings,
-  Linux: Server,
-  Python: Code2,
 };
 
 const Skills = () => (
@@ -44,23 +35,15 @@ const Skills = () => (
           Core Stack
         </p>
         <div className="flex flex-wrap gap-x-7 gap-y-5 sm:gap-x-9">
-          {coreStack.map((skill) => {
-            const Icon = coreIcons[skill] ?? Code2;
-            return (
-              <span
-                key={skill}
-                className="inline-flex items-center gap-2.5 text-base font-medium text-slate-200"
-              >
-                <Icon
-                  size={18}
-                  strokeWidth={1.5}
-                  className="text-sky-200"
-                  aria-hidden="true"
-                />
-                {skill}
-              </span>
-            );
-          })}
+          {coreStack.map((skill) => (
+            <span
+              key={skill}
+              className="inline-flex items-center gap-2.5 text-base font-medium text-slate-200"
+            >
+              <SkillLogo skill={skill} size={20} />
+              {skill}
+            </span>
+          ))}
         </div>
       </div>
       <div className="mt-7 grid gap-5 md:grid-cols-2">
@@ -93,9 +76,10 @@ const Skills = () => (
                 {group.items.map((skill) => (
                   <span
                     key={`${group.title}-${skill}`}
-                    className="motion-pill max-w-full rounded-full border border-white/10 px-3.5 py-1.5 text-xs leading-5 text-slate-300"
+                    className="motion-pill inline-flex max-w-full items-center gap-2 rounded-full border border-white/10 px-3.5 py-1.5 text-xs leading-5 text-slate-300"
                   >
-                    {skill}
+                    <SkillLogo skill={skill} />
+                    <span className="min-w-0">{skill}</span>
                   </span>
                 ))}
               </div>
