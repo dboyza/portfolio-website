@@ -85,40 +85,54 @@ export const careerDirection: CareerDirection = {
 
 export const projects: Project[] = [
   {
-    id: 'placeholder-cloud-lab',
-    title: 'Cloud Infrastructure Lab',
-    labType: 'Cloud Lab',
-    status: 'Building',
+    id: 'pytuitor',
+    title: 'Pytuitor',
+    labType: 'Terminal Learning Tool',
+    status: 'Release candidate',
     description:
-      'A focused AWS infrastructure lab for turning secure cloud architecture ideas into repeatable, documented builds.',
+      'An offline Python tutor for learning by building and repairing programs in your terminal.',
     details: [
-      'This slot is reserved for an architecture-backed project with Terraform modules, deployment notes, and a clean operational walkthrough.',
+      'It includes 75 lessons, 12 projects, and 21 chapters with local progress, interactive checks, hints, and reference solutions.',
     ],
-    image: '/project-placeholder-cloud.svg',
-    imageAlt: 'Placeholder cloud project diagram',
+    image: '/project-pytuitor.svg',
+    imageAlt: 'Pytuitor logo showing an open book with a terminal prompt',
     links: [
-      { label: 'Repo', href: '#' },
-      { label: 'Demo', href: '#' },
+      { label: 'Repo', href: 'https://github.com/dboyza/pytuitor' },
     ],
-    stack: ['AWS', 'Terraform', 'Ansible', 'Linux'],
+    stack: ['Python', 'Textual', 'uv', 'pytest'],
   },
   {
-    id: 'placeholder-automation-tool',
-    title: 'Automation Tooling Lab',
-    labType: 'Automation Lab',
-    status: 'Documenting',
+    id: 'gptskins',
+    title: 'GPTskins',
+    labType: 'Browser Extension',
     description:
-      'A practical scripting and automation lab for reducing manual operations with small, reliable tooling.',
+      'A browser extension that gives ChatGPT editor-inspired themes and bundled coding fonts.',
     details: [
-      'This slot is reserved for a polished repo with code, examples, README notes, and the problem it automates.',
+      'Choose from 34 palettes and 7 font options, with preferences synced in browser storage and no backend or external runtime dependencies.',
     ],
-    image: '/project-placeholder-automation.svg',
-    imageAlt: 'Placeholder automation project diagram',
+    image: '/project-gptskins.svg',
+    imageAlt: 'GPTskins logo',
     links: [
-      { label: 'Repo', href: '#' },
-      { label: 'Notes', href: '#' },
+      { label: 'Repo', href: 'https://github.com/dboyza/GPTskins' },
     ],
-    stack: ['Python', 'Ansible', 'Bash', 'Linux'],
+    stack: ['JavaScript', 'Manifest V3', 'Chrome Extensions', 'Playwright'],
+  },
+  {
+    id: 'xpubshield',
+    title: 'XpubShield',
+    labType: 'Desktop Security Tool',
+    status: 'v0.1.3',
+    description:
+      'A watch-only desktop app for reviewing Bitcoin wallets, coins, and transactions before signing.',
+    details: [
+      'Review coins, fees, change, and partially signed Bitcoin transactions on macOS and Windows without storing private keys or signing transactions.',
+    ],
+    image: '/project-xpubshield.png',
+    imageAlt: 'XpubShield logo showing an orange X inside a teal shield',
+    links: [
+      { label: 'Repo', href: 'https://github.com/dboyza/XpubShield' },
+    ],
+    stack: ['Rust', 'Tauri', 'React', 'TypeScript', 'SQLite'],
   },
 ];
 

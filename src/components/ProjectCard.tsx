@@ -24,11 +24,11 @@ const ProjectCard = ({
       data-reveal
       style={{ transitionDelay: `${revealDelay}ms` }}
     >
-      <div className="project-art overflow-hidden border-b border-white/8 bg-[#080c13]">
+      <div className="project-art flex aspect-[16/9] items-center justify-center overflow-hidden border-b border-white/8 bg-[#080c13] p-6 sm:p-8">
         <img
           src={project.image}
           alt={project.imageAlt}
-          className="aspect-[16/9] w-full object-cover"
+          className="h-full w-full object-contain"
           loading="lazy"
         />
       </div>

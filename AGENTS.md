@@ -10,7 +10,8 @@
 - Reproduce bugs through the end-user experience before fixing them.
 - Inspect desktop and mobile layouts in the browser after visual changes.
 - Fix clearly visible UI defects and encountered lint or test failures, including flaky checks.
-- Use scoped subagents when independent work or review materially improves quality or completion time.
+- Never spawn subagents or delegate work unless the user explicitly asks for subagents for the current task.
+  Work directly by default; prior permission does not carry over to later tasks or follow-up prompts.
 - Suggest a useful next step after completing a major task.
 
 ## Project conventions
@@ -22,7 +23,7 @@
 - Preserve existing text unless the user requests copy changes or removal, including terminal output and text inside SVG assets.
 - Keep the personal star sculpture isolated in `AnimatedBackground.tsx`; pause it offscreen, in hidden tabs, and for reduced motion.
 - Use a dark theme only, spell the employer `JPMorganChase`, and keep the terminal visible without a disclosure.
-- Keep projects blurred and inert behind the WIP overlay until the user asks to reveal them.
+- Keep projects visible and interactive.
 
 ## Visual assets
 

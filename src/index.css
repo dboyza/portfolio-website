@@ -529,42 +529,6 @@ main:focus {
     filter 400ms,
     transform 650ms;
 }
-.projects-wip {
-  position: relative;
-}
-.projects-wip-content {
-  max-height: 680px;
-  overflow: hidden;
-  filter: blur(10px);
-  opacity: 0.3;
-  pointer-events: none;
-  user-select: none;
-  mask-image: linear-gradient(#000 75%, transparent);
-}
-.projects-wip-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  text-align: center;
-}
-.projects-wip-overlay h2 {
-  font-size: clamp(64px, 9vw, 112px);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.05em;
-  color: #eff4fa;
-}
-.projects-wip-overlay p {
-  font-family: 'SFMono-Regular', Consolas, monospace;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--site-text-muted);
-}
 .project-art:hover img {
   opacity: 1;
   filter: saturate(0.7);
