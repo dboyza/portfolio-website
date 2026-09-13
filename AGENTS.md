@@ -30,3 +30,4 @@
 - Run `npm run assets:generate` to rebuild portrait variants and the social share image.
 - Keep the full-resolution portrait in `assets/`; serve responsive AVIF, WebP, and JPEG variants from `public/`.
 - The hero and share card use the letterforms in `src/data/monogram.json`; edit the generator instead of generated image files.
+- Keep the signature initials font-independent, with shared distance-based star sampling in `src/data/sample-strokes.mjs`.

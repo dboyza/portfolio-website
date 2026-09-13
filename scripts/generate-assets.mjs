@@ -1,6 +1,7 @@
 import { Buffer } from 'node:buffer';
 import { readFile, writeFile } from 'node:fs/promises';
 import sharp from 'sharp';
+import { createStrokeSampler } from '../src/data/sample-strokes.mjs';
 
 // Run from the repository root with npm run assets:generate.
 // Preserve the original portrait; all public variants are generated from it.
@@ -24,6 +25,7 @@ for (const width of [480, 820, 1254]) {
 
 // Share the hero's exact letterforms, with a deterministic still composition.
 const strokes = JSON.parse(await readFile('src/data/monogram.json', 'utf8'));
+const sampleMonogram = createStrokeSampler(strokes);
 let seed = 8192;
 const random = () => {
   seed = (seed * 1664525 + 1013904223) >>> 0;
@@ -49,22 +51,10 @@ for (let i = 0; i < 5200; i++) {
   let x, y;
   const lettering = i < 4100;
   if (lettering) {
-    const [a, b, c, d] = strokes[[0, 1, 1, 2, 3, 4][Math.floor(random() * 6)]];
-    const t = random(),
-      u = 1 - t;
-    const scatter = random() < 0.82 ? 0.014 : 0.045;
-    x =
-      u ** 3 * a[0] +
-      3 * u * u * t * b[0] +
-      3 * u * t * t * c[0] +
-      t ** 3 * d[0] +
-      gaussian() * scatter;
-    y =
-      u ** 3 * a[1] +
-      3 * u * u * t * b[1] +
-      3 * u * t * t * c[1] +
-      t ** 3 * d[1] +
-      gaussian() * scatter;
+    const point = sampleMonogram(random());
+    const scatter = random() < 0.86 ? point.spread : 0.035;
+    x = point.x + gaussian() * scatter;
+    y = point.y + gaussian() * scatter;
   } else {
     const angle = random() * Math.PI * 2,
       orbit = 0.84 + random() * 0.35;

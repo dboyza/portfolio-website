@@ -1,4 +1,5 @@
 import monogramStrokes from '../data/monogram.json';
+import { createStrokeSampler } from '../data/sample-strokes.mjs';
 import { useEffect, useRef } from 'react';
 
 interface AnimatedBackgroundProps {
@@ -42,16 +43,8 @@ function makeRandom(seed: number) {
   };
 }
 
-type Point = readonly [number, number];
-type Stroke = readonly [Point, Point, Point, Point];
-
-// The same open, geometric DB letterforms are used in the favicon.
-const MONOGRAM: readonly Stroke[] = monogramStrokes.map(([a, b, c, d]) => [
-  [a[0], a[1]],
-  [b[0], b[1]],
-  [c[0], c[1]],
-  [d[0], d[1]],
-]);
+// Custom signature curves keep the star lettering independent of font loading.
+const sampleMonogram = createStrokeSampler(monogramStrokes);
 
 function makeParticles(count: number) {
   const random = makeRandom(8192);
@@ -66,25 +59,10 @@ function makeParticles(count: number) {
     let y: number;
     let z: number;
     if (lettering) {
-      // Weight the curved strokes by length, giving the lettering even density.
-      const strokeIndex = [0, 1, 1, 2, 3, 4][Math.floor(random() * 6)];
-      const [a, b, c, d] = MONOGRAM[strokeIndex];
-      const t = random();
-      const u = 1 - t;
-      // A wider core gives the initials bold strokes with a soft dust edge.
-      const scatter = random() < 0.82 ? 0.03 : 0.06;
-      x =
-        u ** 3 * a[0] +
-        3 * u * u * t * b[0] +
-        3 * u * t * t * c[0] +
-        t ** 3 * d[0] +
-        gaussian() * scatter;
-      y =
-        u ** 3 * a[1] +
-        3 * u * u * t * b[1] +
-        3 * u * t * t * c[1] +
-        t ** 3 * d[1] +
-        gaussian() * scatter;
+      const point = sampleMonogram(random());
+      const scatter = random() < 0.86 ? point.spread : 0.035;
+      x = point.x + gaussian() * scatter;
+      y = point.y + gaussian() * scatter;
       z = gaussian() * 0.045;
     } else {
       // Inclined orbital dust surrounds the initials without obscuring them.
@@ -405,8 +383,8 @@ const AnimatedBackground = ({
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
       const nextMobileComposition = width <= 760;
       radius = nextMobileComposition
-        ? Math.min(width * 0.6, 340)
-        : Math.min(width * 0.33, height * 0.55, 600);
+        ? Math.min(width * 0.45, 300)
+        : Math.min(width * 0.29, height * 0.49, 520);
       if (nextMobileComposition !== mobileComposition) {
         mobileComposition = nextMobileComposition;
         groups = makeParticles(mobileComposition ? 5600 : 8400);
